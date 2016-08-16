@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@android:color/white"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[关于论文帮]"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="经验｜在这里你可以分享论文写作经验"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="问答｜在这里你可以与同学们互动交流"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="帮帮｜在这里我们为您提供了范文帮写"/>
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="－沟通交流：微信sjl132400"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="－提交帮帮后，系统将第一时间安排小帮与您对接"/>
+    </LinearLayout>
+
+</LinearLayout>

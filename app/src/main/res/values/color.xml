@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="info_backgroud">#eeeeee</color>
+    <color name="dark_green">#158684</color>
+    <color name="dark_blue">#1586FF</color>
+    <color name="withe">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="color_theme">#647b97</color>
+
+
+</resources>

@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/res/merged/release/menu/savemenu.xml",
+        "source": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/src/main/res/menu/savemenu.xml"
+    },
+    {
+        "merged": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/res/merged/release/menu/ok.xml",
+        "source": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/src/main/res/menu/ok.xml"
+    },
+    {
+        "merged": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/res/merged/release/menu/answer.xml",
+        "source": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/src/main/res/menu/answer.xml"
+    },
+    {
+        "merged": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/res/merged/release/menu/comment.xml",
+        "source": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/src/main/res/menu/comment.xml"
+    },
+    {
+        "merged": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/res/merged/release/menu/register.xml",
+        "source": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/src/main/res/menu/register.xml"
+    },
+    {
+        "merged": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/res/merged/release/menu/feedback.xml",
+        "source": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/src/main/res/menu/feedback.xml"
+    },
+    {
+        "merged": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/res/merged/release/menu/main.xml",
+        "source": "/Users/shenjialong/AndroidStudioProjects/Bangbang/app/src/main/res/menu/main.xml"
+    }
+]

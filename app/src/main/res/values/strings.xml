@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">论文帮</string>
+
+    <string name="action_login">登录</string>
+    <string name="action_register">注册</string>
+
+    <string name="title_section1">经验</string>
+    <string name="title_section2">问答</string>
+    <string name="title_section3">帮帮</string>
+
+    <string name="title_section4">待定</string>
+
+    <string name="bang_pexperience">我的经验</string>
+    <string name="bang_pquestion">我的问答</string>
+    <string name="bang_pmessage">我的消息</string>
+    <string name="bang_pnotice">通知</string>
+
+
+    <string name="bang_detail">详情</string>
+    <string name="bang_question">问答详情</string>
+    <string name="bang_experience">经验详情</string>
+    <string name="bang_back">返回</string>
+    <string name="bang_comment">评论列表</string>
+    <string name="bang_answer">回答列表</string>
+    <string name="bang_write_comment">写评论</string>
+    <string name="bang_send">发送</string>
+
+    <string name="bang_create_experience">分享经验</string>
+    <string name="bang_create_question">提问</string>
+
+    <string name="bang_cancel">取消</string>
+    <string name="bang_create">新建</string>
+
+
+    <string name="action_feedback">反馈</string>
+    <string name="bang_about">关于</string>
+    <string name="action_message">消息</string>
+
+    <string name="action_experience">发布经验</string>
+    <string name="action_personal">我的</string>
+    <string name="action_logout">注销</string>
+
+    <string name="action_detail">详情</string>
+
+    <string name="signatrue_feild">个性签名</string>
+    <string name="change_name_feild">更改昵称</string>
+
+    <string name="action_experience_detail">经验</string>
+    <string name="action_bang_writer">帮写</string>
+
+    <string name="action_save">保存</string>
+    <string name="action_ok">完成</string>
+
+    <string name="action_college">学院选择</string>
+
+</resources>

@@ -1,0 +1,48 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+		<item name="android:actionModeBackground">@color/withe</item>
+		<item name="android:actionBarStyle">@style/my_actionbar_style</item>
+	</style>
+
+	<style name="my_actionbar_style" parent="@android:style/Widget.Holo.Light.ActionBar">
+		<item name="android:background">#647b97</item>
+		<item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
+	</style>
+	<style name="AcBar_titleStyle">
+
+		<item name="android:textColor">#FFFFFF</item>
+	</style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+	<!--<style name="myActionBarStyle" parent="android:Widget.ActionBar" >-->
+		<!--<item name="android:background">#D01839</item>-->
+	<!--</style>-->
+
+	<!-- edittext -->
+	<style name="edittext_style">
+		<item name="android:background">@drawable/ev</item>
+		<item name="android:layout_marginLeft">@dimen/tv_left_margin</item>
+		<item name="android:layout_marginRight">@dimen/tv_right_margin</item>
+		<item name="android:layout_marginTop">@dimen/tv_top_margin</item>
+		<item name="android:layout_marginBottom">@dimen/tv_bottom_margin</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:layout_height">@dimen/tv_height</item>
+		<item name="android:layout_width">fill_parent</item>
+	</style>
+
+</resources>

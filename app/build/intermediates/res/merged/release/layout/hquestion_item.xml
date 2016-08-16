@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="150dp"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        android:layout_marginBottom="@dimen/tv_top_margin"
+        >
+        <TextView
+            android:id="@+id/author_e_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/common_text_size"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_e_tv"
+            android:layout_alignTop="@+id/author_e_tv"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/common_text_size"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginRight="@dimen/sides_margin"
+            android:layout_marginEnd="@dimen/sides_margin" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        android:layout_marginBottom="@dimen/tv_top_margin"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/big_common_text_size"
+            android:gravity="center|left"
+            android:textColor="@color/dark_blue"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:id="@+id/title_e_tv" />
+    </LinearLayout>
+
+</LinearLayout>

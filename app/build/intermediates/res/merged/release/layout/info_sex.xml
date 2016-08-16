@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="性别"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:textSize="@dimen/info_item_left_text_size"
+        android:id="@+id/textView"
+        />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:textSize="@dimen/info_item_right_text_size"
+                android:layout_centerVertical="true"
+                android:text="男" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/info_male_rb"
+                android:checked="false"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/sides_margin"
+                android:layout_marginEnd="@dimen/sides_margin" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/info_item_height"
+            android:background="@android:color/white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/info_item_right_text_size"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:layout_centerVertical="true"
+                android:text="女" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/info_female_rb"
+                android:checked="false"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/sides_margin"
+                android:layout_marginEnd="@dimen/sides_margin" />
+        </RelativeLayout>
+
+    </RadioGroup>
+</LinearLayout>

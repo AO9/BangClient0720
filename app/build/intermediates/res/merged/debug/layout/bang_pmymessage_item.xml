@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/tv_left_margin"
+        android:text="NEW"
+        android:gravity="center"
+        android:textSize="@dimen/common_text_size"
+        android:textColor="@color/dark_green"
+        android:id="@+id/bang_mtag_tv" />
+    <TextView
+        android:id="@+id/bang_mtitle_tv"
+        android:layout_marginLeft="5dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:text="文章题目名字很长"
+        android:textSize="@dimen/big_common_text_size" />
+    <TextView
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:text="有新消息"
+        android:layout_marginRight="@dimen/tv_right_margin"
+        android:gravity="center"
+        android:textSize="@dimen/common_text_size"
+        android:textColor="@color/dark_green"
+        />
+
+</LinearLayout>

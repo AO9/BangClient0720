@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    >
+
+    <LinearLayout
+        android:id="@+id/mail_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tv_height"
+        android:background="#FFFFFF"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/bang_ecreate_bt"
+            android:layout_width="100dp"
+            android:background="#FFFFFF"
+            android:textColor="@drawable/button_selector"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/bang_create_experience"
+            android:textSize="@dimen/tab_text_size" />
+
+        <Button
+            android:id="@+id/bang_qcreate_bt"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:background="#FFFFFF"
+            android:textColor="@drawable/button_selector"
+            android:gravity="center"
+            android:text="@string/bang_create_question"
+            android:textSize="@dimen/tab_text_size"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/bang_create_vp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="#FFFFFF"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+
+</LinearLayout>
