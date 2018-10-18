@@ -1,2 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/volley.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="ce0c420f495126a4e08fe6dfec34cebc198ab9e9">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/volley_5e787e92629aa7c39f6865a398bd2bcaceeb4e2b.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/com.android.support-appcompat-v7-19.1.0_32a787d1fb818d927b760db6b51eacde2de226bc.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/commons-lang-2.6.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="0ce1edb914c94ebc388f086c6827e8bdeec71ac2">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/commons-lang-2.6_8fe5b67207a48bc5c0fabd2e46281a28d3e45674.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/jackson-core-asl-1.9.6.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="1ce7eb42bd11b2e90b77135edf417eef0afab85f">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/jackson-core-asl-1.9.6_1b1834c1b7003103854ea19d0038a69f4df6a8ac.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/disklrucache-2.0.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="93b399470e72c0bc8cb52379943b63c9aa586cd8">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/disklrucache-2.0.2_7179a92c89f0e16e548dd2f2c13fea3db61636d8.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/gson-2.2.4_ca21629b03d9639f14f75d546e1ad4ebc08587c3.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/jackson-mapper-asl-1.9.6.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="41a3522a9392ebaaa6aa31823dd2031a5b4e43ad">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/jackson-mapper-asl-1.9.6_f69aad9d80ef899d297b57c97a6c4e103dd9a3a0.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/.gradle/caches/modules-2/files-2.1/com.umeng.analytics/analytics/6.1.4/c1d30c2bbdce435b775cadca57df2098044a0f5e/analytics-6.1.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="c1d30c2bbdce435b775cadca57df2098044a0f5e">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/analytics-6.1.4_a10e01c2e39e256ec11882bff2386a56c2705cf4.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/support-v4-19.1.0_8cc751aa0f1fcbb9dcd0fc2b81dba1af8cedbbea.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/commons-io-2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/commons-io-2.4_920a599ca0fd4a26add5c7d313177bda0cdab81e.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-collections4/4.1/a4cf4688fe1c7e3a63aa636cc96d013af537768e/commons-collections4-4.1.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a4cf4688fe1c7e3a63aa636cc96d013af537768e">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/anroindmarket/debug/commons-collections4-4.1_071115a4945826c4cc537ad31b95d5e2ef98211b.jar" />
+    </item>
+
+</items>

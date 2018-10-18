@@ -1,15 +1,17 @@
 package com.gto.bang.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,10 +19,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.experience.EMainActivity;
+import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
+
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +38,8 @@ public class HExperienceFragment extends Fragment {
 
     ListView listView;
     List<Map<String, Object>> datas;
+    public static final String TAG="HExperienceFragment";
+    View rootView;
 
 
     public HExperienceFragment() {}
@@ -54,6 +61,7 @@ public class HExperienceFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        this.rootView=rootView;
         return rootView;
     }
 
@@ -66,8 +74,7 @@ public class HExperienceFragment extends Fragment {
         ResponseListener listener = new ResponseListener();
         String url= Constant.URL_BASE+ Constant.ARTICLE_LIST_AJAX+"type=1&startid=1";
         CustomRequest req = new CustomRequest(getActivity(),listener,listener,null,url, Request.Method.GET);
-        Log.i("sjl","请求经验列表 url:"+ url);
-        req.setTag(getRequestTag());
+        req.setTag(TAG);
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
@@ -77,13 +84,10 @@ public class HExperienceFragment extends Fragment {
         public void onErrorResponse(VolleyError arg0) {
             t = Toast.makeText(getActivity(), Constant.REQUEST_ERROR, Toast.LENGTH_SHORT);
             t.show();
-            Log.i("sjl",getRequestTag()+"response Error");
         }
 
         @Override
         public void onResponse(Map<String, Object> res) {
-
-            Log.i("sjl","HExperience status:"+res.get("status")+" data: "+res.get("data"));
 
             if(null==res.get("status")||!Constant.RES_SUCCESS.equals(res.get("status").toString())){
                 String data=(null==res.get("data"))?"null":res.get("data").toString();
@@ -91,27 +95,29 @@ public class HExperienceFragment extends Fragment {
                 t.show();
             }else{
                 datas = (List<Map<String, Object>> )res.get("data");
-                for(int i=0;i<datas.size();i++){
-                    Map<String,Object> map=datas.get(i);
-                    map.put("createTime",null==map.get("createTime")?null:map.get("createTime").toString().substring(0,19));
-                }
 
-                SimpleAdapter adapter = new SimpleAdapter(getActivity(), datas, R.layout.hexperience_item, new String[]{
-                        "title", "username","createTime","content"},
-                        new int[]{R.id.title_e_tv, R.id.author_e_tv,R.id.date_e_tv,R.id.content_e_tv});
-                listView.setAdapter(adapter);
+                if(CollectionUtils.isNotEmpty(datas)) {
+                    LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
+                    tips.setVisibility(View.GONE);
+                    ListView listView = (ListView) rootView.findViewById(R.id.msgListView);
+                    listView.setVisibility(View.VISIBLE);
+                    for(int i=0;i<datas.size();i++){
+                        Map<String,Object> map=datas.get(i);
+                        map.put("createTime",null==map.get("createTime")?null:map.get("createTime").toString().substring(0,10));
+                    }
+                    MyAdapter adapter=new MyAdapter(getActivity(),datas);
+                    listView.setAdapter(adapter);
+                }
             }
 
         }
     }
-    protected String getRequestTag(){
-        return "ARTICLE_EXPERIENCE_LIST_REQUEST";
-    }
+
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        VolleyUtils.getRequestQueue(getActivity()).cancelAll(getRequestTag());
+        VolleyUtils.getRequestQueue(getActivity()).cancelAll(TAG);
     }
     @Override
     public void onResume() {
@@ -123,4 +129,76 @@ public class HExperienceFragment extends Fragment {
         super.onPause();
         MobclickAgent.onPageEnd("主页－经验");
     }
+
+
+
+    private class MyAdapter extends BaseAdapter{
+
+        List<Map<String, Object>> datas;
+
+        private LayoutInflater mInflater;
+
+        public MyAdapter(Context context,List<Map<String, Object>> datas) {
+            this.datas=datas;
+            this.mInflater = LayoutInflater.from(context);
+        }
+
+        @Override
+        public int getCount() {
+            return datas.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return datas.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.hexperience_item,null);
+                holder = new ViewHolder();
+                holder.title = (TextView) convertView.findViewById(R.id.title_e_tv);
+                holder.author = (TextView) convertView.findViewById(R.id.author_e_tv);
+//                holder.date = (TextView) convertView.findViewById(R.id.date_e_tv);
+                holder.content = (TextView) convertView.findViewById(R.id.content_e_tv);
+                holder.headIcon = (TextView) convertView.findViewById(R.id.head_e_tv);
+                holder.viewtimes = (TextView) convertView.findViewById(R.id.experience_viewtimes_tv);
+                convertView.setTag(holder);
+            }else{
+                holder = (ViewHolder)convertView.getTag();
+            }
+            /**设置TextView显示的内容，即我们存放在动态数组中的数据*/
+            holder.title.setText(datas.get(position).get("title").toString());
+            holder.author.setText(datas.get(position).get("username").toString());
+//            holder.date.setText(datas.get(position).get("createTime").toString());
+            holder.content.setText(datas.get(position).get("content").toString());
+            holder.viewtimes.setText(datas.get(position).get("viewtimes").toString());
+            String idStr=datas.get(position).get("authorId").toString();
+
+            CommonUtil.handlerHeadIcon(Integer.valueOf(idStr),holder.headIcon,datas.get(position).get("username").toString());
+            CommonUtil.setOnClickListenerForPHomePage(idStr,getActivity(),holder.author);
+            CommonUtil.setOnClickListenerForPHomePage(idStr,getActivity(),holder.headIcon);
+
+            return convertView;
+        }
+
+    }
+
+    public final class ViewHolder{
+        public TextView title;
+        public TextView author;
+//        public TextView date;
+        public TextView content;
+        public TextView headIcon;
+        public TextView viewtimes;
+    }
+
+
 }

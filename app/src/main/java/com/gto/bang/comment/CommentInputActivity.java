@@ -2,7 +2,6 @@ package com.gto.bang.comment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
+import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -26,6 +26,7 @@ import java.util.Map;
 /**
  * Created by shenjialong on 16/6/10 12:54.
  * type 字段暂时写死为1 该字段暂时不用了，因为经验和问答已经放在一个数据库表里，所以key为id一个字段就够
+ * type=3 吐槽时，里面无title字段  20161223
  */
 public class CommentInputActivity extends BaseActivity{
 
@@ -43,7 +44,7 @@ public class CommentInputActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.comment_input);
+        setContentView(R.layout.info_input);
         initViews();
     }
 
@@ -84,9 +85,13 @@ public class CommentInputActivity extends BaseActivity{
      * @return
      */
     private boolean submit(){
-        Log.i("sjl","开始校验");
         if(check()){
-            Log.i("sjl","校验通过");
+            boolean check= CommonUtil.checkContent(comment.getText().toString());
+            if (check){
+                Toast t = Toast.makeText(CommentInputActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
+                t.show();
+                return false;
+            }
             publish();
             return true;
         }else{
@@ -106,7 +111,7 @@ public class CommentInputActivity extends BaseActivity{
      *
      */
     public void publish() {
-        Toast t = Toast.makeText(CommentInputActivity.this, "正在发布评论...", Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(CommentInputActivity.this, "已发送", Toast.LENGTH_SHORT);
         t.show();
 
         Object artId=getIntent().getExtras().getString(Constant.ID);
@@ -117,13 +122,7 @@ public class CommentInputActivity extends BaseActivity{
         ResponseListener listener = new ResponseListener();
         HashMap<String, String> params=new HashMap<String, String>();
         params.put("content",comment.getText().toString());
-
-        if(Constant.TYPE_EXPERIENCE.equals(artType.toString())){
-            params.put("type",Constant.ARTICLE_TYPE_EXPERIENCE);
-        }else{
-            params.put("type",Constant.ARTICLE_TYPE_QUESTION);
-        }
-
+        params.put("type",artType.toString());
         params.put("userId",getSharedPreferences().getString(Constant.ID,Constant.AUTHORID_DEFAULT));
         params.put("artId",artId.toString());
         params.put("username",getSharedPreferences().getString(Constant.USERNAME,Constant.EMPTY));
@@ -133,7 +132,6 @@ public class CommentInputActivity extends BaseActivity{
         String url=Constant.URL_BASE+ Constant.COMMENT_CREATE_AJAX;
         CustomRequest req = new CustomRequest(CommentInputActivity.this,listener,listener,params,url, Request.Method.POST);
         req.setTag(REQUEST_TAG);
-        Log.i("sjl","url:"+ url);
         VolleyUtils.getRequestQueue(CommentInputActivity.this).add(req);
     }
 
@@ -146,27 +144,22 @@ public class CommentInputActivity extends BaseActivity{
         @Override
         public void onErrorResponse(VolleyError arg0) {
             flag=false;
-            t = Toast.makeText(CommentInputActivity.this, "评论失败，请重试", Toast.LENGTH_SHORT);
+            t = Toast.makeText(CommentInputActivity.this, "评论失败，请稍后重试", Toast.LENGTH_SHORT);
             t.show();
-            Log.i("sjl","response Error");
         }
 
         @Override
         public void onResponse(Map<String, Object> res) {
 
-            Log.i("sjl","response"+res.toString());
             Object status=res.get("status");
-
-            Log.i("sjl","status:"+status+" data "+res.get("data"));
             if(null==status||!Constant.RES_SUCCESS.equals(status.toString())){
                 t = Toast.makeText(CommentInputActivity.this, "评论失败，请稍后重试", Toast.LENGTH_SHORT);
                 flag=false;
+                t.show();
             }else{
-                t = Toast.makeText(CommentInputActivity.this, "评论成功", Toast.LENGTH_SHORT);
                 setResult(SUCCESS);
                 finish();
             }
-            t.show();
         }
     }
 

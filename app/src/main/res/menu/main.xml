@@ -15,18 +15,29 @@
         android:orderInCategory="110"
         android:title="@string/action_feedback"
         app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/create_product"-->
+        <!--android:orderInCategory="90"-->
+        <!--android:title="@string/create_product"-->
+        <!--app:showAsAction="always"/>-->
 
     <item
-        android:id="@+id/action_personal"
+        android:id="@+id/create_complaint"
         android:orderInCategory="80"
-        android:title="@string/action_personal"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/create_complaint"
+        app:showAsAction="always"/>
     
     <item
-        android:id="@+id/action_create_experience"
+        android:id="@+id/create_experience"
         android:orderInCategory="70"
-        android:title="@string/bang_create"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/create_experience"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/create_question"
+        android:orderInCategory="60"
+        android:title="@string/create_question"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="120"

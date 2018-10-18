@@ -44,7 +44,7 @@ public class AcademySelectActivity extends BaseActivity {
                         break;
 
                     case R.id.bang_college_2_tv:
-                        b.putString(Constant.ACADEMY,"电子信息与技术");
+                        b.putString(Constant.ACADEMY,"计算机科学与技术");
                         intent.putExtras(b);
                         setResult(20001,intent);
                         finish();

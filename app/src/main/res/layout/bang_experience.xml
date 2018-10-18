@@ -23,38 +23,22 @@
         </EditText>
 
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/info_item_height"
-
-        android:background="@android:color/white"
-        >
-        <EditText
-            android:id="@+id/experience_keyword_et"
-            style="@style/edittext_style"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:textSize="@dimen/info_item_left_text_size"
-            android:hint="关键字">
-            <requestFocus />
-        </EditText>
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginTop="@dimen/info_item_margin_top"
         android:background="@android:color/white">
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:inputType="textMultiLine"
             android:gravity="top"
             android:layout_marginLeft="@dimen/sides_margin"
             android:textSize="@dimen/info_item_left_text_size"
-            android:hint="快来分享你的个人经验给大家～"
+            android:hint="分享你的论文写作经验给大家～"
             style="@style/edittext_style"
             android:ems="10"
             android:id="@+id/experience_content_et"
@@ -67,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/info_item_height"
         android:layout_marginTop="@dimen/info_item_margin_top"
+        android:layout_marginBottom="@dimen/info_item_margin_top"
         android:background="@android:color/white">
 
         <Button

@@ -16,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
-import com.gto.bang.home.HMainActivity;
+import com.gto.bang.home.MainActivity;
 import com.gto.bang.register.RegisterActivity;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -32,6 +32,7 @@ import java.util.Map;
  * 登录功功能
  * 20160806 12点30 增加自动登录功能（上一次操作非注销）
  * @六里桥 中午这么热阿贝还在玩奇迹暖暖，这名字听起来让人更想出汗
+ * @20160827 更新：登录成功后，缓存服务器返回的有效用户信息
  */
 public class LoginActivity extends BaseActivity {
 
@@ -93,8 +94,6 @@ public class LoginActivity extends BaseActivity {
 
                 String username=nameEt.getText().toString();
                 String password=passwordEt.getText().toString();
-                Log.i("sjl","username:"+username);
-                Log.i("sjl","password:"+password);
                 if(StringUtils.isEmpty(username.trim())|| StringUtils.isEmpty(password.trim())){
                     Toast t = Toast.makeText(LoginActivity.this, "用户名和密码不能为空！", Toast.LENGTH_SHORT);
                     t.show();
@@ -118,7 +117,6 @@ public class LoginActivity extends BaseActivity {
         params.put("client","android");
 
         CustomRequest req = new CustomRequest(this,listener,listener,params,url, Request.Method.POST);
-        Log.i("sjl","正在登录 url:"+ url);
         req.setTag(getRequestTag());
         loginBtn.setEnabled(false);
         loginBtn.setText("正在登录...");
@@ -150,8 +148,6 @@ public class LoginActivity extends BaseActivity {
 
         @Override
         public void onResponse(Map<String, Object> res) {
-
-            Log.i("sjl","login res status:"+res.get(Constant.STATUS)+" data: "+res.get(Constant.DATA));
             if(null==res.get(Constant.STATUS)||!Constant.RES_SUCCESS.equals(res.get(Constant.STATUS).toString())){
                 String data=(null==res.get(Constant.DATA))?"登录失败":res.get(Constant.DATA).toString();
                 t = Toast.makeText(LoginActivity.this, data, Toast.LENGTH_SHORT);
@@ -160,40 +156,48 @@ public class LoginActivity extends BaseActivity {
                 loginBtn.setText("登录");
             }else{
                 userinfo = (Map<String, Object>)res.get("data");
-
-                Object idObj=userinfo.get(Constant.ID);
+                String [] feilds=new String[]{Constant.ID,Constant.USERNAME,Constant.PASSWORD,
+                        Constant.PHONE,Constant.SCHOOL,Constant.EDUCATION,Constant.EMAIL,Constant.VIP,Constant.PROMPT,
+                        Constant.INFO,Constant.LEVEL_INSTRUCTION};
+                // 缓存个人信息
+                Log.i("sjl",userinfo.toString());
+                handleUserInfo(userinfo,feilds);
                 Object usernameObj=userinfo.get(Constant.USERNAME);
-                Object passwordObj=userinfo.get(Constant.PASSWORD);
-                Object phoneObj=userinfo.get(Constant.PHONE);
-                if(null!=usernameObj && null!=passwordObj && null!=idObj && null!=phoneObj){
-                    SharedPreferences.Editor editor=getEditor();
-                    editor.putString(Constant.USERNAME,usernameObj.toString());
-                    editor.putString(Constant.PASSWORD,passwordObj.toString());
-                    editor.putString(Constant.ID,idObj.toString());
-                    editor.putString(Constant.LASTACTION,null);
-                    editor.putString(Constant.PHONE,phoneObj.toString());
-
-                    Object emailObj=userinfo.get(Constant.EMAIL);
-                    if(null!=phoneObj && null!=emailObj){
-                        editor.putString(Constant.EMAIL,emailObj.toString());
-                    }
-                    Log.i("sjl","username:"+usernameObj.toString()+" is logining in");
-                    editor.commit();
+                if(null!=usernameObj){
                     MobclickAgent.onProfileSignIn(usernameObj.toString());
                 }
-
-                Intent intent=new Intent(LoginActivity.this, HMainActivity.class);
+                Intent intent=new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         }
     }
 
+    /**
+     * 前端缓存个人信息
+     * @param userinfo
+     * @param feilds
+     */
+    public void handleUserInfo(Map<String, Object> userinfo,String [] feilds){
+        SharedPreferences.Editor editor=getEditor();
+        editor.putString(Constant.INFO,"");
+        editor.putString(Constant.VIP,"0");
+        editor.putString(Constant.LEVEL_INSTRUCTION,"");
+        for(int i=0;i<feilds.length;i++){
+            if(null!=userinfo.get(feilds[i])){
+                if(null!=userinfo.get(feilds[i])){
+                    editor.putString(feilds[i],userinfo.get(feilds[i]).toString());
+                }
+            }
+        }
+        editor.putString(Constant.LASTACTION,null);
+        editor.commit();
+    }
+
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.register, menu);
         return true;
     }
@@ -224,7 +228,7 @@ public class LoginActivity extends BaseActivity {
                 if("success".equals(result)){
                     Toast t = Toast.makeText(LoginActivity.this, "注册成功!正在登录", Toast.LENGTH_SHORT);
                     t.show();
-                    Intent intent=new Intent(LoginActivity.this, HMainActivity.class);
+                    Intent intent=new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }

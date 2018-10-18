@@ -5,6 +5,8 @@
     <ListView
         android:id="@+id/bang_message_lv"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        >
     </ListView>
+
 </RelativeLayout>

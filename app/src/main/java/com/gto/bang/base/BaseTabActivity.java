@@ -81,10 +81,14 @@ public class BaseTabActivity extends BaseActivity implements ActionBar.TabListen
             t.setText(titles[i]);
             t.setOnClickListener(new CommonOnClickListener(i));
         }
-        if(tabNum<3){
+        if(tabNum==2){
             //暂时解决 兼容 两个或者三个TAB标签的情形
             findViewById(R.id.bang_e_section3).setVisibility(View.GONE);
+            findViewById(R.id.bang_e_section4).setVisibility(View.GONE);
+        }else if(tabNum==3){
+            findViewById(R.id.bang_e_section4).setVisibility(View.GONE);
         }
+
     }
 
     /**
@@ -139,7 +143,8 @@ public class BaseTabActivity extends BaseActivity implements ActionBar.TabListen
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         int one = offset * 2 + bmpW;// 页卡1 -> 页卡2 偏移量
-        int two = one * 2;// 页卡1 -> 页卡3 偏移量
+        int two = one * 2;// 页卡1 -> 页卡3
+        int three = one * 3;// 页卡1 -> 页卡4
 
         @Override
         public void onPageSelected(int arg0) {
@@ -151,6 +156,8 @@ public class BaseTabActivity extends BaseActivity implements ActionBar.TabListen
                         animation = new TranslateAnimation(one, 0, 0, 0);
                     } else if (currIndex == 2) {
                         animation = new TranslateAnimation(two, 0, 0, 0);
+                    }else if (currIndex == 3) {
+                        animation = new TranslateAnimation(three, 0, 0, 0);
                     }
                     break;
                 case 1:
@@ -158,6 +165,8 @@ public class BaseTabActivity extends BaseActivity implements ActionBar.TabListen
                         animation = new TranslateAnimation(offset, one, 0, 0);
                     } else if (currIndex == 2) {
                         animation = new TranslateAnimation(two, one, 0, 0);
+                    }else if (currIndex == 3) {
+                        animation = new TranslateAnimation(three, one, 0, 0);
                     }
                     break;
                 case 2:
@@ -165,6 +174,17 @@ public class BaseTabActivity extends BaseActivity implements ActionBar.TabListen
                         animation = new TranslateAnimation(offset, two, 0, 0);
                     } else if (currIndex == 1) {
                         animation = new TranslateAnimation(one, two, 0, 0);
+                    }else if (currIndex == 3) {
+                        animation = new TranslateAnimation(three, two, 0, 0);
+                    }
+                    break;
+                case 3:
+                    if (currIndex == 0) {
+                        animation = new TranslateAnimation(offset, three, 0, 0);
+                    } else if (currIndex == 1) {
+                        animation = new TranslateAnimation(one, three, 0, 0);
+                    }else if (currIndex == 2) {
+                        animation = new TranslateAnimation(two, three, 0, 0);
                     }
                     break;
 

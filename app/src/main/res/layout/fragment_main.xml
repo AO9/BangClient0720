@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/info_backgroud"
     >
     <ListView
         android:id="@+id/msgListView"
@@ -10,7 +9,24 @@
         android:layout_height="fill_parent"
         android:divider="@color/info_backgroud"
         android:dividerHeight="10dp"
+        android:visibility="gone"
          >
     </ListView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/comment_tips"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="亲，这里是空的 ^_^"
+            android:textColor="@android:color/darker_gray"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

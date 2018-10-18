@@ -12,7 +12,6 @@ import com.gto.bang.base.BaseActivity;
 public class ECreateActivity extends BaseActivity {
 
     private TextView content;
-    private TextView keyword;
     private TextView title;
     private TextView save;
 
@@ -26,7 +25,6 @@ public class ECreateActivity extends BaseActivity {
     public void initViews(){
 
         content=(TextView)findViewById(R.id.experience_content_et);
-        keyword=(TextView)findViewById(R.id.experience_keyword_et);
         title=(TextView)findViewById(R.id.experience_title_et);
         save=(TextView)findViewById(R.id.experience_save_btn);
 

@@ -6,16 +6,33 @@
     <string name="action_login">登录</string>
     <string name="action_register">注册</string>
 
+    <string name="tab_interaction">首页</string>
+    <!--<string name="tab_cooperation">互助</string>-->
+    <string name="tab_daily">ONE</string>
+    <string name="tab_message">消息</string>
+    <string name="tab_mine">我的</string>
+
+    <string name="one_title">每日一文</string>
+    <string name="tab_complaints">吐槽</string>
+    <string name="tab_question">问答</string>
+    <string name="tab_experience">经验</string>
+
+    <string name="tab_1">求助</string>
+    <string name="tab_2">帮帮</string>
+
     <string name="title_section1">经验</string>
     <string name="title_section2">问答</string>
     <string name="title_section3">帮帮</string>
 
-    <string name="title_section4">待定</string>
+    <string name="title_section4">我</string>
+
+    <string name="bang_phomepage">个人主页</string>
 
     <string name="bang_pexperience">我的经验</string>
     <string name="bang_pquestion">我的问答</string>
     <string name="bang_pmessage">我的消息</string>
     <string name="bang_pnotice">通知</string>
+    <string name="bang_pinfo">个人信息</string>
 
 
     <string name="bang_detail">详情</string>
@@ -24,6 +41,7 @@
     <string name="bang_back">返回</string>
     <string name="bang_comment">评论列表</string>
     <string name="bang_answer">回答列表</string>
+    <string name="bang_complaint">回复列表</string>
     <string name="bang_write_comment">写评论</string>
     <string name="bang_send">发送</string>
 
@@ -31,15 +49,18 @@
     <string name="bang_create_question">提问</string>
 
     <string name="bang_cancel">取消</string>
-    <string name="bang_create">新建</string>
 
+    <string name="create_experience">分享经验</string>
+    <string name="create_question">我要提问</string>
+    <string name="create_complaint">我要吐槽</string>
+    <string name="create_product">提供帮助</string>
 
     <string name="action_feedback">反馈</string>
     <string name="bang_about">关于</string>
     <string name="action_message">消息</string>
 
     <string name="action_experience">发布经验</string>
-    <string name="action_personal">我的</string>
+
     <string name="action_logout">注销</string>
 
     <string name="action_detail">详情</string>
@@ -49,10 +70,19 @@
 
     <string name="action_experience_detail">经验</string>
     <string name="action_bang_writer">帮写</string>
-
+    <string name="action_education">选择学历</string>
     <string name="action_save">保存</string>
     <string name="action_ok">完成</string>
 
+    <string name="empty">无</string>
+
     <string name="action_college">学院选择</string>
+
+    <string-array name="create">
+        <item>分享经验</item>
+        <item>我要提问</item>
+        <item>我要吐槽</item>
+    </string-array>
+    <string name="title_activity_mine">个人信息</string>
 
 </resources>

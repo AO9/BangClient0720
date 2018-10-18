@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/tips"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:lineSpacingExtra="10dp"
+            android:typeface="sans"
+            android:layout_height="wrap_content"
+            android:text="正在加载..."
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:textSize="@dimen/info_item_left_text_size"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/body"
+        android:visibility="gone"
+        android:showDividers="middle"
+        android:divider="@drawable/divider"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:lineSpacingExtra="10dp"
+        android:text="—繁忙的生活，每日一文就够了"
+        android:layout_marginRight="@dimen/sides_margin"
+        android:typeface="sans"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginTop="@dimen/common_sides_margin"
+        android:textSize="15dp"
+        android:id="@+id/content"
+        />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

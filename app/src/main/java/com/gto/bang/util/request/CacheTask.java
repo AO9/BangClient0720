@@ -8,10 +8,6 @@ import com.google.gson.Gson;
 import com.gto.bang.util.SimpleDiskCache;
 import com.gto.bang.util.SimpleDiskCacheUtils;
 
-
-/**
- * Created by wjying on 13-12-22.
- */
 public class CacheTask<T> extends AsyncTask<Void, Void,  T>{
     /**
      * 异步取缓存回调接口

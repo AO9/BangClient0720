@@ -7,6 +7,8 @@ android {
         applicationId 'com.gto.bangbang'
         minSdkVersion 14
         targetSdkVersion 19
+        versionName "2.8"
+        versionCode 25
     }
     buildTypes {
         release {
@@ -15,6 +17,27 @@ android {
         }
     }
     productFlavors {
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+
+        yingyongbao {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
+        }
+
+        yingyonghui {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyonghui"]
+        }
+
+        baiduzhushou {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baiduzhushou"]
+        }
+        jiuyizhushou {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jiuyizhushou"]
+        }
+        anroindmarket {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anroindmarket"]
+        }
     }
     //导入json的两个包之后  启动报错  网上搜索结果 需要增加如下配置即可
     packagingOptions {
@@ -23,9 +46,13 @@ android {
 }
 
 dependencies {
-    compile 'com.umeng.analytics:analytics:latest.integration'
+//    compile 'com.umeng.sdk:common:latest.integration'
+//    compile 'com.umeng.sdk:analytics:latest.integration'
+    // 原始的 20181017
+//    compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.android.support:support-v4:19.1.0'
     compile 'com.android.support:appcompat-v7:19.1.0'
+    compile 'org.apache.commons:commons-collections4:4.1'
     compile files('libs/volley.jar')
     compile files('libs/gson-2.2.4.jar')
     compile files('libs/disklrucache-2.0.2.jar')

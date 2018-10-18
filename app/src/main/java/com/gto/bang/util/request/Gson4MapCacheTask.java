@@ -6,9 +6,6 @@ import com.gto.bang.util.GsonUtils;
 
 import java.util.Map;
 
-/**
- * Created by wjying on 13-12-2.
- */
 public class Gson4MapCacheTask extends CacheTask<Map<String, Object>>{
 
 

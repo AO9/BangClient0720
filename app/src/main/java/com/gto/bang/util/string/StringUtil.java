@@ -1,9 +1,5 @@
 package com.gto.bang.util.string;
 
-/**
- * Created by shenjialong on 16/7/12 21:50.
- */
-
 import org.apache.commons.lang.StringUtils;
 
 import java.text.SimpleDateFormat;

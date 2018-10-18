@@ -10,9 +10,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by wjying on 13-12-22.
- */
 public class SimpleDiskCacheUtils {
     private static final int DISK_CACHE_SIZE = 1024 * 1024 * 50; // 10MB
     private static final String DISK_CACHE_DIR = "bangbang_cache";

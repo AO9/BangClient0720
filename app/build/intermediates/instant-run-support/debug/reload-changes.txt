@@ -1,3 +1,0 @@
-CHANGED,/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/gto/bang/util/request/Gson4MapRequest$1$override.class
-CHANGED,/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/gto/bang/util/request/Gson4MapRequest$override.class
-CHANGED,/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class

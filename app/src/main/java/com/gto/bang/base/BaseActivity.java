@@ -19,7 +19,7 @@ public class BaseActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
     }
 
@@ -46,7 +46,4 @@ public class BaseActivity extends ActionBarActivity{
 
         return sp;
     }
-
-
-
 }

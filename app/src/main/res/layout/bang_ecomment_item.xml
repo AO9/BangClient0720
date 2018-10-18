@@ -1,52 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:background="#ffffff"
     android:orientation="vertical">
-    <RelativeLayout
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@android:color/white"
-        android:layout_height="@dimen/tv_height"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tv_top_margin"
         android:layout_marginLeft="@dimen/sides_margin"
         android:layout_marginRight="@dimen/sides_margin"
-        android:layout_marginBottom="@dimen/tv_top_margin"
         >
         <TextView
-            android:id="@+id/bang_ecomment_item_author_tv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:gravity="center"
+            android:textColor="@color/withe"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textSize="@dimen/common_text_size"
+            android:id="@+id/comment_head_tv"
+            android:text="帮"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/small_sides_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textSize="@dimen/common_text_size"
+            android:maxLines="1"
+            android:id="@+id/comment_author_tv" />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="一名ID为学生的网友"
-            android:textSize="@dimen/common_text_size"
-            android:textColor="@color/dark_blue"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/tv_top_margin"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20160102"
-            android:id="@+id/bang_ecomment_item_date_tv"
-            android:layout_alignTop="@+id/bang_ecomment_item_author_tv"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/comment_date_tv"
+            android:layout_marginTop="@dimen/tv_top_margin"
             android:textSize="@dimen/common_text_size"
             android:textColor="@android:color/darker_gray"
-            android:layout_marginRight="@dimen/sides_margin"
-            android:layout_marginEnd="@dimen/sides_margin" />
-    </RelativeLayout>
+            />
+    </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tv_height"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sides_margin"
         android:layout_marginLeft="@dimen/sides_margin"
         android:layout_marginRight="@dimen/sides_margin"
-        android:layout_marginBottom="@dimen/tv_top_margin"
+        android:layout_marginBottom="@dimen/sides_margin"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="好文章！给好评！继续努力！"
             android:textSize="@dimen/big_common_text_size"
-            android:id="@+id/bang_ecomment_item_content_tv" />
+            android:id="@+id/comment_content_tv" />
     </LinearLayout>
 </LinearLayout>

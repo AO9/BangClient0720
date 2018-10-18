@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/info_backgroud"
+    android:showDividers="middle"
+    android:divider="@drawable/divider">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:layout_height="@dimen/info_item_height"
+        android:id="@+id/pnotice_rl"
+        android:background="@android:color/white">
+        <TextView
+            android:id="@+id/pnotice_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/info_item_left_text_size"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:text="通知" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pnotice_num_tv"
+            android:textStyle="bold"
+            android:textSize="@dimen/big_common_text_size"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_alignTop="@+id/pnotice_tv"
+            android:layout_toRightOf="@+id/pnotice_tv"
+            android:layout_toEndOf="@+id/pnotice_tv"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:id="@+id/pmessage_rl"
+        android:background="@android:color/white">
+        <TextView
+            android:id="@+id/pmessage_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:textSize="@dimen/info_item_left_text_size"
+            android:text="消息" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pmessage_num_tv"
+            android:textStyle="bold"
+            android:textSize="@dimen/big_common_text_size"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
+            android:layout_alignTop="@+id/pmessage_tv"
+            android:layout_toRightOf="@+id/pmessage_tv"
+            android:layout_toEndOf="@+id/pmessage_tv" />
+    </RelativeLayout>
+
+</LinearLayout>

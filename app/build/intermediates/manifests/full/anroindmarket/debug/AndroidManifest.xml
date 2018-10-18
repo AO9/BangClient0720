@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gto.bangbang"
+    android:versionCode="25"
+    android:versionName="2.8" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <!-- 连接网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppBaseTheme" >
+        <activity
+            android:name="com.gto.bang.navigation.AboutActivity"
+            android:label="@string/bang_back" />
+        <activity
+            android:name="com.gto.bang.navigation.FeedbackActivity"
+            android:label="@string/bang_back" />
+        <activity
+            android:name="com.gto.bang.home.MainActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.gto.bang.comment.CommentInputActivity"
+            android:label="@string/bang_cancel"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.gto.bang.create.CreateQuestionActivity"
+            android:label="@string/bang_back"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.gto.bang.create.CreateExperienceActivity"
+            android:label="@string/bang_back"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.gto.bang.create.CreateComplaintActivity"
+            android:label="@string/bang_back"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.gto.bang.create.CreateProductActivity"
+            android:label="@string/bang_back" />
+        <activity
+            android:name="com.gto.bang.experience.EMainActivity"
+            android:label="@string/bang_back" />
+        <activity
+            android:name="com.gto.bang.register.RegisterActivity"
+            android:label="@string/action_register" />
+        <activity
+            android:name="com.gto.bang.action.LoginActionActivity"
+            android:label="@string/action_login" />
+        <activity
+            android:name="com.gto.bang.college.AcademySelectActivity"
+            android:label="@string/action_college" />
+        <activity
+            android:name="com.gto.bang.personal.activity.PHomePageActivity"
+            android:label="@string/bang_phomepage" />
+        <activity
+            android:name="com.gto.bang.personal.activity.PMessageActivity"
+            android:label="@string/bang_pmessage" />
+        <activity
+            android:name="com.gto.bang.personal.activity.PInputActivity"
+            android:label="@string/bang_back" />
+        <activity
+            android:name="com.gto.bang.personal.activity.PExperienceActivity"
+            android:label="@string/bang_pexperience" />
+        <activity
+            android:name="com.gto.bang.personal.activity.PNoticeActivity"
+            android:label="@string/bang_back" />
+        <activity
+            android:name="com.gto.bang.home.HBangWriteActivity"
+            android:label="@string/action_bang_writer" />
+        <activity
+            android:name="com.gto.bang.education.EducationSelectActivity"
+            android:label="@string/bang_back" />
+        <activity
+            android:name="com.gto.bang.personal.activity.PQuestionActivity"
+            android:label="@string/bang_pquestion" />
+        <activity
+            android:name="com.gto.bang.login.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57a98ed467e58e179b00397c" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="anroindmarket" />
+
+        <activity
+            android:name="com.gto.bang.home.HPersonInfoActivity"
+            android:label="@string/title_activity_mine" />
+    </application>
+
+</manifest>

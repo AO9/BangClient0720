@@ -7,5 +7,11 @@
     <color name="black">#000000</color>
     <color name="color_theme">#647b97</color>
 
+    <color name="blue_light">#21B1F5</color>
+    <color name="green_light">#5BD6B8</color>
+    <color name="blue1_light">#21B1F5</color>
+    <color name="pink_light">#FF8684</color>
+
+
 
 </resources>

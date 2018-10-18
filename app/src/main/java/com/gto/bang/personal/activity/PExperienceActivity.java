@@ -3,7 +3,6 @@ package com.gto.bang.personal.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -44,7 +43,6 @@ public class PExperienceActivity extends BaseActivity {
         String url= Constant.URL_BASE+ Constant.ARTICLE_MYLIST_AJAX+"startid=0"
                 +"&type=1&authorid="+getSharedPreferences(Constant.DB, Activity.MODE_PRIVATE).getString(Constant.ID,"");
         CustomRequest req = new CustomRequest(this,listener,listener,null,url, Request.Method.GET);
-        Log.i("sjl","正在登录 url:"+ url);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(this).add(req);
     }
@@ -71,15 +69,15 @@ public class PExperienceActivity extends BaseActivity {
 
         @Override
         public void onResponse(Map<String, Object> res) {
-
-            Log.i("sjl","login res status:"+res.get(Constant.STATUS)+" data: "+res.get(Constant.DATA));
-
             if(null==res.get(Constant.STATUS)||!Constant.RES_SUCCESS.equals(res.get(Constant.STATUS).toString())){
                 String data=(null==res.get(Constant.DATA))?Constant.REQUEST_ERROR:res.get(Constant.DATA).toString();
                 t = Toast.makeText(PExperienceActivity.this, data, Toast.LENGTH_SHORT);
                 t.show();
             }else{
                 final List<Map<String, Object>> datas = (List<Map<String, Object>>)res.get("data");
+                if(datas!=null&&datas.size()==0){
+                    findViewById(R.id.bang_common_tips).setVisibility(View.VISIBLE);
+                }
                 ListView listView=(ListView)findViewById(R.id.bang_common_lv);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -96,8 +94,8 @@ public class PExperienceActivity extends BaseActivity {
                 });
 
                 SimpleAdapter adapter = new SimpleAdapter(PExperienceActivity.this, datas, R.layout.bang_pmyquestion_item, new String[]{
-                "title","createTime"},
-                new int[]{R.id.bang_pmyquestion_title_tv,R.id.bang_pmyquestion_date_tv});
+                "title","status"},
+                new int[]{R.id.title,R.id.status});
                 listView.setAdapter(adapter);
             }
 

@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="horizontal">
     <TextView
-        android:id="@+id/bang_pmyquestion_title_tv"
+        android:id="@+id/title"
         android:layout_marginLeft="@dimen/tv_left_margin"
         android:ellipsize="end"
         android:textColor="@color/dark_green"
@@ -16,14 +16,13 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
-        android:text="文章题目名字很长亲亲亲亲亲亲亲亲亲亲亲"
+        android:text="经验标题"
         android:textSize="@dimen/big_common_text_size" />
     <TextView
         android:layout_width="120dp"
-        android:id="@+id/bang_pmyquestion_date_tv"
+        android:id="@+id/status"
         android:textColor="@android:color/darker_gray"
         android:layout_height="match_parent"
-        android:text="20160612"
         android:layout_marginRight="@dimen/tv_right_margin"
         android:gravity="center"
         android:textSize="@dimen/common_text_size"

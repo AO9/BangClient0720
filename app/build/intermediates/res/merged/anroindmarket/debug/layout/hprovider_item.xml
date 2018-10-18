@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tv_top_margin"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        >
+        <TextView
+            android:layout_width="@dimen/head_icon_size"
+            android:layout_height="@dimen/head_icon_size"
+            android:gravity="center"
+            android:textColor="@color/withe"
+            android:background="@drawable/corner"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textSize="@dimen/common_text_size"
+            android:id="@+id/hprovider_head"
+            android:text="帮"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/small_sides_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:ellipsize="end"
+            android:textSize="@dimen/common_text_size"
+            android:maxLines="1"
+            android:id="@+id/hprovider_author" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:text="出价:"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/hprovider_price"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textSize="@dimen/common_text_size"
+            android:textColor="@android:color/holo_red_light"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textSize="@dimen/common_text_size"
+            android:textColor="@android:color/darker_gray"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_sides_margin"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textSize="@dimen/super_common_text_size"
+            android:maxLines="2"
+            android:textColor="@android:color/background_dark"
+            android:id="@+id/hprovider_title" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/tv_top_margin"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        android:layout_marginBottom="@dimen/tv_top_margin"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textSize="@dimen/mid_common_text_size"
+            android:gravity="center_vertical"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:id="@+id/hprovider_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        android:layout_marginTop="@dimen/common_sides_margin"
+        android:layout_marginBottom="@dimen/sides_mid_margin"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            android:id="@+id/hprovider_date" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:text="好评:"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            android:id="@+id/hprovider_praise" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:text="浏览:"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            android:id="@+id/hprovider_viewtimes" />
+
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:text="评论:"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center|left"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            android:id="@+id/hprovider_comment" />
+    </LinearLayout>
+
+</LinearLayout>

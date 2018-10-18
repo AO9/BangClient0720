@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -15,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
+import com.gto.bang.education.EducationSelectActivity;
+import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -42,8 +46,11 @@ public class RegisterActivity extends BaseActivity {
     EditText passwordET;
     EditText password_2ET;
     EditText phoneET;
+    EditText schoolET;
+    TextView educationTV;
+    RelativeLayout rl;
 
-    String [] tips=new String[]{"昵称不能为空!","密码不能为空!","确认密码不能为空!","手机号不能为空!"};
+    String [] tips=new String[]{"昵称不能为空!","密码不能为空!","确认密码不能为空!","手机号不能为空!","学校不能为空!"};
 
 
     @Override
@@ -53,6 +60,18 @@ public class RegisterActivity extends BaseActivity {
         initViews();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==20002){
+            Bundle b=data.getExtras();
+            String academy=b.getString(Constant.EDUCATION);
+            this.educationTV.setText(academy);
+        }
+
+    }
+
     public void initViews(){
 
         nicknameET=(EditText)findViewById(R.id.register_nickname_et);
@@ -60,19 +79,37 @@ public class RegisterActivity extends BaseActivity {
         passwordET=(EditText)findViewById(R.id.register_secret_et);
         password_2ET=(EditText)findViewById(R.id.register_secret_2_et);
         register=(Button)findViewById(R.id.f_register_ok_btn);
+        schoolET=(EditText)findViewById(R.id.register_school_et);
+        educationTV=(TextView) findViewById(R.id.bang_education_et);
 
 
+        rl=(RelativeLayout)findViewById(R.id.bang_aducation_lv);
+        rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(RegisterActivity.this, EducationSelectActivity.class);
+                startActivityForResult(intent,2002);
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText [] array=new EditText[]{nicknameET,passwordET,password_2ET,phoneET};
+                EditText [] array=new EditText[]{nicknameET,passwordET,password_2ET,phoneET,schoolET};
                 String password1=passwordET.getText().toString();
                 String password2=password_2ET.getText().toString();
                 String phone=phoneET.getText().toString();
                 String nickname=nicknameET.getText().toString();
+                String school=schoolET.getText().toString();
 
                 Toast t;
+
+                boolean check = CommonUtil.checkUserName(nickname);
+                if (check) {
+                    Toast t1 = Toast.makeText(RegisterActivity.this, "昵称涉及敏感词汇，请重新填写!", Toast.LENGTH_SHORT);
+                    t1.show();
+                    return;
+                }
 
                 //非空校验
                 for(int i=0;i<array.length;i++){
@@ -84,13 +121,19 @@ public class RegisterActivity extends BaseActivity {
                     }
                 }
 
+                if(null==educationTV.getText() || StringUtils.isBlank(educationTV.getText().toString())){
+                    t = Toast.makeText(RegisterActivity.this, "请选择学历", Toast.LENGTH_SHORT);
+                    t.show();
+                    return ;
+                }
+
                 //两次密码是否一致
                 if(!password1.equals(password2)){
                     t = Toast.makeText(RegisterActivity.this, "请确保两次密码保持一致！", Toast.LENGTH_SHORT);
                     t.show();
                     return;
                 }
-                register(nickname,password1,phone);
+                register(nickname,password1,phone,school,educationTV.getText().toString());
             }
         });
 
@@ -105,13 +148,16 @@ public class RegisterActivity extends BaseActivity {
 
 
 
-    public void register(String username,String password,String phone) {
+    public void register(String username,String password,String phone,String school,String education) {
         ResponseListener listener = new ResponseListener();
         String url= Constant.URL_BASE+ Constant.REGISTER_AJAX;
         HashMap<String, String> params=new HashMap<String, String>();
         params.put(Constant.USERNAME,username.replace("\n",""));
         params.put(Constant.PASSWORD,password.replace("\n",""));
         params.put(Constant.PHONE,phone);
+        params.put(Constant.SCHOOL,school);
+        params.put(Constant.EDUCATION,education);
+
         params.put("client","android");
         CustomRequest req = new CustomRequest(this,listener,listener,params,url, Request.Method.POST);
         Log.i("sjl","url:"+ url);
@@ -130,6 +176,11 @@ public class RegisterActivity extends BaseActivity {
     public void onDestroy() {
         super.onDestroy();
         VolleyUtils.getRequestQueue(this).cancelAll(getRequestTag());
+    }
+
+    @Override
+    public android.support.v4.app.FragmentManager getSupportFragmentManager() {
+        return null;
     }
 
 

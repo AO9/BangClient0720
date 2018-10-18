@@ -1,15 +1,17 @@
 package com.gto.bang.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,10 +19,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.experience.EMainActivity;
+import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
+
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -34,6 +39,9 @@ public class HQuestionFragment extends Fragment {
 
     ListView listView;
     List<Map<String, Object>> datas;
+    View rootView;
+
+    public static final String TAG="HQuestionFragment";
 
     public HQuestionFragment() {}
 
@@ -55,6 +63,7 @@ public class HQuestionFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        this.rootView=rootView;
         return rootView;
     }
 
@@ -69,7 +78,6 @@ public class HQuestionFragment extends Fragment {
         ResponseListener listener = new ResponseListener();
         String url= Constant.URL_BASE+ Constant.ARTICLE_LIST_AJAX+"type=2&startid=1";
         CustomRequest req = new CustomRequest(getActivity(),listener,listener,null,url, Request.Method.GET);
-        Log.i("sjl","请求问题列表 url:"+ url);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
@@ -80,34 +88,34 @@ public class HQuestionFragment extends Fragment {
         public void onErrorResponse(VolleyError arg0) {
             t = Toast.makeText(getActivity(), "网络请求失败，请重试", Toast.LENGTH_SHORT);
             t.show();
-            Log.i("sjl",getRequestTag()+"response Error");
         }
 
         @Override
         public void onResponse(Map<String, Object> res) {
-
-            Log.i("sjl","HQuestionFragment status:"+res.get("status")+" data: "+res.get("data"));
-
             if(null==res.get("status")||!Constant.RES_SUCCESS.equals(res.get("status").toString())){
                 String data=(null==res.get("data"))?"null":res.get("data").toString();
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             }else{
                 datas = (List<Map<String, Object>> )res.get("data");
-                for(int i=0;i<datas.size();i++){
-                    Map<String,Object> map=datas.get(i);
-                    map.put("createTime",null==map.get("createTime")?null:map.get("createTime").toString().substring(0,19));
+                if(CollectionUtils.isNotEmpty(datas)) {
+                    LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
+                    tips.setVisibility(View.GONE);
+                    ListView listView = (ListView) rootView.findViewById(R.id.msgListView);
+                    listView.setVisibility(View.VISIBLE);
+                    for(int i=0;i<datas.size();i++){
+                        Map<String,Object> map=datas.get(i);
+                        map.put("createTime",null==map.get("createTime")?null:map.get("createTime").toString().substring(0,10));
+                    }
+                    MyAdapter adapter=new MyAdapter(getActivity(),datas);
+                    listView.setAdapter(adapter);
                 }
-                SimpleAdapter adapter = new SimpleAdapter(getActivity(), datas, R.layout.hquestion_item, new String[]{
-                        "title", "username","createTime"},
-                        new int[]{R.id.title_e_tv, R.id.author_e_tv,R.id.date_e_tv});
-                listView.setAdapter(adapter);
             }
-
         }
     }
+
     protected String getRequestTag(){
-        return "ARTICLE_QUESTION_LIST_REQUEST";
+        return TAG;
     }
 
     @Override
@@ -125,4 +133,73 @@ public class HQuestionFragment extends Fragment {
         super.onPause();
         MobclickAgent.onPageEnd("主页－问答");
     }
+
+    private class MyAdapter extends BaseAdapter {
+
+        List<Map<String, Object>> datas;
+
+        private LayoutInflater mInflater;
+
+        public MyAdapter(Context context, List<Map<String, Object>> datas) {
+            this.datas=datas;
+            this.mInflater = LayoutInflater.from(context);
+        }
+
+        @Override
+        public int getCount() {
+            return datas.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return datas.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.hquestion_item,null);
+                holder = new ViewHolder();
+                holder.title = (TextView) convertView.findViewById(R.id.title_e_tv);
+                holder.author = (TextView) convertView.findViewById(R.id.author_e_tv);
+                holder.date = (TextView) convertView.findViewById(R.id.date_e_tv);
+                holder.headIcon = (TextView) convertView.findViewById(R.id.head_q_tv);
+                holder.viewTimes = (TextView) convertView.findViewById(R.id.question_viewtimes_tv);
+                convertView.setTag(holder);
+            }else{
+                holder = (ViewHolder)convertView.getTag();//取出ViewHolder对象
+            }
+            /**设置TextView显示的内容，即我们存放在动态数组中的数据*/
+            holder.title.setText(datas.get(position).get("title").toString());
+            holder.author.setText(datas.get(position).get("username").toString());
+            holder.date.setText(datas.get(position).get("createTime").toString());
+            holder.viewTimes.setText(datas.get(position).get("viewtimes").toString());
+            String idStr=datas.get(position).get("authorId").toString();
+            Integer authorId=Integer.valueOf(idStr);
+
+            CommonUtil.handlerHeadIcon(Integer.valueOf(idStr),holder.headIcon,datas.get(position).get("username").toString());
+            CommonUtil.setOnClickListenerForPHomePage(idStr,getActivity(),holder.author);
+            CommonUtil.setOnClickListenerForPHomePage(idStr,getActivity(),holder.headIcon);
+
+            return convertView;
+        }
+
+    }
+
+    public final class ViewHolder{
+        public TextView title;
+        public TextView author;
+        public TextView date;
+        public TextView headIcon;
+        public TextView viewTimes;
+    }
+
+
+
 }
