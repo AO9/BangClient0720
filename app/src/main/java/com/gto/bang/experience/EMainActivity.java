@@ -13,7 +13,6 @@ import com.gto.bang.comment.CommentInputActivity;
 import com.gto.bang.experience.fragment.CDetailFragment;
 import com.gto.bang.experience.fragment.ECommentFragment;
 import com.gto.bang.experience.fragment.EDetailFragment;
-import com.gto.bang.experience.fragment.PDetailFragment;
 import com.gto.bang.question.fragment.QDetailFragment;
 import com.gto.bang.util.Constant;
 import com.umeng.analytics.MobclickAgent;
@@ -51,7 +50,7 @@ public class EMainActivity extends BaseTabActivity {
             actionBar.setTitle("吐槽");
         } else if (Constant.TYPE_QUESTION.equals(artType)) {
             actionBar.setTitle("问答");
-        } else if (Constant.TYPE_SERVICE.equals(artType)) {
+        } else if (Constant.TYPE_SUPPORT.equals(artType)) {
             actionBar.setTitle("帮帮");
         }
 
@@ -84,10 +83,10 @@ public class EMainActivity extends BaseTabActivity {
             this.titles = new String[]{getString(R.string.bang_detail), getString(R.string.bang_complaint)};
             //增加吐槽类型的页面
             this.fragments = new Class[]{CDetailFragment.class, ECommentFragment.class};
-        } else if (Constant.TYPE_SERVICE.equals(type)) {
-            //增加服务类型的页面
+        } else if (Constant.TYPE_SUPPORT.equals(type)) {
+            //增加论文帮类型的页面
             this.titles = new String[]{getString(R.string.bang_detail), getString(R.string.bang_comment)};
-            this.fragments = new Class[]{PDetailFragment.class, ECommentFragment.class};
+            this.fragments = new Class[]{QDetailFragment.class, ECommentFragment.class};
         }
 
     }

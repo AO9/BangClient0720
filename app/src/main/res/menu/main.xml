@@ -21,23 +21,23 @@
         <!--android:title="@string/create_product"-->
         <!--app:showAsAction="always"/>-->
 
-    <item
-        android:id="@+id/create_complaint"
-        android:orderInCategory="80"
-        android:title="@string/create_complaint"
-        app:showAsAction="always"/>
-    
-    <item
-        android:id="@+id/create_experience"
-        android:orderInCategory="70"
-        android:title="@string/create_experience"
-        app:showAsAction="always"/>
+    <!--<item-->
+        <!--android:id="@+id/create_complaint"-->
+        <!--android:orderInCategory="80"-->
+        <!--android:title="@string/create_complaint"-->
+        <!--app:showAsAction="always"/>-->
+    <!---->
+    <!--<item-->
+        <!--android:id="@+id/create_experience"-->
+        <!--android:orderInCategory="70"-->
+        <!--android:title="@string/create_experience"-->
+        <!--app:showAsAction="always"/>-->
 
-    <item
-        android:id="@+id/create_question"
-        android:orderInCategory="60"
-        android:title="@string/create_question"
-        app:showAsAction="always"/>
+    <!--<item-->
+        <!--android:id="@+id/create_question"-->
+        <!--android:orderInCategory="60"-->
+        <!--android:title="@string/create_question"-->
+        <!--app:showAsAction="always"/>-->
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="120"

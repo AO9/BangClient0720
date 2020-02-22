@@ -12,7 +12,7 @@ import com.gto.bang.util.Constant;
 /**
  * Created by user on 16/5/5.
  */
-public class BaseActivity extends ActionBarActivity{
+public class BaseActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +35,20 @@ public class BaseActivity extends ActionBarActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public SharedPreferences.Editor getEditor(){
-        SharedPreferences sp=getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
-        SharedPreferences.Editor editor=sp.edit();
+    public SharedPreferences.Editor getEditor() {
+        SharedPreferences sp = getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = sp.edit();
         return editor;
     }
 
-    public SharedPreferences getSharedPreferences(){
-        SharedPreferences sp=getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
+    public SharedPreferences getSharedPreferences() {
+        SharedPreferences sp = getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
 
         return sp;
     }
+
+    public String getUserId() {
+        return getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT);
+    }
+
 }

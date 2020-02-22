@@ -46,7 +46,7 @@ public class ECommentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.bang_experience_comment, container, false);
+        View rootView = inflater.inflate(R.layout.comment_list, container, false);
         listview=(ListView) rootView.findViewById(R.id.bang_c_listview);
         return rootView;
     }

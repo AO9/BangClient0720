@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:divider="@drawable/divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:text="活动主题:"
+            android:textSize="@dimen/mid_common_text_size">
+        </TextView>
+
+        <TextView
+            android:id="@+id/act_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:textSize="@dimen/mid_common_text_size">
+        </TextView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/info_item_height"
+    android:background="@android:color/white"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="left|center"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:text="活动时间:"
+        android:textSize="@dimen/mid_common_text_size">
+    </TextView>
+
+    <TextView
+        android:id="@+id/act_date"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="left|center"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:textSize="@dimen/mid_common_text_size">
+    </TextView>
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="活动地点:"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:textSize="@dimen/mid_common_text_size">
+        </TextView>
+
+        <TextView
+            android:id="@+id/act_location"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:textSize="@dimen/mid_common_text_size">
+        </TextView>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+
+        <TextView
+            android:id="@+id/act_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="top"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:textSize="@dimen/info_item_left_text_size">
+        </TextView>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:layout_marginBottom="@dimen/info_item_margin_top"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:background="@android:color/white">
+
+        <Button
+            android:id="@+id/question_ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/sides_margin"
+            android:background="@color/color_theme"
+            android:text="报名"
+            android:textColor="@color/withe"
+
+            />
+    </RelativeLayout>
+
+</LinearLayout>

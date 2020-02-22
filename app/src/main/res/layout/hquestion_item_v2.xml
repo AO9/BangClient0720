@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="150dp"
+    android:minHeight="150dp"
+    android:background="@color/color_theme"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/author_e_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textColor="@color/withe"
+            android:text="username"
+            android:textSize="@dimen/common_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/date_e_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:textColor="@color/withe"
+            android:text="20160102"
+            android:textSize="@dimen/common_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:layout_marginRight="@dimen/sides_margin"
+        android:layout_marginTop="@dimen/common_sides_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/darker_gray"
+            android:ellipsize="end"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:textSize="@dimen/big_common_text_size" />
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="@dimen/sides_mid_margin"-->
+        <!--android:layout_marginLeft="@dimen/sides_margin"-->
+        <!--android:layout_marginRight="@dimen/sides_margin"-->
+        <!--android:layout_marginTop="@dimen/common_sides_margin"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="@dimen/common_sides_margin"-->
+            <!--android:ellipsize="end"-->
+
+            <!--android:gravity="center|left"-->
+            <!--android:text="红包酬劳 "-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="@dimen/common_text_size" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/price_tv"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:ellipsize="end"-->
+            <!--android:gravity="center|left"-->
+            <!--android:textColor="@android:color/holo_red_dark"-->
+            <!--android:textSize="@dimen/common_text_size" />-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

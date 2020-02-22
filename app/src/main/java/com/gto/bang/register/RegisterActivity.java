@@ -37,6 +37,9 @@ import java.util.Map;
  *
  * getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS).edit()方法每次都是返回一个新的值
  * 0803 24:21分 阿贝很冷，睡梦中关上空调
+ *
+ * 20190303 星期日 增加imei设备号
+ * @location 绿岛 阿贝在黑山
  * */
 public class RegisterActivity extends BaseActivity {
 
@@ -47,10 +50,11 @@ public class RegisterActivity extends BaseActivity {
     EditText password_2ET;
     EditText phoneET;
     EditText schoolET;
+    EditText wechatET;
     TextView educationTV;
     RelativeLayout rl;
 
-    String [] tips=new String[]{"昵称不能为空!","密码不能为空!","确认密码不能为空!","手机号不能为空!","学校不能为空!"};
+    String [] tips=new String[]{"昵称不能为空!","密码不能为空!","确认密码不能为空!","手机号不能为空!","学校不能为空!","微信不能为空"};
 
 
     @Override
@@ -81,6 +85,7 @@ public class RegisterActivity extends BaseActivity {
         register=(Button)findViewById(R.id.f_register_ok_btn);
         schoolET=(EditText)findViewById(R.id.register_school_et);
         educationTV=(TextView) findViewById(R.id.bang_education_et);
+        wechatET=(EditText) findViewById(R.id.wehcat_et);
 
 
         rl=(RelativeLayout)findViewById(R.id.bang_aducation_lv);
@@ -95,21 +100,22 @@ public class RegisterActivity extends BaseActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText [] array=new EditText[]{nicknameET,passwordET,password_2ET,phoneET,schoolET};
+                EditText [] array=new EditText[]{nicknameET,passwordET,password_2ET,phoneET,schoolET,wechatET};
                 String password1=passwordET.getText().toString();
                 String password2=password_2ET.getText().toString();
                 String phone=phoneET.getText().toString();
                 String nickname=nicknameET.getText().toString();
                 String school=schoolET.getText().toString();
+                String wechat=wechatET.getText().toString();
 
                 Toast t;
 
-                boolean check = CommonUtil.checkUserName(nickname);
-                if (check) {
-                    Toast t1 = Toast.makeText(RegisterActivity.this, "昵称涉及敏感词汇，请重新填写!", Toast.LENGTH_SHORT);
-                    t1.show();
-                    return;
-                }
+//                boolean check = CommonUtil.checkUserName(nickname);
+//                if (check) {
+//                    Toast t1 = Toast.makeText(RegisterActivity.this, "昵称涉及敏感词汇，请重新填写!", Toast.LENGTH_SHORT);
+//                    t1.show();
+//                    return;
+//                }
 
                 //非空校验
                 for(int i=0;i<array.length;i++){
@@ -133,7 +139,7 @@ public class RegisterActivity extends BaseActivity {
                     t.show();
                     return;
                 }
-                register(nickname,password1,phone,school,educationTV.getText().toString());
+                register(nickname,password1,phone,school,educationTV.getText().toString(),wechat);
             }
         });
 
@@ -148,7 +154,7 @@ public class RegisterActivity extends BaseActivity {
 
 
 
-    public void register(String username,String password,String phone,String school,String education) {
+    public void register(String username,String password,String phone,String school,String education,String wechat) {
         ResponseListener listener = new ResponseListener();
         String url= Constant.URL_BASE+ Constant.REGISTER_AJAX;
         HashMap<String, String> params=new HashMap<String, String>();
@@ -157,10 +163,11 @@ public class RegisterActivity extends BaseActivity {
         params.put(Constant.PHONE,phone);
         params.put(Constant.SCHOOL,school);
         params.put(Constant.EDUCATION,education);
+        params.put(Constant.IMEI,CommonUtil.getIMEI(getBaseContext()));
+        params.put(Constant.WECHAT,wechat);
 
         params.put("client","android");
         CustomRequest req = new CustomRequest(this,listener,listener,params,url, Request.Method.POST);
-        Log.i("sjl","url:"+ url);
         req.setTag(getRequestTag());
         register.setText("正在注册,请等待...");
         register.setEnabled(false);

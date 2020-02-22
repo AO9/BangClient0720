@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gto.bang.R;
 import com.gto.bang.base.BaseInputFragment;
@@ -92,8 +91,8 @@ public class HMineFragment extends BaseInputFragment {
                     intent = new Intent(getActivity(), FeedbackActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.setting_ll:
-                    Toast.makeText(getActivity(),"敬请期待",Toast.LENGTH_SHORT).show();
+//                case R.id.setting_ll:
+//                    Toast.makeText(getActivity(),"敬请期待",Toast.LENGTH_SHORT).show();
                 default:
                     break;
             }

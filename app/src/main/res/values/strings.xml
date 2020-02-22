@@ -6,14 +6,14 @@
     <string name="action_login">登录</string>
     <string name="action_register">注册</string>
 
-    <string name="tab_interaction">首页</string>
-    <!--<string name="tab_cooperation">互助</string>-->
-    <string name="tab_daily">ONE</string>
+    <string name="tab_homepage">首页</string>
+    <string name="tab_discovery">看一看</string>
+    <string name="tab_support">帮TA</string>
     <string name="tab_message">消息</string>
     <string name="tab_mine">我的</string>
 
     <string name="one_title">每日一文</string>
-    <string name="tab_complaints">吐槽</string>
+    <string name="tab_complaints">动态</string>
     <string name="tab_question">问答</string>
     <string name="tab_experience">经验</string>
 
@@ -21,6 +21,10 @@
     <string name="tab_2">帮帮</string>
 
     <string name="title_section1">经验</string>
+    <string name="help">帮TA</string>
+    <string name="article">好文</string>
+    <string name="salon">活动报名</string>
+    <string name="title_support">红包求助</string>
     <string name="title_section2">问答</string>
     <string name="title_section3">帮帮</string>
 
@@ -84,5 +88,7 @@
         <item>我要吐槽</item>
     </string-array>
     <string name="title_activity_mine">个人信息</string>
+    <string name="article_list_title">论文资讯</string>
+    <string name="notice_title">消息早报</string>
 
 </resources>

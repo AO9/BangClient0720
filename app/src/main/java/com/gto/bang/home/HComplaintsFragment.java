@@ -3,7 +3,8 @@ package com.gto.bang.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
+import com.gto.bang.base.BaseRefreshFragment;
+import com.gto.bang.base.BaseResponseListenerForRefresh;
+import com.gto.bang.base.ResponseListener;
 import com.gto.bang.experience.EMainActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
@@ -34,13 +37,20 @@ import java.util.Map;
  * 20161031
  * 吐槽TAB Fragment
  */
-public class HComplaintsFragment extends Fragment {
+public class HComplaintsFragment extends BaseRefreshFragment {
 
     ListView listView;
     List<Map<String, Object>> datas;
     View rootView;
+    int pageNum = 1;
 
     public HComplaintsFragment() {}
+
+    @Override
+    public void refreshView(List<Map<String, Object>> datas) {
+        this.listView.setAdapter(new MyAdapter(getActivity(),datas));
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -60,24 +70,36 @@ public class HComplaintsFragment extends Fragment {
             }
         });
         this.rootView=rootView;
+        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setEnabled(false);
+                        initDatas(++pageNum, new BaseResponseListenerForRefresh(getActivity(),mHandler));
+                        Log.i("sjl", "sendEmptyMessage after ");
+                    }
+                }).start();
+            }
+        });
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        initDatas();
+        initDatas(pageNum,new MyResponseListener());
     }
 
-    public void initDatas() {
-        ResponseListener listener = new ResponseListener();
-        //TYPE=3 吐槽类的文章
-        String url= Constant.URL_BASE+ Constant.ARTICLE_LIST_AJAX+"type="+Constant.TYPE_COMPLAINTS+"&startid=1";
-        CustomRequest req = new CustomRequest(getActivity(),listener,listener,null,url, Request.Method.GET);
+    public void initDatas(int pageNum,ResponseListener responseListener) {
+        String url= Constant.URL_BASE+ Constant.ARTICLE_LIST_AJAX+"type="+Constant.TYPE_COMPLAINTS+"&pageNum="+pageNum;
+        CustomRequest req = new CustomRequest(getActivity(),responseListener,responseListener,null,url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
-    public  class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
+    public  class MyResponseListener extends ResponseListener {
         Toast t ;
         @Override
         public void onErrorResponse(VolleyError arg0) {

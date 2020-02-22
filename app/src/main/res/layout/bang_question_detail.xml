@@ -74,24 +74,24 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:layout_marginTop="@dimen/sides_margin"
-        android:layout_marginLeft="@dimen/sides_margin"
-        android:layout_marginRight="@dimen/sides_margin"
-        android:layout_marginBottom="@dimen/sides_margin"
-        android:gravity="center"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="left|center"
-            android:id="@+id/question_detail_title_tv"
-            android:textSize="@dimen/big_common_text_size" />
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_marginTop="@dimen/sides_margin"-->
+        <!--android:layout_marginLeft="@dimen/sides_margin"-->
+        <!--android:layout_marginRight="@dimen/sides_margin"-->
+        <!--android:layout_marginBottom="@dimen/sides_margin"-->
+        <!--android:gravity="center"-->
+        <!--&gt;-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="left|center"-->
+            <!--android:id="@+id/question_detail_title_tv"-->
+            <!--android:textSize="@dimen/big_common_text_size" />-->
+    <!--</LinearLayout>-->
 
 
 
@@ -102,15 +102,15 @@
         android:background="@android:color/white"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
-        <TextView
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_marginRight="@dimen/sides_margin"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/tv_height"
-            android:textSize="@dimen/big_common_text_size"
-            android:textColor="@color/dark_blue"
-            android:gravity="center_vertical"
-            android:text="|问题描述" />
+        <!--<TextView-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:layout_marginRight="@dimen/sides_margin"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/tv_height"-->
+            <!--android:textSize="@dimen/big_common_text_size"-->
+            <!--android:textColor="@color/dark_blue"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="|问题描述" />-->
         <TextView
             style="@style/detail_text_style"
             android:layout_marginBottom="@dimen/sides_margin"

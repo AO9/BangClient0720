@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseCreateActivity;
-import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -58,13 +57,13 @@ public class CreateExperienceActivity extends BaseCreateActivity {
             @Override
             public void onClick(View v) {
 
-                boolean check=CommonUtil.checkContent(title.getText().toString());
-                check=check || CommonUtil.checkContent(content.getText().toString());
-                if (check){
-                    Toast t = Toast.makeText(CreateExperienceActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
-                    t.show();
-                    return;
-                }
+//                boolean check=CommonUtil.checkContent(title.getText().toString());
+//                check=check || CommonUtil.checkContent(content.getText().toString());
+//                if (check){
+//                    Toast t = Toast.makeText(CreateExperienceActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
+//                    t.show();
+//                    return;
+//                }
 
                 if(check()){
                     //校验通过后拼接请求参数并向服务器发送请求

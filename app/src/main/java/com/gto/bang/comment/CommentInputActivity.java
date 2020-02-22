@@ -12,7 +12,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
-import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -86,12 +85,12 @@ public class CommentInputActivity extends BaseActivity{
      */
     private boolean submit(){
         if(check()){
-            boolean check= CommonUtil.checkContent(comment.getText().toString());
-            if (check){
-                Toast t = Toast.makeText(CommentInputActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
-                t.show();
-                return false;
-            }
+//            boolean check= CommonUtil.checkContent(comment.getText().toString());
+//            if (check){
+//                Toast t = Toast.makeText(CommentInputActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
+//                t.show();
+//                return false;
+//            }
             publish();
             return true;
         }else{

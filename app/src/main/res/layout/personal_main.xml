@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:background="@color/info_backgroud"
     android:showDividers="middle"
-    android:divider="@drawable/abc_list_divider_holo_dark"
     >
 
     <LinearLayout
@@ -40,36 +39,36 @@
         </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/info_item_height"
-        android:background="@android:color/white"
-        android:layout_marginTop="@dimen/info_item_margin_top"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:textSize="@dimen/info_item_left_text_size"
-            android:text="论文币"/>
-        <TextView
-            android:id="@+id/coin"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:textSize="@dimen/info_item_left_text_size"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/tv_top_margin"/>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/info_item_height"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_marginTop="@dimen/info_item_margin_top"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
+            <!--android:textSize="@dimen/info_item_left_text_size"-->
+            <!--android:text="论文币"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/coin"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
+            <!--android:textSize="@dimen/info_item_left_text_size"-->
+            <!--/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_marginTop="@dimen/tv_top_margin"/>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 
     <LinearLayout
@@ -120,30 +119,30 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/info_item_height"
-        android:layout_marginTop="@dimen/info_item_margin_top"
-        android:id="@+id/setting_ll"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:textSize="@dimen/info_item_left_text_size"
-            android:text="设置"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            />
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/info_item_height"-->
+        <!--android:layout_marginTop="@dimen/info_item_margin_top"-->
+        <!--android:id="@+id/setting_ll"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:orientation="horizontal"-->
+        <!--&gt;-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
+            <!--android:textSize="@dimen/info_item_left_text_size"-->
+            <!--android:text="设置"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
+            <!--/>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 
     <LinearLayout
@@ -189,7 +188,7 @@
             android:layout_marginTop="@dimen/tv_top_margin"
             android:textSize="@dimen/info_item_left_text_size"
             android:maxLines="1"
-            android:text="关于部落"/>
+            android:text="关于"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

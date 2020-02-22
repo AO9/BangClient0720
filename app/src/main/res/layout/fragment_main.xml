@@ -1,31 +1,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/swipeLayout" >
     <ListView
         android:id="@+id/msgListView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:divider="@color/info_backgroud"
-        android:dividerHeight="10dp"
-        android:visibility="gone"
-         >
-    </ListView>
+        android:visibility="gone"></ListView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <LinearLayout
+        android:id="@+id/comment_tips"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/comment_tips"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="亲，这里是空的 ^_^"
-            android:textColor="@android:color/darker_gray"
-            />
+            android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
 

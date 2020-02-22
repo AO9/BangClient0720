@@ -103,8 +103,8 @@ public class HPersonMessageFragment extends BaseFragment {
                     } else if (type.equals(Constant.TYPE_COMPLAINTS)) {
                         datas.get(i).put("tag", "吐槽");
                         datas.get(i).put("artTitle", datas.get(i).get("content"));
-                    } else if (type.equals(Constant.TYPE_SERVICE)) {
-                        datas.get(i).put("tag", "互助");
+                    } else if (type.equals(Constant.TYPE_SUPPORT)) {
+                        datas.get(i).put("tag", "论文帮");
                     }
 
                 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,35 +14,52 @@ import com.gto.bang.personal.activity.PHomePageActivity;
 
 import org.apache.commons.lang.StringUtils;
 
-import java.util.regex.Pattern;
-
 /**
  * 工具类
  */
 public class CommonUtil {
 
 
-    public static boolean checkContent(String content){
-        boolean result= Pattern.compile("发*表").matcher(content).find();
-        result = result || Pattern.compile("代*写").matcher(content).find();
-        result = result || Pattern.compile("dai").matcher(content).find();
-        result = result || Pattern.compile("xie").matcher(content).find();
-        result = result || Pattern.compile("代*发").matcher(content).find();
-        result = result || Pattern.compile("代*fa").matcher(content).find();
-        result = result || Pattern.compile("枪*手").matcher(content).find();
-        result = result || Pattern.compile("qiang").matcher(content).find();
-        result = result || Pattern.compile("shou").matcher(content).find();
-        result = result || Pattern.compile("价*格").matcher(content).find();
-        return result;
+    /**
+     * 获取手机IMEI
+     *
+     * @param context
+     * @return
+     */
+    public static final String getIMEI(Context context) {
+        String imei="未获取到deviceId(imei)";
+        try {
+            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            imei = telephonyManager.getDeviceId();
+            return imei;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return imei;
+        }
+
     }
 
-    public static boolean checkUserName(String content){
-        boolean result= checkContent(content);
-        result = result || Pattern.compile("论*文").matcher(content).find();
-        result = result || Pattern.compile("论文*帮").matcher(content).find();
-        result = result || Pattern.compile("论*文帮").matcher(content).find();
-        return result;
-    }
+//    public static boolean checkContent(String content){
+//        boolean result= Pattern.compile("发*表").matcher(content).find();
+//        result = result || Pattern.compile("代*写").matcher(content).find();
+//        result = result || Pattern.compile("dai").matcher(content).find();
+//        result = result || Pattern.compile("xie").matcher(content).find();
+//        result = result || Pattern.compile("代*发").matcher(content).find();
+//        result = result || Pattern.compile("代*fa").matcher(content).find();
+//        result = result || Pattern.compile("枪*手").matcher(content).find();
+//        result = result || Pattern.compile("qiang").matcher(content).find();
+//        result = result || Pattern.compile("shou").matcher(content).find();
+//        result = result || Pattern.compile("价*格").matcher(content).find();
+//        return result;
+//    }
+
+//    public static boolean checkUserName(String content){
+////        boolean result= checkContent(content);
+//        result = result || Pattern.compile("论*文").matcher(content).find();
+//        result = result || Pattern.compile("论文*帮").matcher(content).find();
+//        result = result || Pattern.compile("论*文帮").matcher(content).find();
+//        return result;
+//    }
 
     /**
      * 渲染头像背景色

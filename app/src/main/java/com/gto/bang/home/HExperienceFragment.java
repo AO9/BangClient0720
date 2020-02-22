@@ -33,6 +33,8 @@ import java.util.Map;
 /**
  * Created by shenjialong on 16/6/9 19:52.
  * 首页－经验tab
+ *
+ * 20191116 经验版块由推荐好文替换
  */
 public class HExperienceFragment extends Fragment {
 

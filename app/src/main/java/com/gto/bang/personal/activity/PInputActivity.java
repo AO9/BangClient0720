@@ -12,7 +12,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
-import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -98,12 +97,12 @@ public class PInputActivity extends BaseActivity{
         ResponseListener listener = new ResponseListener();
         HashMap<String, String> params=new HashMap<String, String>();
         String value=content.getText().toString();
-        boolean check = CommonUtil.checkUserName(value);
-        if (check) {
-            Toast t1 = Toast.makeText(PInputActivity.this, "昵称涉及敏感词汇，请重新填写!", Toast.LENGTH_SHORT);
-            t1.show();
-            return;
-        }
+//        boolean check = CommonUtil.checkUserName(value);
+//        if (check) {
+//            Toast t1 = Toast.makeText(PInputActivity.this, "昵称涉及敏感词汇，请重新填写!", Toast.LENGTH_SHORT);
+//            t1.show();
+//            return;
+//        }
         params.put("userId",getSharedPreferences().getString(Constant.ID,Constant.AUTHORID_DEFAULT));
         params.put("updateType",String.valueOf(updateType));
         params.put("content",content.getText().toString());

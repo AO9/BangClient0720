@@ -20,15 +20,13 @@
             android:layout_marginTop="@dimen/info_item_margin_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="经验｜在这里你可以分享论文写作经验"/>
+            android:text="版本号: 3.0.6"/>
         <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="问答｜在这里你可以与同学们互动交流"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ONE｜繁忙的生活里，每日一文就够了"/>
+            android:text="意见反馈｜你的建议会让论文帮成长的更快"/>
+
         <TextView
             android:layout_marginTop="@dimen/info_item_margin_top"
             android:layout_width="wrap_content"

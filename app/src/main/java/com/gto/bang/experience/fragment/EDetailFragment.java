@@ -40,23 +40,23 @@ public class EDetailFragment extends Fragment {
     }
 
 
-
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         initDatas();
     }
 
     public void initDatas() {
         ResponseListener listener = new ResponseListener();
-        String id =((EMainActivity)getActivity()).getArticleId();
-        String url= Constant.URL_BASE+ Constant.ARTICLE_DETAIL_AJAX+"id="+(int)Double.valueOf(id).doubleValue();
-        CustomRequest req = new CustomRequest(getActivity(),listener,listener,null,url, Request.Method.GET);
+        String id = ((EMainActivity) getActivity()).getArticleId();
+        String url = Constant.URL_BASE + Constant.ARTICLE_DETAIL_AJAX + "id=" + (int) Double.valueOf(id).doubleValue();
+        CustomRequest req = new CustomRequest(getActivity(), listener, listener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
-    public  class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
-        Toast t ;
+    public class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
+        Toast t;
+
         @Override
         public void onErrorResponse(VolleyError arg0) {
             t = Toast.makeText(getActivity(), "网络请求失败，请重试", Toast.LENGTH_SHORT);
@@ -65,40 +65,41 @@ public class EDetailFragment extends Fragment {
 
         @Override
         public void onResponse(Map<String, Object> res) {
-            if(null==res.get("status")||!Constant.RES_SUCCESS.equals(res.get("status").toString())){
+            if (null == res.get("status") || !Constant.RES_SUCCESS.equals(res.get("status").toString())) {
                 t = Toast.makeText(getActivity(), Constant.REQUEST_ERROR, Toast.LENGTH_SHORT);
                 t.show();
-            }else{
+            } else {
 
                 LinearLayout tips = (LinearLayout) getView().findViewById(R.id.comment_tips);
                 tips.setVisibility(View.GONE);
                 LinearLayout ll = (LinearLayout) getView().findViewById(R.id.detail_ll);
                 ll.setVisibility(View.VISIBLE);
 
-                details = (Map<String, Object>)res.get("data");
+                details = (Map<String, Object>) res.get("data");
 
-                TextView content=(TextView)getView().findViewById(R.id.bang_econtent_tv);
-                TextView author=(TextView)getView().findViewById(R.id.bang_eauthor_tv);
-                TextView title=(TextView)getView().findViewById(R.id.bang_etitle_tv);
-                TextView date=(TextView)getView().findViewById(R.id.bang_edate_tv);
-                TextView headIcon=(TextView)getView().findViewById(R.id.experience_head_tv);
+                TextView content = (TextView) getView().findViewById(R.id.bang_econtent_tv);
+                TextView author = (TextView) getView().findViewById(R.id.bang_eauthor_tv);
+                TextView title = (TextView) getView().findViewById(R.id.bang_etitle_tv);
+                TextView date = (TextView) getView().findViewById(R.id.bang_edate_tv);
+                TextView headIcon = (TextView) getView().findViewById(R.id.experience_head_tv);
 
-                String idStr=details.get("authorId").toString();
-                Integer authorId=Integer.valueOf(idStr);
+                String idStr = details.get("authorId").toString();
+                Integer authorId = Integer.valueOf(idStr);
                 author.setText(details.get("username").toString());
                 title.setText(details.get("title").toString());
                 date.setText(details.get("createTime").toString());
                 content.setText(details.get("content").toString());
 
-                CommonUtil.handlerHeadIcon(authorId,headIcon,details.get("username").toString());
-                CommonUtil.setOnClickListenerForPHomePage(idStr,getActivity(),headIcon);
-                CommonUtil.setOnClickListenerForPHomePage(idStr,getActivity(),author);
+                CommonUtil.handlerHeadIcon(authorId, headIcon, details.get("username").toString());
+                CommonUtil.setOnClickListenerForPHomePage(idStr, getActivity(), headIcon);
+                CommonUtil.setOnClickListenerForPHomePage(idStr, getActivity(), author);
 
             }
 
         }
     }
-    protected String getRequestTag(){
+
+    protected String getRequestTag() {
         return "ARTICLE_EDETAILS_REQUEST";
     }
 
@@ -113,6 +114,7 @@ public class EDetailFragment extends Fragment {
         super.onResume();
         MobclickAgent.onPageStart("详情－经验"); //统计页面
     }
+
     @Override
     public void onPause() {
         super.onPause();

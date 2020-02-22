@@ -19,9 +19,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
-import com.gto.bang.create.CreateComplaintActivity;
-import com.gto.bang.create.CreateExperienceActivity;
-import com.gto.bang.create.CreateQuestionActivity;
 import com.gto.bang.navigation.AboutActivity;
 import com.gto.bang.navigation.FeedbackActivity;
 import com.gto.bang.util.CommonUtil;
@@ -32,22 +29,24 @@ import com.umeng.analytics.MobclickAgent;
 
 import org.apache.commons.lang.StringUtils;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by shenjialong on 16/10/24 22:45.
- * 1105日最新的主页入口类hs
+ * 20190217
+ * 20190603 拆分问答为 纯问答+红包问答两个专区
+ *
  */
 public class MainActivity extends BaseActivity implements TabHost.OnTabChangeListener, ActionBar.OnNavigationListener {
 
-    public static final String TAB_INTERACTION = "TAB_INTERACTION";
-    public static final String TAB_ONE = "TAB_ONE";
+    public static final String TAB_HOMEPAGE = "TAB_HOMEPAGE";
+    public static final String TAB_SUPPORT = "TAB_SUPPORT";
+    public static final String TAB_DISCOVERY = "TAB_DISCOVERY";
     public static final String TAB_MESSAGE = "TAB_MESSAGE";
     public static final String TAB_MINE = "TAB_MINE";
+    public static final int TAB_INDEX_MESSAGE = 3;
+
     public static final Set<Integer> set = new HashSet<Integer>();
 
     static {
@@ -73,9 +72,9 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.tabContent);
         mTabHost.setOnTabChangedListener(this);
-        addTab(inflater, TAB_INTERACTION, HInteractionFragment.class, R.drawable.icon, R.string.tab_interaction);
-        addTab(inflater, TAB_ONE, HDailyFragment.class, R.drawable.icon, R.string.tab_daily);
-//        addTab(inflater,TAB_MESSAGE,  HMessageOldFragment.class,R.drawable.icon, R.string.tab_message);
+        addTab(inflater, TAB_HOMEPAGE, HomePageTagFragment.class, R.drawable.icon, R.string.tab_homepage);
+        addTab(inflater, TAB_DISCOVERY, DiscoveryFragment.class, R.drawable.icon, R.string.tab_discovery);
+        addTab(inflater, TAB_SUPPORT, HSupportFragment.class, R.drawable.icon, R.string.tab_support);
         addTab(inflater, TAB_MESSAGE, HMessageFragment.class, R.drawable.icon, R.string.tab_message);
         addTab(inflater, TAB_MINE, HMineFragment.class, R.drawable.icon, R.string.tab_mine);
         mTabHost.getTabWidget().setDividerDrawable(null);
@@ -91,7 +90,6 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
                 mTabHost.getTabWidget(), false);
 //        ImageView imgView = (ImageView) indicator.findViewById(R.id.tabIcon);
         TextView titleView = (TextView) indicator.findViewById(R.id.tabTitle);
-        //预留TAB图标
 //        imgView.setImageResource(icon);
         titleView.setText(title);
         mTabHost.addTab(mTabHost.newTabSpec(tag).setIndicator(indicator), clss,
@@ -116,33 +114,16 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
 
         disabledActionBarShowHideAnimation();
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        if (TAB_INTERACTION.equals(tabId)) {
-            List<Integer> list = new ArrayList<Integer>();
-            list.addAll(set);
-            list.add(0);
-            list.add(1);
-            list.add(2);
-            changeMenus(list);
-//            getActionBar().show();
-            getActionBar().setTitle(R.string.tab_interaction);
-        } else if (TAB_ONE.equals(tabId)) {
-            List<Integer> list = new ArrayList<Integer>();
-            list.add(3);
-            list.addAll(set);
-            getActionBar().setTitle(R.string.one_title);
-            changeMenus(list);
+        if (TAB_HOMEPAGE.equals(tabId)) {
+            getActionBar().setTitle(R.string.tab_homepage);
+        } else if (TAB_DISCOVERY.equals(tabId)) {
+            getActionBar().setTitle(R.string.tab_discovery);
         } else if (TAB_MESSAGE.equals(tabId)) {
-            List<Integer> list = new ArrayList<Integer>();
-            list.addAll(set);
             getActionBar().setTitle(R.string.tab_message);
-            changeMenus(list);
             View view = mTabHost.getTabWidget().getChildAt(1);
             ((TextView) view.findViewById(R.id.tabNum)).setText("");
         } else if (TAB_MINE.equals(tabId)) {
-            List<Integer> list = new ArrayList<Integer>();
-            list.addAll(set);
             getActionBar().setTitle(R.string.tab_mine);
-            changeMenus(list);
         }
         //不重绘 否则menu不能隐藏
 //        invalidateOptionsMenu();
@@ -173,18 +154,6 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
                 editor.commit();
                 finish();
                 return true;
-            case R.id.create_complaint:
-                intent = new Intent(this, CreateComplaintActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.create_question:
-                intent = new Intent(this, CreateQuestionActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.create_experience:
-                intent = new Intent(this, CreateExperienceActivity.class);
-                startActivity(intent);
-                return true;
             case R.id.action_introduce:
                 intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
@@ -198,17 +167,17 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
     }
 
 
-    private void changeMenus(List<Integer> list) {
-        if (null != menus) {
-            for (int i = 0; i < menus.size(); i++) {
-                if (list.contains(i)) {
-                    menus.getItem(i).setVisible(true);
-                } else {
-                    menus.getItem(i).setVisible(false);
-                }
-            }
-        }
-    }
+//    private void changeMenus(List<Integer> list) {
+//        if (null != menus) {
+//            for (int i = 0; i < menus.size(); i++) {
+//                if (list.contains(i)) {
+//                    menus.getItem(i).setVisible(true);
+//                } else {
+//                    menus.getItem(i).setVisible(false);
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -263,7 +232,7 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
                 if (null != data) {
                     String num = data.toString();
                     if (null != num && !"0".equals(num)) {
-                        View view = mTabHost.getTabWidget().getChildAt(2);
+                        View view = mTabHost.getTabWidget().getChildAt(TAB_INDEX_MESSAGE);
                         ((TextView) view.findViewById(R.id.tabNum)).setText("+" + num);
                     }
                 }

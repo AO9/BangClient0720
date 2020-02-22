@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseCreateActivity;
-import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -25,13 +24,13 @@ import java.util.HashMap;
 /**
  * 问答－新建功能页
  * 1105日  @金凤呈祥
+ * 2019年6月2日
  */
 public class CreateQuestionActivity extends BaseCreateActivity {
 
-    TextView question_theme;
     TextView question_describe;
     TextView[] textViews;
-    String[] inputHints = new String[]{"请填写问答题目", "请填写问答内容"};
+    String[] inputHints = new String[]{"请填写问答内容"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +42,7 @@ public class CreateQuestionActivity extends BaseCreateActivity {
     public void initViews() {
 
         question_describe = (TextView) findViewById(R.id.question_describe_et);
-        question_theme = (TextView) findViewById(R.id.question_theme_et);
-        textViews = new TextView[]{question_theme, question_describe};
+        textViews = new TextView[]{question_describe};
 
         submit = (Button) findViewById(R.id.question_ok_btn);
         setSubmitText("发布问题");
@@ -52,19 +50,24 @@ public class CreateQuestionActivity extends BaseCreateActivity {
             @Override
             public void onClick(View v) {
 
-                boolean check = CommonUtil.checkContent(question_theme.getText().toString());
-                check = check || CommonUtil.checkContent(question_describe.getText().toString());
-                if (check) {
-                    Toast t = Toast.makeText(CreateQuestionActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
+                String describe = question_describe.getText().toString();
+                if (describe.length()<9){
+                    Toast t = Toast.makeText(CreateQuestionActivity.this, "请详细阐述你的问题，至少10个字", Toast.LENGTH_SHORT);
                     t.show();
                     return;
                 }
+
+//                boolean check = CommonUtil.checkContent(describe);
+//                if (check) {
+//                    Toast t = Toast.makeText(CreateQuestionActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
+//                    t.show();
+//                    return;
+//                }
                 if (check()) {
                     //校验通过后拼接请求参数并向服务器发送请求
                     HashMap<String, String> params = new HashMap<String, String>();
-                    params.put("title", question_theme.getText().toString());
-                    params.put("content", question_describe.getText().toString());
-                    params.put("type", Constant.TYPE_QUESTION);
+                    params.put(Constant.CONTENT, question_describe.getText().toString());
+                    params.put(Constant.TYPE, Constant.TYPE_QUESTION);
                     params.put("authorid", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
                     publish(params);
                 }

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPersonName"
-            android:hint="输入140字以内..."
+            android:hint="我们期待您提出的建议\n如：还需要什么功能，需要优化什么功能"
             android:background="@null"
             android:gravity="left"
             android:ems="10"
