@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import com.gto.bang.R;
 import com.gto.bang.article.ArticleListActivity;
+import com.gto.bang.article.ArticleListActivity1;
+import com.gto.bang.article.ArticleListActivity2;
+import com.gto.bang.article.ArticleListActivity3;
+import com.gto.bang.article.ArticleListActivity4;
 import com.gto.bang.college.NoticeActivity;
 import com.gto.bang.create.CreateComplaintActivity;
 import com.gto.bang.create.CreateExperienceActivity;
@@ -65,7 +69,7 @@ public class HomePageTagFragment extends Fragment {
             }
         });
 
-        String name[] = {"红包求助","提问", "帮TA", "分享", "吐槽一下", "论文资讯", "反馈", "活跃榜"};
+        String name[] = {"红包求助","提问", "帮TA", "分享", "吐槽一下", "论文推荐", "反馈", "活跃榜","查重咨询","好文推荐","选题专区","硕士论文"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -112,6 +116,22 @@ public class HomePageTagFragment extends Fragment {
                         break;
                     case 7:
                         intent = new Intent(getActivity(), UserListActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 8:
+                        intent = new Intent(getActivity(), ArticleListActivity1.class);
+                        startActivity(intent);
+                        break;
+                    case 9:
+                        intent = new Intent(getActivity(), ArticleListActivity2.class);
+                        startActivity(intent);
+                        break;
+                    case 10:
+                        intent = new Intent(getActivity(), ArticleListActivity3.class);
+                        startActivity(intent);
+                        break;
+                    case 11:
+                        intent = new Intent(getActivity(), ArticleListActivity4.class);
                         startActivity(intent);
                         break;
                 }

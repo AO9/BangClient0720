@@ -67,17 +67,17 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void autoLogin() {
-        String username = getSharedPreferences().getString(Constant.USERNAME, null);
+        String userName = getSharedPreferences().getString(Constant.USERNAME_V1, null);
         String password = getSharedPreferences().getString(Constant.PASSWORD, null);
         String id = getSharedPreferences().getString(Constant.ID, null);
         String lastAction = getSharedPreferences().getString(Constant.LASTACTION, null);
         //默认显示上一次登录的账号信息
-        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password) && StringUtils.isNotEmpty(id)) {
-            nameEt.setText(username);
+        if (StringUtils.isNotEmpty(userName) && StringUtils.isNotEmpty(password) && StringUtils.isNotEmpty(id)) {
+            nameEt.setText(userName);
             passwordEt.setText(password);
             //上一次用户操作不是［注销］则自动登录
             if (null == lastAction || !lastAction.equals("logout")) {
-                login(username, password);
+                login(userName, password);
             }
         }
 
@@ -109,24 +109,24 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    public void login(String username, String password) {
+    public void login(String userName, String password) {
         ResponseListener listener = new ResponseListener();
-        String url = Constant.URL_BASE + Constant.LOGIN_AJAX;
+        String url = Constant.URL_BASE + Constant.LOGIN_URL;
         Log.i("sjl", url);
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put(Constant.USERNAME, username);
+        params.put(Constant.USERNAME_V1, userName);
         params.put(Constant.PASSWORD, password);
         params.put("client", "android");
         String imei = CommonUtil.getIMEI(getBaseContext());
+        String androidId = CommonUtil.getAndroidId(getBaseContext());
         params.put(Constant.IMEI, imei);
-        url = url + "?username=" + username + "&password=" + password + "&imei=" + imei;
-        Log.i("sjl", url);
+        url = url + "?userName=" + userName + "&password=" + password + "&imei=" + imei + "&androidId=" + androidId;
+        Log.i("sjl", "url" + url);
         CustomRequest req = new CustomRequest(this, listener, listener, params, url, Request.Method.GET);
         req.setTag(getRequestTag());
         loginBtn.setEnabled(false);
 
         loginBtn.setText("正在登录...");
-        Log.i("sjl", "正在登陆");
         VolleyUtils.getRequestQueue(this).add(req);
     }
 
@@ -164,7 +164,7 @@ public class LoginActivity extends BaseActivity {
                 loginBtn.setText("登录");
             } else {
                 userinfo = (Map<String, Object>) res.get("data");
-                String[] feilds = new String[]{Constant.ID, Constant.USERNAME, Constant.PASSWORD,
+                String[] feilds = new String[]{Constant.ID, Constant.USERNAME_V1, Constant.PASSWORD,
                         Constant.PHONE, Constant.SCHOOL, Constant.EDUCATION, Constant.EMAIL, Constant.VIP, Constant.PROMPT,
                         Constant.INFO, Constant.LEVEL_INSTRUCTION};
                 // 缓存个人信息

@@ -2,6 +2,7 @@ package com.gto.bang.college;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,9 +86,9 @@ public class NoticeActivity extends BaseActivity {
                 t = Toast.makeText(NoticeActivity.this, data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-                String noticeInfo = (String) res.get(Constant.DATA);
+                Map<String, String> noticeInfo = (Map<String, String>) res.get(Constant.DATA);
                 if (null != noticeInfo) {
-                    notice.setText(noticeInfo);
+                    notice.setText(noticeInfo.get("content"));
                 }
             }
 

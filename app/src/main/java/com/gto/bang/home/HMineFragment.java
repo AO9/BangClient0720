@@ -54,10 +54,10 @@ public class HMineFragment extends BaseInputFragment {
         userName=(TextView)getView().findViewById(R.id.userName);
         rls=new LinearLayout[]{question,experience,head,feedback,about};
 
-        String name=getSharedPreferences().getString(Constant.USERNAME,Constant.EMPTY);
+        String name=getSharedPreferences().getString(Constant.USERNAME_V1,Constant.EMPTY);
         String id=getSharedPreferences().getString(Constant.ID,"0");
         String coin=getSharedPreferences().getString(Constant.COIN,"0");
-        Log.i("sjl","coin:"+coin);
+        Log.i("sjl", "read："+ name);
         CommonUtil.handlerHeadIcon(Integer.valueOf(id),headIcon,name);
         userName.setText(name);
 

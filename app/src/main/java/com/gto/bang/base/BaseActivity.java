@@ -51,4 +51,8 @@ public class BaseActivity extends ActionBarActivity {
         return getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT);
     }
 
+    public String getStament() {
+        return getSharedPreferences().getString(Constant.INFO, "");
+    }
+
 }

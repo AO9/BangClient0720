@@ -156,17 +156,27 @@ public class RegisterActivity extends BaseActivity {
 
     public void register(String username,String password,String phone,String school,String education,String wechat) {
         ResponseListener listener = new ResponseListener();
-        String url= Constant.URL_BASE+ Constant.REGISTER_AJAX;
+        String url= Constant.URL_BASE+ Constant.REGISTER_URL;
         HashMap<String, String> params=new HashMap<String, String>();
-        params.put(Constant.USERNAME,username.replace("\n",""));
+        params.put(Constant.USERNAME_V1,username.replace("\n",""));
         params.put(Constant.PASSWORD,password.replace("\n",""));
         params.put(Constant.PHONE,phone);
         params.put(Constant.SCHOOL,school);
         params.put(Constant.EDUCATION,education);
-        params.put(Constant.IMEI,CommonUtil.getIMEI(getBaseContext()));
-        params.put(Constant.WECHAT,wechat);
 
-        params.put("client","android");
+        if (StringUtils.isNotBlank(wechat)){
+            params.put(Constant.WECHAT,wechat);
+        }
+
+        if (StringUtils.isNotBlank(CommonUtil.getIMEI(getBaseContext()))){
+            params.put(Constant.IMEI,CommonUtil.getIMEI(getBaseContext()));
+        }
+
+        if (StringUtils.isNotBlank(CommonUtil.getAndroidId(getBaseContext()))){
+            params.put(Constant.ANDROID_ID,CommonUtil.getAndroidId(getBaseContext()));
+        }
+
+        params.put("client","android register params="+params.toString());
         CustomRequest req = new CustomRequest(this,listener,listener,params,url, Request.Method.POST);
         req.setTag(getRequestTag());
         register.setText("正在注册,请等待...");

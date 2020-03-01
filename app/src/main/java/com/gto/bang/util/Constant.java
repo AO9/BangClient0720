@@ -12,6 +12,7 @@ public class Constant {
     public static final String TYPE_COMPLAINTS = "3";
 
     public static final String PAGENUM= "pageNum";
+    public static final String ANDROID_ID= "androidId";
 
 
     //红包问答
@@ -28,13 +29,15 @@ public class Constant {
     public static final int PINFO_UPDATE_ACADAMY = 1005;
 
     public static int CALL_COMMENT_ACTIVITY = 1000;
-    public static String URL_BASE = "http://140.143.121.65/bangbang/";
+    public static String URL_BASE = "http://ababy.world/bangbang/";
     public static String SUBMMITING = "提交中";
     public static String SUBMMITTED = "已提交";
-    //登录
-    public static final String LOGIN_AJAX = "login.ajax";
-    //注册
-    public static final String REGISTER_AJAX = "register.ajax";
+
+    public static final String LOGIN_URL = "/v1/user/login";
+    public static final String REGISTER_URL = "/v1/user/register";
+    public static final String STATEMENT_URL = "/statement/view";
+    public static final String NOTICE_URL = "v1/notice/view?";
+
     public static final String FEEDBACK_CREATE_AJAX = "fCreate.ajax";
 
     public static final String COMMENT_UPDATE_STATUS_URL = "cUpdateStatus.ajax?";
@@ -54,7 +57,6 @@ public class Constant {
     //获取文章列表 经验｜问答 列表数据
     public static final String ARTICLE_LIST_AJAX = "getArticleList.ajax?";
     public static final String SALON_VIEW_URL = "salon/view?";
-    public static final String NOTICE_URL = "notice/view?";
     //文章详情
     public static final String ARTICLE_DETAIL_AJAX = "getArticleDetail.ajax?";
 
@@ -90,6 +92,7 @@ public class Constant {
     public static final String PRAISE = "praise";
     public static final String TITLE = "title";
     public static final String USERNAME = "username";
+    public static final String USERNAME_V1 = "userName";
     public static final String CREATETIME = "createTime";
     public static final String ARTTITLE = "artTitle";
     public static final String CONTENT = "content";

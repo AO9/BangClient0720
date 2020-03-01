@@ -166,19 +166,6 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
         return super.onOptionsItemSelected(item);
     }
 
-
-//    private void changeMenus(List<Integer> list) {
-//        if (null != menus) {
-//            for (int i = 0; i < menus.size(); i++) {
-//                if (list.contains(i)) {
-//                    menus.getItem(i).setVisible(true);
-//                } else {
-//                    menus.getItem(i).setVisible(false);
-//                }
-//            }
-//        }
-//    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);

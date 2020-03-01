@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ public class HPersonalFragment extends Fragment {
     public void initData() {
         ResponseListener listener = new ResponseListener();
         String url= Constant.URL_BASE+ Constant.USER_INFO_AJAX+"authorid="+getSharedPreferences().getString(Constant.ID,"");
+        Log.i("sjl","test"+url);
         CustomRequest req = new CustomRequest(getActivity(),listener,listener,null,url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
@@ -79,7 +81,7 @@ public class HPersonalFragment extends Fragment {
         rls=new ViewGroup[]{iconRL,regionRL,nameRL,genderRL,signatureRL,academyRL};
         headIcon=(TextView) view.findViewById(R.id.headIcon);
 
-        String userName=getSharedPreferences().getString(Constant.USERNAME,Constant.EMPTY);
+        String userName=getSharedPreferences().getString(Constant.USERNAME_V1,Constant.EMPTY);
         String id=getSharedPreferences().getString(Constant.ID,"0");
         CommonUtil.handlerHeadIcon(Integer.valueOf(id),headIcon,userName);
 

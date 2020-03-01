@@ -138,6 +138,19 @@
         <activity
             android:name=".college.NoticeActivity"
             android:label="@string/notice_title"></activity>
+        <activity
+            android:name=".article.ArticleListActivity1"
+            android:label="@string/article_list_title"></activity>
+        <activity
+            android:name=".article.ArticleListActivity2"
+            android:label="@string/article_list_title"></activity>
+        <activity
+            android:name=".article.ArticleListActivity3"
+            android:label="@string/article_list_title"></activity>
+        <activity
+            android:name=".article.ArticleListActivity4"
+            android:label="@string/article_list_title"></activity>
+
     </application>
 
 </manifest>
