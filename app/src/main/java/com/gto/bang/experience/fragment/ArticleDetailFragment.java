@@ -13,7 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
-import com.gto.bang.home.ArticleDetailActivity;
+import com.gto.bang.home.BaseDetailActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -47,7 +47,7 @@ public class ArticleDetailFragment extends Fragment {
 
     public void initDatas() {
         ResponseListener listener = new ResponseListener();
-        String id = ((ArticleDetailActivity) getActivity()).getArticleId();
+        String id = ((BaseDetailActivity) getActivity()).getArticleId();
         String url = Constant.URL_BASE + Constant.ARTICLE_DETAIL_AJAX + "id=" + (int) Double.valueOf(id).doubleValue();
         CustomRequest req = new CustomRequest(getActivity(), listener, listener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());

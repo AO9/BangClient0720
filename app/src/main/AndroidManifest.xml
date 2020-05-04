@@ -151,6 +151,10 @@
             android:name=".article.ArticleListActivity4"
             android:label="@string/article_list_title"></activity>
 
+        <activity
+            android:name=".home.BaseDetailActivity"
+            android:label="@string/tab_question"></activity>
+
     </application>
 
 </manifest>

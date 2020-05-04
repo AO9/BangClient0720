@@ -7,8 +7,8 @@ android {
         applicationId 'com.gto.bangbang'
         minSdkVersion 14
         targetSdkVersion 26
-        versionName "3.1.3"
-        versionCode 46
+        versionName "3.1.4"
+        versionCode 48
     }
     buildTypes {
         release {
@@ -40,6 +40,9 @@ android {
         }
         huawei {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+        }
+        qihumobile {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qihumobile"]
         }
     }
     //导入json的两个包之后  启动报错  网上搜索结果 需要增加如下配置即可

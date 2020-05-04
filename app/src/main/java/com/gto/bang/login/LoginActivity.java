@@ -166,7 +166,7 @@ public class LoginActivity extends BaseActivity {
                 userinfo = (Map<String, Object>) res.get("data");
                 String[] feilds = new String[]{Constant.ID, Constant.USERNAME_V1, Constant.PASSWORD,
                         Constant.PHONE, Constant.SCHOOL, Constant.EDUCATION, Constant.EMAIL, Constant.VIP, Constant.PROMPT,
-                        Constant.INFO, Constant.LEVEL_INSTRUCTION};
+                        Constant.INFO, Constant.LEVEL_INSTRUCTION, Constant.USERNAME};
                 // 缓存个人信息
                 Log.i("sjl", userinfo.toString());
                 handleUserInfo(userinfo, feilds);

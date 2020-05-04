@@ -3,6 +3,7 @@ package com.gto.bang.experience.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
-import com.gto.bang.home.ArticleDetailActivity;
+import com.gto.bang.home.BaseDetailActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -57,13 +58,12 @@ public class ArticleCommentFragment extends Fragment {
     public void initDatas() {
 
         String articleId = null;
-        if (getActivity() instanceof ArticleDetailActivity) {
-            articleId = ((ArticleDetailActivity) getActivity()).getArticleId();
+        if (getActivity() instanceof BaseDetailActivity) {
+            articleId = ((BaseDetailActivity) getActivity()).getArticleId();
         }
         ResponseListener listener = new ResponseListener();
-
-//        this.artType=((ArticleDetailActivity)getActivity()).getArtType();
-        String url = Constant.URL_BASE + Constant.COMMENT_LIST_AJAX + "type=" + Constant.TYPE_ARTICLE + "&startId=1&artId=" + articleId;
+        String url = Constant.URL_BASE + Constant.COMMENT_LIST + "&artId=" + articleId;
+        Log.i("sjl", "评论列表:" + url);
         CustomRequest req = new CustomRequest(getActivity(), listener, listener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
@@ -80,7 +80,6 @@ public class ArticleCommentFragment extends Fragment {
 
         @Override
         public void onResponse(Map<String, Object> res) {
-
             if (null == res.get("status") || !Constant.RES_SUCCESS.equals(res.get("status").toString())) {
                 t = Toast.makeText(getActivity(), Constant.REQUEST_ERROR, Toast.LENGTH_SHORT);
                 t.show();

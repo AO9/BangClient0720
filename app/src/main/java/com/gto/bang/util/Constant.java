@@ -29,7 +29,7 @@ public class Constant {
     public static final int PINFO_UPDATE_ACADAMY = 1005;
 
     public static int CALL_COMMENT_ACTIVITY = 1000;
-    public static String URL_BASE = "http://ababy.world/bangbang/";
+    public static String URL_BASE = "http://www.ababy.world/bangbang/";
     public static String SUBMMITING = "提交中";
     public static String SUBMMITTED = "已提交";
 
@@ -74,6 +74,7 @@ public class Constant {
 
     //评论列表
     public static final String COMMENT_LIST_AJAX = "getCommentList.ajax?";
+    public static final String COMMENT_LIST = "v1/comment/list?";
 
     public static final String RES_SUCCESS = "1";
 

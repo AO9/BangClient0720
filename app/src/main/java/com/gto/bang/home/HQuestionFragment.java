@@ -61,7 +61,9 @@ public class HQuestionFragment extends BaseRefreshFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), EMainActivity.class);
+//              Intent intent = new Intent(getActivity(), EMainActivity.class);
+                //问答改版 20200303
+                Intent intent = new Intent(getActivity(), BaseDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("id", datas.get(position).get("id").toString());
                 bundle.putString("artTitle", datas.get(position).get("title").toString());

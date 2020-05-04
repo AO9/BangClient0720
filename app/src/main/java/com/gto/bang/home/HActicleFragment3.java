@@ -80,9 +80,9 @@ public class HActicleFragment3 extends Fragment {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setEnabled(false);
-                        Log.i("sjl", "run before ");
+                        Log.i("sjl", "r  un before ");
                         initDatas(++pageNum, new ResponseListenerForRefresh());
-                        Log.i("sjl", "run after pageNum=" + pageNum);
+                        Log.i("sjl", "ru  n after pageNum=" + pageNum);
                     }
                 }).start();
             }

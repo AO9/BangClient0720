@@ -12,7 +12,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             >
 
@@ -32,7 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/withe"
-                android:paddingBottom="@dimen/common_sides_margin">
+                android:layout_marginBottom="@dimen/small_sides_margin"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,7 +50,9 @@
                 android:id="@+id/articleCommentFragment"
                 android:name="com.gto.bang.experience.fragment.ArticleCommentFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></fragment>
+                android:layout_height="match_parent">
+
+            </fragment>
         </LinearLayout>
     </ScrollView>
 
