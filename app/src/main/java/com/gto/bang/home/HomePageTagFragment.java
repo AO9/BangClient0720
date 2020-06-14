@@ -10,7 +10,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.article.ArticleListActivity;
 import com.gto.bang.article.ArticleListActivity1;
@@ -25,7 +29,9 @@ import com.gto.bang.create.CreateSupportActivity;
 import com.gto.bang.navigation.FeedbackActivity;
 import com.gto.bang.question.fragment.QuestionListActivity;
 import com.gto.bang.user.UserListActivity;
+import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
+import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
@@ -48,6 +54,41 @@ public class HomePageTagFragment extends Fragment {
     public HomePageTagFragment() {
     }
 
+    public class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
+        Toast t;
+
+        @Override
+        public void onErrorResponse(VolleyError arg0) {
+            t = Toast.makeText(getActivity(), Constant.REQUEST_ERROR, Toast.LENGTH_SHORT);
+            t.show();
+        }
+
+        @Override
+        public void onResponse(Map<String, Object> res) {
+
+            if (null == res.get("status") || !Constant.RES_SUCCESS.equals(res.get("status").toString())) {
+                String data = (null == res.get("data")) ? "null" : res.get("data").toString();
+                t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
+                t.show();
+            } else {
+                Map<String, String> noticeInfo = (Map<String, String>) res.get(Constant.DATA);
+                if (null != noticeInfo) {
+                    navigate.setText(noticeInfo.get(Constant.TITLE));
+                }
+            }
+
+        }
+    }
+
+
+    public void initBanner() {
+        ResponseListener listener = new ResponseListener();
+        String url = Constant.URL_BASE + Constant.NOTICE_URL;
+        CustomRequest req = new CustomRequest(getActivity(), listener, listener, null, url, Request.Method.GET);
+        req.setTag("首页Banner");
+        VolleyUtils.getRequestQueue(getActivity()).add(req);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -55,6 +96,7 @@ public class HomePageTagFragment extends Fragment {
         gridView = (GridView) rootView.findViewById(R.id.gridview);
         navigate = (TextView) rootView.findViewById(R.id.navigate);
         initClickEvents();
+        initBanner();
 
         return rootView;
     }
