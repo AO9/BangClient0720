@@ -11,10 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/sides_margin"
         android:layout_marginRight="@dimen/sides_margin"
-        android:layout_marginTop="@dimen/tv_top_margin"
+        android:layout_marginTop="@dimen/common_sides_margin"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="demo"
         android:textColor="@android:color/background_dark"
         android:textSize="@dimen/super_common_text_size"
         android:textStyle="bold" />
@@ -32,7 +31,6 @@
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="3"
-        android:text="content"
         android:textSize="@dimen/mid_common_text_size" />
 
     <LinearLayout
@@ -40,7 +38,6 @@
         android:layout_height="wrap_content"
         android:divider="@drawable/divider"
         android:showDividers="middle">
-
 
 
         <LinearLayout
@@ -53,19 +50,16 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_marginRight="@dimen/small_sides_margin"
+                android:gravity="left|center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:gravity="center|left"
-                    android:text="阅读:"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="@dimen/common_text_size" />
+                <ImageView
+                    android:layout_width="@dimen/image_icon_size"
+                    android:layout_height="@dimen/image_icon_size"
+                    android:layout_marginRight="@dimen/small_sides_margin"
+                    android:background="@drawable/viewtimes" />
 
                 <TextView
                     android:id="@+id/viewTimes"
@@ -78,30 +72,18 @@
                     android:textSize="@dimen/common_text_size" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/common_sides_margin"
-                android:ellipsize="end"
-                android:gravity="center|left"
-                android:text="|"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="@dimen/common_text_size" />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_marginRight="@dimen/small_sides_margin"
+                android:gravity="left|center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:gravity="center|left"
-                    android:text="评论:"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="@dimen/common_text_size" />
+                <ImageView
+                    android:layout_width="@dimen/image_icon_size"
+                    android:layout_height="@dimen/image_icon_size"
+                    android:layout_marginRight="@dimen/small_sides_margin"
+                    android:background="@drawable/comment" />
 
                 <TextView
                     android:id="@+id/commentNum"
@@ -114,30 +96,18 @@
                     android:textSize="@dimen/common_text_size" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/common_sides_margin"
-                android:ellipsize="end"
-                android:gravity="center|left"
-                android:text="|"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="@dimen/common_text_size" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="left|center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:gravity="center|left"
-                    android:text="点赞:"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="@dimen/common_text_size" />
+                <ImageView
+                    android:layout_width="@dimen/image_icon_size"
+                    android:layout_height="@dimen/image_icon_size"
+                    android:layout_marginRight="@dimen/small_sides_margin"
+                    android:background="@drawable/praise" />
 
                 <TextView
                     android:id="@+id/praise"

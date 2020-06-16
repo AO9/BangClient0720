@@ -9,12 +9,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/swipeLayout" >
+        <!--android:divider="@color/info_backgroud"-->
+        <!--android:dividerHeight="7dp"-->
     <ListView
         android:id="@+id/msgListView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:divider="@color/info_backgroud"
-        android:dividerHeight="7dp"
         android:visibility="gone"
         >
     </ListView>
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="亲，这里是空的 ^_^"
+            android:text="正在加载..."
             android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>

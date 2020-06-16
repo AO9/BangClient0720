@@ -30,7 +30,9 @@ import java.util.Map;
 
 /**
  * 20191116 好文详情页下面的评论列表
+ * 20200615 评论列表增加标签功能
  */
+
 public class ArticleCommentFragment extends Fragment {
 
     ListView listview;
@@ -132,6 +134,8 @@ public class ArticleCommentFragment extends Fragment {
                 holder.date = (TextView) convertView.findViewById(R.id.comment_date_tv);
                 holder.content = (TextView) convertView.findViewById(R.id.comment_content_tv);
                 holder.headIcon = (TextView) convertView.findViewById(R.id.comment_head_tv);
+                holder.topping = (TextView) convertView.findViewById(R.id.topping);
+                holder.highQuality = (TextView) convertView.findViewById(R.id.highQuality);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();//取出ViewHolder对象
@@ -140,13 +144,37 @@ public class ArticleCommentFragment extends Fragment {
             holder.date.setText(datas.get(position).get("createtime").toString());
             holder.content.setText(datas.get(position).get("content").toString());
 
-
             String idStr = datas.get(position).get("userId").toString();
             Integer authorId = Integer.valueOf(idStr);
             CommonUtil.handlerHeadIcon(authorId, holder.headIcon, datas.get(position).get("username").toString());
             CommonUtil.setOnClickListenerForPHomePage(idStr, getActivity(), holder.headIcon);
             CommonUtil.setOnClickListenerForPHomePage(idStr, getActivity(), holder.author);
+
+            holder.content.setText(datas.get(position).get("content").toString());
+            // 回答内容增加标签功能：暂时可支持置顶+优质
+            setTag(datas.get(position),holder);
+
             return convertView;
+        }
+
+    }
+
+    /**
+     * 评论内容增加标签功能：暂时可支持置顶+优质
+     * 现在主要用在回答功能
+     * @param map
+     * @param holder
+     * @date 20200615
+     */
+    public void setTag(Map<String, Object> map,ViewHolder holder ){
+
+        String[] keys = new String[]{"topping", "highQuality"};
+        TextView[] views = new TextView[]{holder.topping, holder.highQuality};
+        for (int i = 0; i < keys.length; i++) {
+            Object tem = map.get(keys[i]);
+            if (tem != null && String.valueOf(tem).equals("1")) {
+                views[i].setVisibility(View.VISIBLE);
+            }
         }
 
     }
@@ -156,6 +184,8 @@ public class ArticleCommentFragment extends Fragment {
         public TextView date;
         public TextView content;
         public TextView headIcon;
+        public TextView topping;
+        public TextView highQuality;
     }
 
     protected String getRequestTag() {

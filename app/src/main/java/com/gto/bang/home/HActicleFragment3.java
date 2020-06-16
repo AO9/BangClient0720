@@ -80,9 +80,7 @@ public class HActicleFragment3 extends Fragment {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setEnabled(false);
-                        Log.i("sjl", "r  un before ");
                         initDatas(++pageNum, new ResponseListenerForRefresh());
-                        Log.i("sjl", "ru  n after pageNum=" + pageNum);
                     }
                 }).start();
             }
@@ -131,7 +129,6 @@ public class HActicleFragment3 extends Fragment {
     public void initDatas(int pageNum, ResponseListener responseListener) {
         String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "type=8" + "&" +
                 Constant.PAGENUM + "=" + pageNum;
-        Log.i("sjl", "initDatas url=" + url);
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
         req.setTag(TAG);
         VolleyUtils.getRequestQueue(getActivity()).add(req);

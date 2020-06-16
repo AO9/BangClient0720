@@ -17,12 +17,10 @@ public class DiscoveryFragment extends BaseTabFragment {
 
     @Override
     public void init() {
-        this.titles = new String[]{getString(R.string.tab_question), getString(R.string.article), getString(R.string.tab_complaints)};
+        this.titles = new String[]{getString(R.string.tab_support), getString(R.string.article), getString(R.string.tab_complaints)};
         this.tabIds = new int[]{R.id.bang_e_section1, R.id.bang_e_section2, R.id.bang_e_section3};
-        this.fragments = new Class[]{HQuestionFragment.class,HActicleFragment.class, HComplaintsFragment.class};
+        this.fragments = new Class[]{HSupportFragment.class,HActicleFragment.class, HComplaintsFragment.class};
         this.tabNum = 3;
-
-//        HExperienceFragment 经验
     }
 
     @Override

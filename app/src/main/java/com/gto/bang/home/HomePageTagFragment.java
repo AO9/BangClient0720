@@ -3,6 +3,9 @@ package com.gto.bang.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +19,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
-import com.gto.bang.article.ArticleListActivity;
 import com.gto.bang.article.ArticleListActivity1;
 import com.gto.bang.article.ArticleListActivity2;
 import com.gto.bang.article.ArticleListActivity3;
 import com.gto.bang.article.ArticleListActivity4;
 import com.gto.bang.college.NoticeActivity;
 import com.gto.bang.create.CreateComplaintActivity;
-import com.gto.bang.create.CreateExperienceActivity;
 import com.gto.bang.create.CreateQuestionActivity;
 import com.gto.bang.create.CreateSupportActivity;
 import com.gto.bang.navigation.FeedbackActivity;
-import com.gto.bang.question.fragment.QuestionListActivity;
-import com.gto.bang.user.UserListActivity;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -97,7 +96,7 @@ public class HomePageTagFragment extends Fragment {
         navigate = (TextView) rootView.findViewById(R.id.navigate);
         initClickEvents();
         initBanner();
-
+//        initChildFragment();
         return rootView;
     }
 
@@ -111,7 +110,7 @@ public class HomePageTagFragment extends Fragment {
             }
         });
 
-        String name[] = {"红包求助","提问", "帮TA", "分享", "吐槽一下", "论文推荐", "反馈", "活跃榜","查重咨询","好文推荐","选题专区","硕士论文"};
+        String name[] = {"求助","提问", "动态", "反馈", "优质文章","查重咨询","选题专区","硕士论文"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -136,43 +135,43 @@ public class HomePageTagFragment extends Fragment {
                         intent = new Intent(getActivity(), CreateQuestionActivity.class);
                         startActivity(intent);
                         break;
+//                    case 2:
+//                        intent = new Intent(getActivity(), QuestionListActivity.class);
+//                        startActivity(intent);
+//                        break;
+//                    case 3:
+//                        intent = new Intent(getActivity(), CreateExperienceActivity.class);
+//                        startActivity(intent);
+//                        break;
                     case 2:
-                        intent = new Intent(getActivity(), QuestionListActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 3:
-                        intent = new Intent(getActivity(), CreateExperienceActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 4:
                         intent = new Intent(getActivity(), CreateComplaintActivity.class);
                         startActivity(intent);
                         break;
-                    case 5:
-                        intent = new Intent(getActivity(), ArticleListActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 6:
+//                    case 5:
+//                        intent = new Intent(getActivity(), ArticleListActivity.class);
+//                        startActivity(intent);
+//                        break;
+                    case 3:
                         intent = new Intent(getActivity(), FeedbackActivity.class);
                         startActivity(intent);
                         break;
-                    case 7:
-                        intent = new Intent(getActivity(), UserListActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 8:
+//                    case 7:
+//                        intent = new Intent(getActivity(), UserListActivity.class);
+//                        startActivity(intent);
+//                        break;
+                    case 4:
                         intent = new Intent(getActivity(), ArticleListActivity1.class);
                         startActivity(intent);
                         break;
-                    case 9:
+                    case 5:
                         intent = new Intent(getActivity(), ArticleListActivity2.class);
                         startActivity(intent);
                         break;
-                    case 10:
+                    case 6:
                         intent = new Intent(getActivity(), ArticleListActivity3.class);
                         startActivity(intent);
                         break;
-                    case 11:
+                    case 7:
                         intent = new Intent(getActivity(), ArticleListActivity4.class);
                         startActivity(intent);
                         break;
@@ -192,7 +191,9 @@ public class HomePageTagFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Log.d("--------onDestroy-","space destroy");
         VolleyUtils.getRequestQueue(getActivity()).cancelAll(getRequestTag());
+//        destroyFragment();
     }
 
     @Override
@@ -206,5 +207,32 @@ public class HomePageTagFragment extends Fragment {
         super.onPause();
         MobclickAgent.onPageEnd("每日一文");
     }
+
+
+//    HActicleFragment articlesFragment ;
+//    private void destroyFragment(){
+//        if(articlesFragment != null){
+//            Log.d("-------------------", "space no null");
+//            FragmentManager fragmentManager = getFragmentManager();
+//            if(fragmentManager != null && !fragmentManager.isDestroyed()){
+//                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
+//                if(fragmentTransaction != null){
+//                    fragmentTransaction.remove(articlesFragment).commit();
+//                    fragmentTransaction.commitAllowingStateLoss();
+//                    fragmentManager.executePendingTransactions();
+//                    Log.d("------------------","  space destroy");
+//                }
+//            }
+//        }
+//    }
+
+
+//    private void initChildFragment(){
+//        Log.d("-------------------","init space ");
+//        articlesFragment = (HActicleFragment)getFragmentManager().findFragmentById(R.id.articlesFragment);
+//        if(articlesFragment != null){
+//            Log.d("----------------","init space success and no null");
+//        }
+//    }
 
 }

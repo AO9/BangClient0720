@@ -2,203 +2,262 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/info_backgroud"
-    android:showDividers="middle"
-    >
+    android:orientation="vertical"
+    android:showDividers="middle">
 
     <LinearLayout
+        android:id="@+id/head_ll"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:id="@+id/head_ll"
-        android:background="@android:color/white"
         android:layout_marginTop="@dimen/info_item_margin_top"
-        android:orientation="horizontal"
-        >
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/headIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:background="@drawable/corner"
             android:gravity="center"
             android:textColor="@color/withe"
-            android:background="@drawable/corner"
-            android:textSize="@dimen/super_common_text_size"
-            android:layout_marginRight="@dimen/common_sides_margin"
-            />
+            android:textSize="@dimen/super_common_text_size" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
             android:id="@+id/userName"
-            android:textSize="@dimen/info_item_right_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textColor="@color/dark_green"
-            />
+            android:textSize="@dimen/info_item_right_text_size" />
 
-        </LinearLayout>
-
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/info_item_height"-->
-        <!--android:background="@android:color/white"-->
-        <!--android:layout_marginTop="@dimen/info_item_margin_top"-->
-        <!--android:orientation="horizontal">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_marginLeft="@dimen/sides_margin"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
-            <!--android:textSize="@dimen/info_item_left_text_size"-->
-            <!--android:text="论文币"/>-->
-        <!--<TextView-->
-            <!--android:id="@+id/coin"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_marginLeft="@dimen/sides_margin"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
-            <!--android:textSize="@dimen/info_item_left_text_size"-->
-            <!--/>-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_marginTop="@dimen/tv_top_margin"/>-->
-
-    <!--</LinearLayout>-->
+    </LinearLayout>
 
 
     <LinearLayout
+        android:id="@+id/coin"
         android:layout_width="match_parent"
         android:layout_height="@dimen/info_item_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/coin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="我的论文币"
+            android:textSize="@dimen/info_item_left_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:id="@+id/mine_experience"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/info_item_margin_top"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:textSize="@dimen/info_item_left_text_size"
-            android:text="我的经验"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/tv_top_margin" />
-
-    </LinearLayout>
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/info_item_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/question" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="我的提问"
+            android:textSize="@dimen/info_item_left_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/mine_answer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
         android:background="@android:color/white"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/support" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/sides_margin"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:textSize="@dimen/info_item_left_text_size"
-            android:text="我的问答"/>
+            android:text="我的求助"
+            android:textSize="@dimen/info_item_left_text_size" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_marginTop="@dimen/tv_top_margin"
-            />
+            android:layout_weight="1" />
 
     </LinearLayout>
 
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/info_item_height"-->
-        <!--android:layout_marginTop="@dimen/info_item_margin_top"-->
-        <!--android:id="@+id/setting_ll"-->
-        <!--android:background="@android:color/white"-->
-        <!--android:orientation="horizontal"-->
-        <!--&gt;-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_marginLeft="@dimen/sides_margin"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
-            <!--android:textSize="@dimen/info_item_left_text_size"-->
-            <!--android:text="设置"/>-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_marginTop="@dimen/tv_top_margin"-->
-            <!--/>-->
+    <LinearLayout
+        android:id="@+id/collection"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
 
-    <!--</LinearLayout>-->
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/collection" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="我的收藏"
+            android:textSize="@dimen/info_item_left_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/setting" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="设置"
+            android:textSize="@dimen/info_item_left_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 
     <LinearLayout
 
+        android:id="@+id/feedback_ll"
         android:layout_width="match_parent"
         android:layout_height="@dimen/info_item_height"
-        android:id="@+id/feedback_ll"
         android:layout_marginTop="@dimen/info_item_margin_top"
         android:background="@android:color/white"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/feedback" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/sides_margin"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:textSize="@dimen/info_item_left_text_size"
             android:maxLines="1"
-            android:text="反馈意见"/>
+            android:text="反馈"
+            android:textSize="@dimen/info_item_left_text_size" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_marginTop="@dimen/tv_top_margin"
-            />
+            android:layout_weight="1" />
 
     </LinearLayout>
 
     <LinearLayout
 
+        android:id="@+id/about_ll"
         android:layout_width="match_parent"
         android:layout_height="@dimen/info_item_height"
-        android:id="@+id/about_ll"
         android:background="@android:color/white"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/about" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/sides_margin"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:textSize="@dimen/info_item_left_text_size"
             android:maxLines="1"
-            android:text="关于"/>
+            android:text="关于"
+            android:textSize="@dimen/info_item_left_text_size" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_marginTop="@dimen/tv_top_margin"
-            />
+            android:layout_weight="1" />
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>

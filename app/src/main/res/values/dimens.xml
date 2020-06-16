@@ -24,6 +24,9 @@
     <dimen name="info_item_margin_top">20dp</dimen>
     <dimen name="info_item_left_text_size">17dp</dimen>
     <dimen name="info_item_right_text_size">15dp</dimen>
+    <dimen name="image_icon_size">15dp</dimen>
+    <dimen name="image_icon_big_size">20dp</dimen>
+
 
     <dimen name="tab_text_size">14dp</dimen>
     <dimen name="small_text_size">11dp</dimen>

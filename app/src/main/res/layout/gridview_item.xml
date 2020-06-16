@@ -2,17 +2,16 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:orientation="vertical"
+    android:layout_height="50dp"
     android:background="@color/withe"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="考一考"
-        android:textSize="@dimen/info_item_left_text_size" />
+        android:textSize="@dimen/info_item_right_text_size"
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -41,7 +42,7 @@ import java.util.Set;
 public class MainActivity extends BaseActivity implements TabHost.OnTabChangeListener, ActionBar.OnNavigationListener {
 
     public static final String TAB_HOMEPAGE = "TAB_HOMEPAGE";
-    public static final String TAB_SUPPORT = "TAB_SUPPORT";
+    public static final String TAB_QUESTION = "TAB_QUESTION";
     public static final String TAB_DISCOVERY = "TAB_DISCOVERY";
     public static final String TAB_MESSAGE = "TAB_MESSAGE";
     public static final String TAB_MINE = "TAB_MINE";
@@ -72,11 +73,11 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.tabContent);
         mTabHost.setOnTabChangedListener(this);
-        addTab(inflater, TAB_HOMEPAGE, HomePageTagFragment.class, R.drawable.icon, R.string.tab_homepage);
-        addTab(inflater, TAB_DISCOVERY, DiscoveryFragment.class, R.drawable.icon, R.string.tab_discovery);
-        addTab(inflater, TAB_SUPPORT, HSupportFragment.class, R.drawable.icon, R.string.tab_support);
-        addTab(inflater, TAB_MESSAGE, HMessageFragment.class, R.drawable.icon, R.string.tab_message);
-        addTab(inflater, TAB_MINE, HMineFragment.class, R.drawable.icon, R.string.tab_mine);
+        addTab(inflater, TAB_HOMEPAGE, HomePageTagFragment.class, R.drawable.home, R.string.tab_homepage);
+        addTab(inflater, TAB_DISCOVERY, DiscoveryFragment.class, R.drawable.discover, R.string.tab_discovery);
+        addTab(inflater, TAB_QUESTION, HQuestionFragment.class, R.drawable.question, R.string.tab_question);
+        addTab(inflater, TAB_MESSAGE, HMessageFragment.class, R.drawable.message, R.string.tab_message);
+        addTab(inflater, TAB_MINE, HMineFragment.class, R.drawable.mine, R.string.tab_mine);
         mTabHost.getTabWidget().setDividerDrawable(null);
 
         String info = getSharedPreferences().getString(Constant.INFO, "");
@@ -88,9 +89,9 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
     public void addTab(LayoutInflater inflater, String tag, Class clss, int icon, int title) {
         View indicator = inflater.inflate(R.layout.tab_item,
                 mTabHost.getTabWidget(), false);
-//        ImageView imgView = (ImageView) indicator.findViewById(R.id.tabIcon);
+        ImageView imgView = (ImageView) indicator.findViewById(R.id.tabIcon);
         TextView titleView = (TextView) indicator.findViewById(R.id.tabTitle);
-//        imgView.setImageResource(icon);
+        imgView.setImageResource(icon);
         titleView.setText(title);
         mTabHost.addTab(mTabHost.newTabSpec(tag).setIndicator(indicator), clss,
                 null);
@@ -124,6 +125,8 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
             ((TextView) view.findViewById(R.id.tabNum)).setText("");
         } else if (TAB_MINE.equals(tabId)) {
             getActionBar().setTitle(R.string.tab_mine);
+        }else if (TAB_QUESTION.equals(tabId)) {
+            getActionBar().setTitle(R.string.tab_question);
         }
         //不重绘 否则menu不能隐藏
 //        invalidateOptionsMenu();

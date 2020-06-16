@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@android:color/white"
+        android:layout_marginLeft="@dimen/sides_margin"
+        android:gravity="left|center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sides_margin"
+            android:text="我的论文币"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[当前论文币] 0个 "/>
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[已提现论文币] 0个 "/>
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[本质]论文币是您在本站贡献的变现"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[实践]当您在'回答'板块的评论内容被管理员判定为 优质+置顶 时，您可以获得5个论文币"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[价值]每5个论文币可联系官方微信账号提现5元现金"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[官微] lwb20191202"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -8,10 +8,10 @@
     android:orientation="vertical"
     android:showDividers="middle">
 
-    <ListView
+    <com.gto.bang.component.ListViewCustom
         android:id="@+id/bang_c_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"></com.gto.bang.component.ListViewCustom>
 
     <TextView
         android:id="@+id/comment_tips"
@@ -20,6 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="190dp"
+        android:gravity="center_vertical|center_horizontal"
         android:text="暂无，快来发表你的评论吧"
         android:textColor="@android:color/darker_gray" />
 

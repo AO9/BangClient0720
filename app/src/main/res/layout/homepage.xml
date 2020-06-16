@@ -7,11 +7,12 @@
     android:orientation="vertical"
     android:showDividers="middle">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="1dp"
         android:layout_marginBottom="3dp"
+        android:layout_marginTop="1dp"
         android:background="@color/color_theme"
         android:divider="@drawable/divider"
         android:orientation="vertical"
@@ -22,41 +23,43 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textColor="@color/withe"
             android:lineSpacingExtra="10dp"
-            android:text="[版本更新早报]"
+            android:textColor="@color/withe"
             android:textSize="17dp"
             android:typeface="sans" />
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@drawable/divider"
         android:orientation="vertical"
+        android:layout_marginTop="@dimen/small_sides_margin"
         android:showDividers="middle">
 
         <GridView
             android:id="@+id/gridview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnWidth="60dp"
+            android:columnWidth="30dp"
             android:horizontalSpacing="2dp"
             android:numColumns="4"
             android:stretchMode="columnWidth"
             android:verticalSpacing="2dp" />
     </LinearLayout>
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/withe">-->
-        <!--<fragment-->
-            <!--android:id="@+id/articleDetailFragment"-->
-            <!--android:name="com.gto.bang.home.HActicleFragment"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"></fragment>-->
-    <!--</LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_sides_margin"
+        android:background="@color/withe">
 
+        <fragment
+
+            android:name="com.gto.bang.home.HActicleFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></fragment>
+    </LinearLayout>
 
 </LinearLayout>

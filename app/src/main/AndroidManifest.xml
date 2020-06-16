@@ -107,6 +107,10 @@
             android:label="@string/help"></activity>
         <activity android:name=".act.BangerListActivity"></activity>
         <activity
+            android:name=".navigation.WalletActivity"
+            android:label="@string/help"></activity>
+        <!--<activity android:name=".act.BangerListActivity"></activity>-->
+        <activity
             android:name=".college.SalonActivity"
             android:label="@string/help">
 

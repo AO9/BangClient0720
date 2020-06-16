@@ -22,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
+import com.gto.bang.base.BaseRefreshFragment;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.JsonUtil;
 import com.gto.bang.util.VolleyUtils;
