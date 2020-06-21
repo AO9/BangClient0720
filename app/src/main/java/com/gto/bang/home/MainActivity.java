@@ -22,6 +22,8 @@ import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
 import com.gto.bang.navigation.AboutActivity;
 import com.gto.bang.navigation.FeedbackActivity;
+import com.gto.bang.question.fragment.QuestionTabFragment;
+import com.gto.bang.search.SearchActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -75,7 +77,7 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
         mTabHost.setOnTabChangedListener(this);
         addTab(inflater, TAB_HOMEPAGE, HomePageTagFragment.class, R.drawable.home, R.string.tab_homepage);
         addTab(inflater, TAB_DISCOVERY, DiscoveryFragment.class, R.drawable.discover, R.string.tab_discovery);
-        addTab(inflater, TAB_QUESTION, HQuestionFragment.class, R.drawable.question, R.string.tab_question);
+        addTab(inflater, TAB_QUESTION, QuestionTabFragment.class, R.drawable.question, R.string.tab_question);
         addTab(inflater, TAB_MESSAGE, HMessageFragment.class, R.drawable.message, R.string.tab_message);
         addTab(inflater, TAB_MINE, HMineFragment.class, R.drawable.mine, R.string.tab_mine);
         mTabHost.getTabWidget().setDividerDrawable(null);
@@ -163,6 +165,10 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
                 return true;
             case R.id.action_feedback:
                 intent = new Intent(this, FeedbackActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_search:
+                intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
                 return true;
         }

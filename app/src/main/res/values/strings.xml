@@ -3,6 +3,10 @@
 
     <string name="app_name">论文帮</string>
 
+    <string name="back">返回</string>
+
+    <!--分割线，上面是20200620后编辑过内容，逐步过滤出不再使用的内容-->
+
     <string name="action_login">登录</string>
     <string name="action_register">注册</string>
 
@@ -15,6 +19,8 @@
     <string name="one_title">每日一文</string>
     <string name="tab_complaints">动态</string>
     <string name="tab_question">问答</string>
+    <string name="tab_new">最新</string>
+    <string name="tab_reccoment">推荐</string>
     <string name="tab_experience">经验</string>
 
     <string name="tab_1">求助</string>
@@ -43,11 +49,12 @@
     <string name="bang_detail">详情</string>
     <string name="bang_question">问答详情</string>
     <string name="bang_experience">经验详情</string>
-    <string name="bang_back">返回</string>
+
     <string name="bang_comment">评论列表</string>
     <string name="bang_answer">回答列表</string>
     <string name="bang_complaint">回复列表</string>
     <string name="bang_write_comment">写评论</string>
+    <string name="write_answer">回答</string>
     <string name="bang_send">发送</string>
 
     <string name="bang_create_experience">分享经验</string>
@@ -59,6 +66,7 @@
     <string name="create_question">我要提问</string>
     <string name="create_complaint">我要吐槽</string>
     <string name="create_product">提供帮助</string>
+    <string name="search">搜索</string>
 
     <string name="action_feedback">反馈</string>
     <string name="bang_about">关于</string>
@@ -66,7 +74,7 @@
 
     <string name="action_experience">发布经验</string>
 
-    <string name="action_logout">注销</string>
+    <string name="action_logout">退出</string>
 
     <string name="action_detail">详情</string>
 

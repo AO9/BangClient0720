@@ -48,6 +48,7 @@ public class HComplaintsFragment extends BaseRefreshFragment {
 
     @Override
     public void refreshView(List<Map<String, Object>> datas) {
+        this.datas=datas;
         this.listView.setAdapter(new MyAdapter(getActivity(),datas));
     }
 
@@ -84,6 +85,8 @@ public class HComplaintsFragment extends BaseRefreshFragment {
                 }).start();
             }
         });
+
+        setRequestTag("ARTICLE_COMPLAINTS_LIST_REQUEST");
         return rootView;
     }
 
@@ -115,7 +118,7 @@ public class HComplaintsFragment extends BaseRefreshFragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             }else{
-                datas = (List<Map<String, Object>> )res.get("data");
+                datas = parseResponseForDatas(res);
                 if(CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);
@@ -130,9 +133,6 @@ public class HComplaintsFragment extends BaseRefreshFragment {
                 }
             }
         }
-    }
-    protected String getRequestTag(){
-        return "ARTICLE_COMPLAINTS_LIST_REQUEST";
     }
 
     @Override

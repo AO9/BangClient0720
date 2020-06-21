@@ -21,7 +21,7 @@ import com.gto.bang.R;
 import com.gto.bang.base.BaseRefreshFragment;
 import com.gto.bang.base.BaseResponseListenerForRefresh;
 import com.gto.bang.base.ResponseListener;
-import com.gto.bang.experience.EMainActivity;
+import com.gto.bang.question.fragment.QuestionDetailActivity;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -36,7 +36,7 @@ import java.util.Map;
  * 2019年2月11日更新
  * title信息改成describe字段
  */
-public class HQuestionFragment extends BaseRefreshFragment {
+public abstract class HQuestionFragment extends BaseRefreshFragment {
 
     ListView listView;
     List<Map<String, Object>> datas;
@@ -48,22 +48,31 @@ public class HQuestionFragment extends BaseRefreshFragment {
     public HQuestionFragment() {
     }
 
+    // 热门还是最新
+    public abstract String getArticleType();
+
+    /**
+     * 父类抽象方法
+     * @param datas
+     */
     @Override
     public void refreshView(List<Map<String, Object>> datas) {
-        this.listView.setAdapter(new MyAdapter(getActivity(),datas));
+        // 将本地的datas数据更新，否则点击查看详情时跳转的不正确
+        this.datas=datas;
+        this.listView.setAdapter(new MyAdapter(getActivity(), datas));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        setRequestTag(TAG);
         View rootView = inflater.inflate(R.layout.fragment_main_v1, container, false);
         listView = (ListView) rootView.findViewById(R.id.msgListView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //              Intent intent = new Intent(getActivity(), EMainActivity.class);
-                //问答改版 20200303
-                Intent intent = new Intent(getActivity(), BaseDetailActivity.class);
+                //问答改版 20200619
+                Intent intent = new Intent(getActivity(), QuestionDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("id", datas.get(position).get("id").toString());
                 bundle.putString("artTitle", datas.get(position).get("title").toString());
@@ -82,7 +91,7 @@ public class HQuestionFragment extends BaseRefreshFragment {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setEnabled(false);
-                        initDatas(++pageNum, new BaseResponseListenerForRefresh(getActivity(),mHandler));
+                        initDatas(++pageNum, new BaseResponseListenerForRefresh(getActivity(), mHandler));
                         Log.i("sjl", "sendEmptyMessage after ");
                     }
                 }).start();
@@ -94,17 +103,19 @@ public class HQuestionFragment extends BaseRefreshFragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        initDatas(pageNum,new MyResponseListener());
+        initDatas(pageNum, new MyResponseListener());
     }
 
+
     public void initDatas(int pageNum, ResponseListener responseListener) {
-        String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "pageNum=" + pageNum + "&type=" + Constant.TYPE_QUESTION;
+        String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "pageNum=" + pageNum;
+        url = url + "&type=" + getArticleType() + "&userId=" + getUserId();
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
-    public class MyResponseListener extends ResponseListener{
+    public class MyResponseListener extends ResponseListener {
         Toast t;
 
         @Override
@@ -120,7 +131,7 @@ public class HQuestionFragment extends BaseRefreshFragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-                datas = (List<Map<String, Object>>) res.get("data");
+                datas = parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);
@@ -135,10 +146,6 @@ public class HQuestionFragment extends BaseRefreshFragment {
                 }
             }
         }
-    }
-
-    protected String getRequestTag() {
-        return TAG;
     }
 
     @Override

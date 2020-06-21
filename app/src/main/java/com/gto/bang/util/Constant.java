@@ -13,6 +13,10 @@ public class Constant {
 
     public static final String PAGENUM= "pageNum";
     public static final String ANDROID_ID= "androidId";
+    public static final String ARTICLEID= "articleId";
+    public static final int ARTICLETYPE_HOT= 1;
+    public static final String ARTICLETYPE_RECCOMMEND= "1";
+    public static final String ARTICLETYPE_NEW= "2";
 
 
     //红包问答
@@ -32,6 +36,14 @@ public class Constant {
     public static String URL_BASE = "http://www.ababy.world/bangbang/";
     public static String SUBMMITING = "提交中";
     public static String SUBMMITTED = "已提交";
+
+    public static final String URL_SEPARATOR = "?";
+    public static final String URL_PARAM_SEPARATOR = "&";
+    public static final String URL_EQUAL = "=";
+
+    // 评论点赞 关注 (收藏)
+    public static final String QUESTION_PRAISE_URL = "v2/comment/praise";
+    public static final String QUESTION_COLLECTION_URL = "v2/comment/collection";
 
     public static final String LOGIN_URL = "/v1/user/login";
     public static final String REGISTER_URL = "/v1/user/register";
@@ -55,7 +67,11 @@ public class Constant {
     public static final String COMMENT_CREATE_AJAX = "cCreate.ajax";
     public static final String UPDATE_PERSION_INFO_AJAX = "user/update.ajax";
     //获取文章列表 经验｜问答 列表数据
-    public static final String ARTICLE_LIST_AJAX = "getArticleList.ajax?";
+//    public static final String ARTICLE_LIST_AJAX = "getArticleList.ajax?";
+    // 0619改版 使用新接口
+    public static final String ARTICLE_LIST_AJAX = "v1/article/list?pageSize=10&";
+
+
     public static final String SALON_VIEW_URL = "salon/view?";
     //文章详情
     public static final String ARTICLE_DETAIL_AJAX = "getArticleDetail.ajax?";
@@ -80,6 +96,10 @@ public class Constant {
 
     //基本信息配置文件名称
     public static final String DB = "bang";
+    public static final String LOG_TAG = "sjl";
+    public static final String NEWWORD_ERROR_TIPS = "网络异常，请稍后再试";
+    public static final String SEVER_ERROR_TIPS = "服务器繁忙，请稍后再试";
+
 
     //常用字段
     public static final String STATUS = "status";

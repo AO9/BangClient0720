@@ -3,7 +3,6 @@ package com.gto.bang.experience.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.home.BaseDetailActivity;
+import com.gto.bang.question.fragment.QuestionDetailActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -45,8 +45,16 @@ public class ArticleCommentFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView;
+        int resource;
 
-        View rootView = inflater.inflate(R.layout.comment_list, container, false);
+        if (getActivity() instanceof QuestionDetailActivity) {
+            resource=R.layout.question_comment_list;
+        }else{
+            resource=R.layout.comment_list;
+        }
+
+        rootView = inflater.inflate(resource, container, false);
         listview = (ListView) rootView.findViewById(R.id.bang_c_listview);
         return rootView;
     }
@@ -63,9 +71,12 @@ public class ArticleCommentFragment extends Fragment {
         if (getActivity() instanceof BaseDetailActivity) {
             articleId = ((BaseDetailActivity) getActivity()).getArticleId();
         }
+
+        if (getActivity() instanceof QuestionDetailActivity) {
+            articleId = ((QuestionDetailActivity) getActivity()).getArticleId();
+        }
         ResponseListener listener = new ResponseListener();
         String url = Constant.URL_BASE + Constant.COMMENT_LIST + "&artId=" + articleId;
-        Log.i("sjl", "评论列表:" + url);
         CustomRequest req = new CustomRequest(getActivity(), listener, listener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);

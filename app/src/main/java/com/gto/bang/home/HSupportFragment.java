@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
+import com.gto.bang.base.BaseFragment;
 import com.gto.bang.question.fragment.SupportDetailActivity;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.JsonUtil;
@@ -39,15 +39,13 @@ import java.util.Map;
  * 2019年06月02日
  * 增加论文帮页面-红包问答
  */
-public class HSupportFragment extends Fragment {
+public class HSupportFragment extends BaseFragment {
 
     ListView listView;
     List<Map<String, Object>> datas;
     View rootView;
     SwipeRefreshLayout swipeRefreshLayout;
     int pageNum = 1;
-
-    public static final String TAG = "HSupportFragment";
 
     public HSupportFragment() {
     }
@@ -72,7 +70,7 @@ public class HSupportFragment extends Fragment {
         });
         this.rootView = rootView;
 
-
+        setRequestTag("HSupportFragment");
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeLayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -102,6 +100,7 @@ public class HSupportFragment extends Fragment {
     public void initDatas(int pageNum, ResponseListener responseListener) {
         String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "pageNum="+pageNum+"&type=" +Constant.TYPE_SUPPORT;
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
+
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
@@ -122,7 +121,7 @@ public class HSupportFragment extends Fragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-                datas = (List<Map<String, Object>>) res.get("data");
+                datas = parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);
@@ -137,10 +136,6 @@ public class HSupportFragment extends Fragment {
                 }
             }
         }
-    }
-
-    protected String getRequestTag() {
-        return TAG;
     }
 
     @Override
@@ -243,7 +238,7 @@ public class HSupportFragment extends Fragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-                datas = (List<Map<String, Object>>) res.get("data");
+                datas = parseResponseForDatas(res);
                 try {
                     Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
 

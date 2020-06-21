@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_write_comment"
         android:orderInCategory="100"
-        android:title="回答"
+        android:title="@string/write_answer"
         android:textSize="@dimen/mid_common_text_size"
         app:showAsAction="always"/>
 </menu>

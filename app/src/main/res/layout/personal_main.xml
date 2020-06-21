@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/info_backgroud"
     android:orientation="vertical"
+    android:divider="@drawable/divider"
     android:showDividers="middle">
 
     <LinearLayout

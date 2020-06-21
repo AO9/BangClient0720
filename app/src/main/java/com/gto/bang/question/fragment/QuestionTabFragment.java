@@ -1,26 +1,30 @@
-package com.gto.bang.home;
+package com.gto.bang.question.fragment;
 
 import com.gto.bang.R;
 import com.gto.bang.base.BaseTabFragment;
+import com.gto.bang.home.HActicleFragment;
+import com.gto.bang.home.HComplaintsFragment;
+import com.gto.bang.home.HQuestionFragment;
+import com.gto.bang.home.HSupportFragment;
 import com.gto.bang.util.VolleyUtils;
 import com.umeng.analytics.MobclickAgent;
 
 /**
  * 首页
  */
-public class DiscoveryFragment extends BaseTabFragment {
+public class QuestionTabFragment extends BaseTabFragment {
 
     public static String TAG = "首页TAB";
 
-    public DiscoveryFragment() {
+    public QuestionTabFragment() {
     }
 
     @Override
     public void init() {
-        this.titles = new String[]{getString(R.string.article),getString(R.string.tab_support), getString(R.string.tab_complaints)};
-        this.tabIds = new int[]{R.id.bang_e_section1, R.id.bang_e_section2, R.id.bang_e_section3};
-        this.fragments = new Class[]{HActicleFragment.class,HSupportFragment.class, HComplaintsFragment.class};
-        this.tabNum = 3;
+        this.titles = new String[]{getString(R.string.tab_new),getString(R.string.tab_reccoment)};
+        this.tabIds = new int[]{R.id.bang_e_section1, R.id.bang_e_section2};
+        this.fragments = new Class[]{NewQuestionFragment.class,ReccomendQuestionFragment.class};
+        this.tabNum = 2;
     }
 
     @Override

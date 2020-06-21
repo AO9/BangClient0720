@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <fragment
+                    android:id="@+id/articleDetailFragment"
+                    android:name="com.gto.bang.question.fragment.QuestionDetailFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></fragment>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="96.45"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/small_sides_margin"
+                android:orientation="vertical">
+
+
+
+                <fragment
+                    android:id="@+id/articleCommentFragment"
+                    android:name="com.gto.bang.experience.fragment.ArticleCommentFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                </fragment>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

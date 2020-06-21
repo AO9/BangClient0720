@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
+import com.gto.bang.base.BaseFragment;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.JsonUtil;
 import com.gto.bang.util.VolleyUtils;
@@ -39,7 +39,7 @@ import java.util.Map;
  * 推荐好文
  * 暂时使用经验的链接type=5
  */
-public class HActicleFragment1 extends Fragment {
+public class HActicleFragment1 extends BaseFragment {
 
     ListView listView;
     List<Map<String, Object>> datas;
@@ -57,7 +57,7 @@ public class HActicleFragment1 extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         listView = (ListView) rootView.findViewById(R.id.msgListView);
-
+        setRequestTag(TAG);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

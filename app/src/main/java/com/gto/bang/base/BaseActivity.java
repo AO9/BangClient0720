@@ -1,6 +1,7 @@
 package com.gto.bang.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -13,6 +14,11 @@ import com.gto.bang.util.Constant;
  * Created by user on 16/5/5.
  */
 public class BaseActivity extends ActionBarActivity {
+
+
+    public Context getContext() {
+        return null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

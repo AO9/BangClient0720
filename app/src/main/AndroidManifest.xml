@@ -23,10 +23,10 @@
         android:theme="@style/AppBaseTheme">
         <activity
             android:name=".navigation.AboutActivity"
-            android:label="@string/bang_back"></activity>
+            android:label="@string/back"></activity>
         <activity
             android:name=".navigation.FeedbackActivity"
-            android:label="@string/bang_back"></activity>
+            android:label="@string/back"></activity>
         <activity
             android:name=".home.MainActivity"
             android:label="@string/app_name"></activity>
@@ -36,22 +36,22 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".create.CreateQuestionActivity"
-            android:label="@string/bang_back"
+            android:label="@string/back"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".create.CreateExperienceActivity"
-            android:label="@string/bang_back"
+            android:label="@string/back"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".create.CreateComplaintActivity"
-            android:label="@string/bang_back"
+            android:label="@string/back"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".create.CreateProductActivity"
-            android:label="@string/bang_back" />
+            android:label="@string/back" />
         <activity
             android:name=".experience.EMainActivity"
-            android:label="@string/bang_back" />
+            android:label="@string/back" />
         <activity
             android:name=".register.RegisterActivity"
             android:label="@string/action_register"
@@ -71,19 +71,19 @@
             android:label="@string/bang_pmessage"></activity>
         <activity
             android:name=".personal.activity.PInputActivity"
-            android:label="@string/bang_back"></activity>
+            android:label="@string/back"></activity>
         <activity
             android:name=".personal.activity.PExperienceActivity"
             android:label="@string/bang_pexperience"></activity>
         <activity
             android:name=".personal.activity.PNoticeActivity"
-            android:label="@string/bang_back"></activity>
+            android:label="@string/back"></activity>
         <activity
             android:name=".home.HBangWriteActivity"
             android:label="@string/action_bang_writer"></activity>
         <activity
             android:name=".education.EducationSelectActivity"
-            android:label="@string/bang_back"></activity>
+            android:label="@string/back"></activity>
         <activity
             android:name=".personal.activity.PQuestionActivity"
             android:label="@string/bang_pquestion"></activity>
@@ -104,15 +104,25 @@
             android:label="@string/article"></activity>
         <activity
             android:name=".question.fragment.SupportDetailActivity"
-            android:label="@string/help"></activity>
+            android:label="@string/back"></activity>
         <activity android:name=".act.BangerListActivity"></activity>
         <activity
             android:name=".navigation.WalletActivity"
-            android:label="@string/help"></activity>
+            android:label="@string/wallet"></activity>
         <!--<activity android:name=".act.BangerListActivity"></activity>-->
         <activity
             android:name=".college.SalonActivity"
             android:label="@string/help">
+
+        </activity>
+        <activity
+            android:name=".search.SearchActivity"
+            android:label="@string/back">
+
+        </activity>
+        <activity
+            android:name=".question.fragment.QuestionDetailActivity"
+            android:label="@string/back">
 
         </activity>
 

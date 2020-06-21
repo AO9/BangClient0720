@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
-import com.gto.bang.base.BaseRefreshFragment;
+import com.gto.bang.base.BaseFragment;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.JsonUtil;
 import com.gto.bang.util.VolleyUtils;
@@ -40,7 +39,7 @@ import java.util.Map;
  * 推荐好文
  * 暂时使用经验的链接type=5
  */
-public class HActicleFragment extends Fragment {
+public class HActicleFragment extends BaseFragment {
 
     ListView listView;
     List<Map<String, Object>> datas;
@@ -127,9 +126,17 @@ public class HActicleFragment extends Fragment {
         initDatas(pageNum, new ResponseListener());
     }
 
+    /**
+     * 20200619 增加userId字段，同时使用新接口
+     *
+     * @param pageNum
+     * @param responseListener
+     */
     public void initDatas(int pageNum, ResponseListener responseListener) {
+
+        String userId = getUserId();
         String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "type=" + Constant.TYPE_ARTICLE + "&" +
-                Constant.PAGENUM + "=" + pageNum;
+                Constant.PAGENUM + "=" + pageNum + "&userId=" + userId + "&articleType=" + Constant.ARTICLETYPE_HOT;
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
         req.setTag(TAG);
         VolleyUtils.getRequestQueue(getActivity()).add(req);
@@ -153,14 +160,7 @@ public class HActicleFragment extends Fragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-
-                datas = (List<Map<String, Object>>) res.get("data");
-                try {
-                    Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+                datas=parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);
@@ -277,7 +277,7 @@ public class HActicleFragment extends Fragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-                List<Map<String, Object>> tem = (List<Map<String, Object>>) res.get("data");
+                List<Map<String, Object>> tem = parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(tem)) {
                     datas = tem;
                 } else {

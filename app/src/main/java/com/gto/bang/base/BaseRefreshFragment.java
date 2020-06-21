@@ -2,7 +2,6 @@ package com.gto.bang.base;
 
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,10 +16,9 @@ import java.util.Map;
 /**
  *
  */
-public abstract class BaseRefreshFragment extends Fragment {
+public abstract class BaseRefreshFragment extends BaseFragment {
 
     public SwipeRefreshLayout swipeRefreshLayout;
-
 
     public BaseRefreshFragment() {
     }

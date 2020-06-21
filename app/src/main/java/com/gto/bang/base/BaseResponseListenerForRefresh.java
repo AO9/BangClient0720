@@ -44,11 +44,12 @@ public class BaseResponseListenerForRefresh extends ResponseListener {
             t = Toast.makeText(context, data, Toast.LENGTH_SHORT);
             t.show();
         } else {
-            List<Map<String, Object>> datas = (List<Map<String, Object>>) res.get("data");
+            Map<String, Object> data = (Map<String, Object>) res.get("data");
+            List<Map<String, Object>> datas = (List<Map<String, Object>>) data.get("list");
             try {
                 Message message = new Message();
-                message.what=SUCCESS;
-                message.obj=datas;
+                message.what = SUCCESS;
+                message.obj = datas;
                 Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
                 this.callbackHandler.sendMessage(message);
             } catch (IOException e) {
