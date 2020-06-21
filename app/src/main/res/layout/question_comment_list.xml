@@ -1,0 +1,48 @@
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:background="@color/withe"--><!--android:layout_height="match_parent">-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <com.gto.bang.component.ListViewCustom
+        android:id="@+id/bang_c_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.gto.bang.component.ListViewCustom>
+
+    <LinearLayout
+        android:id="@+id/comment_tips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginTop="@dimen/small_sides_margin"
+            android:text="还没有人回答~快去帮帮TA人吧!"
+            android:textSize="12dp"
+            android:textColor="@android:color/darker_gray" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/small_sides_margin"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:textSize="12dp"
+            android:text="说明:被管理员判定为优质的回答内容可得5个论文币哦\n论文币可提现见[我的]板块相关说明."
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+
+
+</LinearLayout>

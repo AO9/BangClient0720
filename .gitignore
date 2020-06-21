@@ -1,0 +1,11 @@
+### IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.mvn
+mvnw*
+build/
+gradle/
+.gradle
+*.apk
