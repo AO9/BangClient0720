@@ -71,7 +71,7 @@ public class Constant {
     // 0619改版 使用新接口
     public static final String ARTICLE_LIST_AJAX = "v1/article/list?pageSize=10&";
 
-    public static final String QUERY_ARTICLE_URL = "v2/article/query?";
+    public static final String QUERY_ARTICLE_URL = "v2/article/search?";
 
 
     public static final String SALON_VIEW_URL = "salon/view?";
