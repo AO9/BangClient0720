@@ -40,7 +40,7 @@
                     android:layout_marginTop="@dimen/sides_margin"
                     android:layout_weight="1"
                     android:gravity="center|left"
-                    android:text="sousuo" />
+                    android:hint="搜索论文帮内容" />
 
 
                 <ImageButton
@@ -59,7 +59,8 @@
             android:background="@color/info_backgroud"
             android:divider="@drawable/divider"
             android:orientation="horizontal"
-            android:showDividers="middle">
+            android:showDividers="middle"
+            android:visibility="gone">
 
             <LinearLayout
                 android:id="@+id/anwser"
@@ -171,7 +172,35 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="left|top"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索历史"
+            android:id="@+id/textView2"
+            android:textSize="16dp"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginTop="@dimen/sides_margin" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/historyWdListView"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginTop="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/sides_margin" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="185dp"
+        android:visibility="gone"
         android:layout_gravity="center_horizontal">
 
         <ListView
@@ -183,31 +212,6 @@
             android:layout_marginRight="@dimen/sides_margin" />
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="left|top"
-        android:layout_marginTop="@dimen/sides_margin">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="搜索历史"
-            android:id="@+id/textView2"
-            android:textSize="16dp"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="@dimen/sides_margin" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/historyWdListView"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_marginTop="@dimen/sides_margin"
-            android:layout_marginRight="@dimen/sides_margin" />
-
-    </LinearLayout>
 
 </LinearLayout>

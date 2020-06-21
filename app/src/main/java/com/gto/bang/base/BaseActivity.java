@@ -61,4 +61,6 @@ public class BaseActivity extends ActionBarActivity {
         return getSharedPreferences().getString(Constant.INFO, "");
     }
 
+
+
 }

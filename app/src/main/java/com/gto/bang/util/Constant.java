@@ -71,6 +71,8 @@ public class Constant {
     // 0619改版 使用新接口
     public static final String ARTICLE_LIST_AJAX = "v1/article/list?pageSize=10&";
 
+    public static final String QUERY_ARTICLE_URL = "v2/article/query?";
+
 
     public static final String SALON_VIEW_URL = "salon/view?";
     //文章详情
@@ -115,6 +117,7 @@ public class Constant {
     public static final String USERNAME = "username";
     public static final String USERNAME_V1 = "userName";
     public static final String CREATETIME = "createTime";
+    public static final String SEARCH_WORD = "searchWord";
     public static final String ARTTITLE = "artTitle";
     public static final String CONTENT = "content";
     public static final String TYPE = "type";

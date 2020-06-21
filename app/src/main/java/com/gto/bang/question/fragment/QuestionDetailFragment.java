@@ -64,9 +64,9 @@ public class QuestionDetailFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 Map<String, String> param = new HashMap<String, String>();
-                CommonResponseListener responseListener = new CommonResponseListener("已点赞");
+                CommonResponseListener responseListener = new CommonResponseListener("赞+1");
                 request(Constant.QUESTION_PRAISE_URL, genearteMapParam(), responseListener);
-                collectionImage.setBackgroundResource(R.drawable.praiseSelected);
+                praiseImage.setBackgroundResource(R.drawable.praiseselected);
 
             }
         });
@@ -75,7 +75,7 @@ public class QuestionDetailFragment extends BaseFragment {
             public void onClick(View view) {
                 CommonResponseListener responseListener = new CommonResponseListener("已关注");
                 request(Constant.QUESTION_COLLECTION_URL, genearteMapParam(), responseListener);
-                praiseImage.setBackgroundResource(R.drawable.collectionSelected);
+                collectionImage.setBackgroundResource(R.drawable.collectionselected);
 
             }
         });
