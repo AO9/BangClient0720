@@ -45,6 +45,7 @@ public class Constant {
     // 评论点赞 关注 (收藏)
     public static final String QUESTION_PRAISE_URL = "v2/comment/praise";
     public static final String QUESTION_COLLECTION_URL = "v2/comment/collection";
+    public static final String LOG_URL = "v2/log/create";
 
     public static final String LOGIN_URL = "/v1/user/login";
     public static final String REGISTER_URL = "/v1/user/register";
@@ -129,6 +130,8 @@ public class Constant {
     public static final String EDUCATION = "education";
     public static final String SCHOOL = "school";
     public static final String USERID = "userid";
+    public static final String USERID_V1 = "userId";
+    public static final String OPERATETYPE = "operateType";
     public static final String CITY = "city";
     public static final String LEVEL = "level";
     public static final String SIGNATURE = "signature";

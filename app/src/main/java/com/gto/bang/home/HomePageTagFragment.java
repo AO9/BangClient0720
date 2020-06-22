@@ -2,9 +2,6 @@ package com.gto.bang.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +20,7 @@ import com.gto.bang.article.ArticleListActivity1;
 import com.gto.bang.article.ArticleListActivity2;
 import com.gto.bang.article.ArticleListActivity3;
 import com.gto.bang.article.ArticleListActivity4;
+import com.gto.bang.base.BaseFragment;
 import com.gto.bang.college.NoticeActivity;
 import com.gto.bang.create.CreateComplaintActivity;
 import com.gto.bang.create.CreateQuestionActivity;
@@ -41,7 +39,7 @@ import java.util.Map;
 /**
  * 主页TAB
  */
-public class HomePageTagFragment extends Fragment {
+public class HomePageTagFragment extends BaseFragment {
 
     TextView content;
     TextView navigate;
@@ -51,6 +49,11 @@ public class HomePageTagFragment extends Fragment {
     private SimpleAdapter adapter;
 
     public HomePageTagFragment() {
+    }
+
+    @Override
+    public String getRequestTag() {
+        return HomePageTagFragment.class.getName();
     }
 
     public class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
@@ -84,7 +87,6 @@ public class HomePageTagFragment extends Fragment {
         ResponseListener listener = new ResponseListener();
         String url = Constant.URL_BASE + Constant.NOTICE_URL;
         CustomRequest req = new CustomRequest(getActivity(), listener, listener, null, url, Request.Method.GET);
-        req.setTag("首页Banner");
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
@@ -96,15 +98,15 @@ public class HomePageTagFragment extends Fragment {
         navigate = (TextView) rootView.findViewById(R.id.navigate);
         initClickEvents();
         initBanner();
-//        initChildFragment();
         return rootView;
     }
 
     private void initClickEvents() {
-        //活动报名
+
         navigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                log("首页banner");
                 Intent intent = new Intent(getActivity(), NoticeActivity.class);
                 startActivity(intent);
             }
@@ -128,10 +130,12 @@ public class HomePageTagFragment extends Fragment {
                 Intent intent;
                 switch (arg2) {
                     case 0:
+                        log("首页求助");
                         intent = new Intent(getActivity(), CreateSupportActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
+                        log("首页提问");
                         intent = new Intent(getActivity(), CreateQuestionActivity.class);
                         startActivity(intent);
                         break;
@@ -144,6 +148,7 @@ public class HomePageTagFragment extends Fragment {
 //                        startActivity(intent);
 //                        break;
                     case 2:
+                        log("首页动态");
                         intent = new Intent(getActivity(), CreateComplaintActivity.class);
                         startActivity(intent);
                         break;
@@ -152,6 +157,7 @@ public class HomePageTagFragment extends Fragment {
 //                        startActivity(intent);
 //                        break;
                     case 3:
+                        log("首页反馈");
                         intent = new Intent(getActivity(), FeedbackActivity.class);
                         startActivity(intent);
                         break;
@@ -184,55 +190,24 @@ public class HomePageTagFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
     }
 
-    protected String getRequestTag() {
-        return "HomePageTagFragment";
-    }
+
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("--------onDestroy-","space destroy");
         VolleyUtils.getRequestQueue(getActivity()).cancelAll(getRequestTag());
-//        destroyFragment();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        MobclickAgent.onPageStart("每日一文");
+        MobclickAgent.onPageStart("首页");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        MobclickAgent.onPageEnd("每日一文");
+        MobclickAgent.onPageEnd("首页");
     }
-
-
-//    HActicleFragment articlesFragment ;
-//    private void destroyFragment(){
-//        if(articlesFragment != null){
-//            Log.d("-------------------", "space no null");
-//            FragmentManager fragmentManager = getFragmentManager();
-//            if(fragmentManager != null && !fragmentManager.isDestroyed()){
-//                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
-//                if(fragmentTransaction != null){
-//                    fragmentTransaction.remove(articlesFragment).commit();
-//                    fragmentTransaction.commitAllowingStateLoss();
-//                    fragmentManager.executePendingTransactions();
-//                    Log.d("------------------","  space destroy");
-//                }
-//            }
-//        }
-//    }
-
-
-//    private void initChildFragment(){
-//        Log.d("-------------------","init space ");
-//        articlesFragment = (HActicleFragment)getFragmentManager().findFragmentById(R.id.articlesFragment);
-//        if(articlesFragment != null){
-//            Log.d("----------------","init space success and no null");
-//        }
-//    }
 
 }

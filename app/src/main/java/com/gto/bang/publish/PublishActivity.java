@@ -2,6 +2,7 @@ package com.gto.bang.publish;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,16 @@ public class PublishActivity extends BaseActivity {
     public static int END_FLAG=2;
     public static String DATESPLIT="-";
 
+
+    @Override
+    public Context getContext() {
+        return PublishActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return PublishActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

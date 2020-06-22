@@ -45,7 +45,6 @@ public class HActicleFragment2 extends BaseFragment {
     ListView listView;
     List<Map<String, Object>> datas;
     SwipeRefreshLayout swipeRefreshLayout;
-    public static final String TAG = HActicleFragment2.class.getName();
     View rootView;
     int pageNum = 1;
     boolean resultFlag = true;
@@ -54,11 +53,15 @@ public class HActicleFragment2 extends BaseFragment {
     }
 
     @Override
+    public String getRequestTag() {
+        return HActicleFragment2.class.getName();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         listView = (ListView) rootView.findViewById(R.id.msgListView);
-        setRequestTag(TAG);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,9 +85,7 @@ public class HActicleFragment2 extends BaseFragment {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setEnabled(false);
-                        Log.i("sjl", "run before ");
                         initDatas(++pageNum, new ResponseListenerForRefresh());
-                        Log.i("sjl", "run after pageNum=" + pageNum);
                     }
                 }).start();
             }
@@ -133,9 +134,8 @@ public class HActicleFragment2 extends BaseFragment {
     public void initDatas(int pageNum, ResponseListener responseListener) {
         String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "type=7" + "&" +
                 Constant.PAGENUM + "=" + pageNum;
-        Log.i("sjl", "initDatas url=" + url);
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
-        req.setTag(TAG);
+        req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
@@ -157,14 +157,7 @@ public class HActicleFragment2 extends BaseFragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-
                 datas = RequestUtil.parseResponseForDatas(res);
-                try {
-                    Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
                 if (CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);
@@ -186,7 +179,7 @@ public class HActicleFragment2 extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        VolleyUtils.getRequestQueue(getActivity()).cancelAll(TAG);
+        VolleyUtils.getRequestQueue(getActivity()).cancelAll(getRequestTag());
     }
 
     @Override
@@ -288,12 +281,7 @@ public class HActicleFragment2 extends BaseFragment {
                     resultFlag = false;
                 }
                 mHandler.sendEmptyMessage(1);
-                try {
-                    Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
 
 

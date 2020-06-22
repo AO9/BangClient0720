@@ -1,5 +1,6 @@
 package com.gto.bang.navigation;
 
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,6 +19,16 @@ public class AboutActivity extends BaseActivity {
 
     TextView statement;
     TextView versionCode;
+
+    @Override
+    public Context getContext() {
+        return AboutActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return AboutActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

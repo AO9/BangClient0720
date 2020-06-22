@@ -1,5 +1,7 @@
 package com.gto.bang.personal.activity;
 
+import android.content.Context;
+
 import com.gto.bang.base.BaseActivity;
 
 /**
@@ -10,6 +12,15 @@ import com.gto.bang.base.BaseActivity;
  * @六里桥东 16年0810日22:49 增加标记为已读的功能
  */
 public class PMessageActivity extends BaseActivity {
+    @Override
+    public Context getContext() {
+        return PMessageActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return PMessageActivity.class.getName();
+    }
 
 //    public  static  String MESSAGE="message";
 //

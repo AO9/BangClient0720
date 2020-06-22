@@ -1,5 +1,6 @@
 package com.gto.bang.navigation;
 
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -15,6 +16,16 @@ import com.umeng.analytics.MobclickAgent;
  * 我的钱包
  */
 public class WalletActivity extends BaseActivity {
+
+    @Override
+    public Context getContext() {
+        return WalletActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return WalletActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

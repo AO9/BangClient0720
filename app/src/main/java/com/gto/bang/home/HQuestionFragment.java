@@ -20,8 +20,8 @@ import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseRefreshFragment;
 import com.gto.bang.base.BaseResponseListenerForRefresh;
-import com.gto.bang.base.ResponseListener;
 import com.gto.bang.question.fragment.QuestionDetailActivity;
+import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
@@ -65,13 +65,11 @@ public abstract class HQuestionFragment extends BaseRefreshFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setRequestTag(TAG);
         View rootView = inflater.inflate(R.layout.fragment_main_v1, container, false);
         listView = (ListView) rootView.findViewById(R.id.msgListView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//              Intent intent = new Intent(getActivity(), EMainActivity.class);
                 //问答改版 20200619
                 Intent intent = new Intent(getActivity(), QuestionDetailActivity.class);
                 Bundle bundle = new Bundle();

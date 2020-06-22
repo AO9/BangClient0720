@@ -1,5 +1,6 @@
 package com.gto.bang.register;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -185,7 +186,13 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    protected String getRequestTag(){
+    @Override
+    public Context getContext() {
+        return RegisterActivity.this;
+    }
+
+    @Override
+    public String getRequestTag(){
         return "ACCOUNT_REGISTER_REQUEST";
     }
 

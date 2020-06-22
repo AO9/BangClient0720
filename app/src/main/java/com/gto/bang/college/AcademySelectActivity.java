@@ -1,5 +1,6 @@
 package com.gto.bang.college;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,6 +15,16 @@ import com.gto.bang.util.Constant;
 public class AcademySelectActivity extends BaseActivity {
 
     private TextView bang_college_1_tv;
+
+    @Override
+    public Context getContext() {
+        return AcademySelectActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return AcademySelectActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

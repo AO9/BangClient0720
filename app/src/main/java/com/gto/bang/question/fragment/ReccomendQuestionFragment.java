@@ -12,4 +12,8 @@ public class ReccomendQuestionFragment extends HQuestionFragment {
     public String getArticleType() {
         return Constant.ARTICLETYPE_RECCOMMEND;
     }
+    @Override
+    public String getRequestTag() {
+        return NewQuestionFragment.class.getName();
+    }
 }

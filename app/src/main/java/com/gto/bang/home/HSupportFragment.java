@@ -52,6 +52,11 @@ public class HSupportFragment extends BaseFragment {
     }
 
     @Override
+    public String getRequestTag() {
+        return HSupportFragment.class.getName();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
@@ -71,7 +76,6 @@ public class HSupportFragment extends BaseFragment {
         });
         this.rootView = rootView;
 
-        setRequestTag("HSupportFragment");
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeLayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -80,10 +84,7 @@ public class HSupportFragment extends BaseFragment {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setEnabled(false);
-                        Log.i("sjl", "run before ");
                         initDatas(++pageNum,new ResponseListenerForRefresh());
-
-                        Log.i("sjl", "sendEmptyMessage after ");
                     }
                 }).start();
             }
@@ -240,12 +241,6 @@ public class HSupportFragment extends BaseFragment {
                 t.show();
             } else {
                 datas = RequestUtil.parseResponseForDatas(res);
-                try {
-                    Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
             mHandler.sendEmptyMessage(1);
 
@@ -259,7 +254,6 @@ public class HSupportFragment extends BaseFragment {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 1:
-                    Log.i("sjl", "what=1");
                     swipeRefreshLayout.setRefreshing(false);
                     if (CollectionUtils.isNotEmpty(datas)) {
                         ListView listView = (ListView) rootView.findViewById(R.id.msgListView);
@@ -267,16 +261,12 @@ public class HSupportFragment extends BaseFragment {
                             Map<String, Object> map = datas.get(i);
                             map.put("createTime", null == map.get("createTime") ? null : map.get("createTime").toString().substring(0, 10));
                         }
-                        Log.i("sjl", "what=12");
                         MyAdapter adapter = new MyAdapter(getActivity(), datas);
                         listView.setAdapter(adapter);
-                        Log.i("sjl", "what=123");
                     }
                     swipeRefreshLayout.setEnabled(true);
-                    Log.i("sjl", "what=1234");
                     break;
                 default:
-                    Log.i("sjl", "what=default");
                     break;
             }
         }

@@ -1,5 +1,7 @@
 package com.gto.bang.personal.activity;
 
+import android.content.Context;
+
 import com.gto.bang.base.BaseActivity;
 
 /**
@@ -14,6 +16,15 @@ import com.gto.bang.base.BaseActivity;
  *
  */
 public class PNoticeActivity extends BaseActivity {
+    @Override
+    public Context getContext() {
+        return PNoticeActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return PNoticeActivity.class.getName();
+    }
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {

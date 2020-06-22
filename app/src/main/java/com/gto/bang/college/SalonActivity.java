@@ -1,6 +1,7 @@
 package com.gto.bang.college;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -109,7 +110,13 @@ public class SalonActivity extends BaseActivity {
     }
 
 
-    protected String getRequestTag() {
+    @Override
+    public Context getContext() {
+        return SalonActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
         return SalonActivity.class.getName();
     }
 

@@ -44,9 +44,13 @@ public class HPersonMessageFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.bang_common_listview, container, false);
         listView = (ListView) rootView.findViewById(R.id.msgListView);
         this.rootView = rootView;
-        setRequestTag("HQuestionFragment");
         setMyTag("个人消息");
         return rootView;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return HPersonMessageFragment.class.getName();
     }
 
     /**

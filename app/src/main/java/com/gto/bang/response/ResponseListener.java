@@ -1,4 +1,4 @@
-package com.gto.bang.base;
+package com.gto.bang.response;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;

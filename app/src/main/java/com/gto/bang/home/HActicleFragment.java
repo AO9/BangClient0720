@@ -45,12 +45,16 @@ public class HActicleFragment extends BaseFragment {
     ListView listView;
     List<Map<String, Object>> datas;
     SwipeRefreshLayout swipeRefreshLayout;
-    public static final String TAG = HActicleFragment.class.getName();
     View rootView;
     int pageNum = 1;
     boolean resultFlag = true;
 
     public HActicleFragment() {
+    }
+
+    @Override
+    public String getRequestTag() {
+        return HActicleFragment.class.getName();
     }
 
     @Override
@@ -139,7 +143,7 @@ public class HActicleFragment extends BaseFragment {
         String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "type=" + Constant.TYPE_ARTICLE + "&" +
                 Constant.PAGENUM + "=" + pageNum + "&userId=" + userId + "&articleType=" + Constant.ARTICLETYPE_HOT;
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
-        req.setTag(TAG);
+        req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
@@ -183,7 +187,7 @@ public class HActicleFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        VolleyUtils.getRequestQueue(getActivity()).cancelAll(TAG);
+        VolleyUtils.getRequestQueue(getActivity()).cancelAll(getRequestTag());
     }
 
     @Override
@@ -285,12 +289,6 @@ public class HActicleFragment extends BaseFragment {
                     resultFlag = false;
                 }
                 mHandler.sendEmptyMessage(1);
-                try {
-                    Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
 
 

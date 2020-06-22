@@ -1,5 +1,6 @@
 package com.gto.bang.experience;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -36,6 +37,16 @@ public class EMainActivity extends BaseTabActivity {
 
     public void setArtType(String artType) {
         this.artType = artType;
+    }
+
+    @Override
+    public Context getContext() {
+        return EMainActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return EMainActivity.class.getName();
     }
 
     @Override

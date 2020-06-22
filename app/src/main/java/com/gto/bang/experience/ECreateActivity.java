@@ -1,5 +1,6 @@
 package com.gto.bang.experience;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,16 @@ public class ECreateActivity extends BaseActivity {
     private TextView content;
     private TextView title;
     private TextView save;
+
+    @Override
+    public Context getContext() {
+        return ECreateActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return ECreateActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

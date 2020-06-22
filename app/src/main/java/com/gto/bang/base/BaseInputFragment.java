@@ -19,9 +19,9 @@ import java.util.Map;
  * Created by shenjialong on 16/7/14 21:34.
  * 带有输入框＋提交按钮功能的Fragment基类
  */
-public class BaseInputFragment extends Fragment {
+public class BaseInputFragment extends BaseFragment {
 
-    private boolean flag=false;
+    private boolean flag = false;
 
     public boolean isFlag() {
         return flag;
@@ -31,7 +31,7 @@ public class BaseInputFragment extends Fragment {
         this.flag = flag;
     }
 
-    String [] hints=new String[]{"发布成功","服务繁忙,请稍后重试"};
+    String[] hints = new String[]{"发布成功", "服务繁忙,请稍后重试"};
 
 
     public BaseInputFragment() {
@@ -39,7 +39,7 @@ public class BaseInputFragment extends Fragment {
 
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         initViews();
     }
 
@@ -47,7 +47,7 @@ public class BaseInputFragment extends Fragment {
     /**
      * 初始化View
      */
-    protected String[] getHints(){
+    protected String[] getHints() {
         return hints;
     }
 
@@ -55,42 +55,44 @@ public class BaseInputFragment extends Fragment {
     /**
      * 初始化View
      */
-    protected void initViews(){
+    protected void initViews() {
     }
 
     /**
      * 请求的标签
      */
-    protected String getRequestTag(){
-        return null;
+    @Override
+    public String getRequestTag() {
+        return BaseInputFragment.class.getName();
     }
 
 
     /**
      * 请求响应
      */
-    public  class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
+    public class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
 
-        Toast t ;
+        Toast t;
+
         @Override
         public void onErrorResponse(VolleyError arg0) {
             t = Toast.makeText(getActivity(), getHints()[1], Toast.LENGTH_SHORT);
             t.show();
-            Log.i("sjl",getRequestTag()+"response Error");
+            Log.i("sjl", getRequestTag() + "response Error");
         }
 
         @Override
         public void onResponse(Map<String, Object> res) {
 
-            Log.i("sjl",getRequestTag()+"response"+res.toString());
-            Object status=res.get("status");
+            Log.i("sjl", getRequestTag() + "response" + res.toString());
+            Object status = res.get("status");
 
-            Log.i("sjl","status:"+status+" data "+res.get("data").toString());
-            if(null==status||!Constant.RES_SUCCESS.equals(status.toString())){
+            Log.i("sjl", "status:" + status + " data " + res.get("data").toString());
+            if (null == status || !Constant.RES_SUCCESS.equals(status.toString())) {
                 // 发布失败，提示稍后重试
                 t = Toast.makeText(getActivity(), getHints()[1], Toast.LENGTH_SHORT);
                 setFlag(true);
-            }else{
+            } else {
                 // 发布成功，回到前一个页面
                 t = Toast.makeText(getActivity(), getHints()[0], Toast.LENGTH_SHORT);
                 getActivity().finish();
@@ -107,7 +109,7 @@ public class BaseInputFragment extends Fragment {
     }
 
 
-    public SharedPreferences getSharedPreferences(){
+    public SharedPreferences getSharedPreferences() {
         return getActivity().getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
     }
 }

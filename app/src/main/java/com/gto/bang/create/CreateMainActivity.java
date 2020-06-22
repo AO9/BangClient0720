@@ -1,5 +1,7 @@
 package com.gto.bang.create;
 
+import android.content.Context;
+
 import com.gto.bang.base.BaseTabActivity;
 
 /**
@@ -7,7 +9,15 @@ import com.gto.bang.base.BaseTabActivity;
  * 新建主入口类＝新建经验分享＋新建问答
  */
 public class CreateMainActivity extends BaseTabActivity {
+    @Override
+    public Context getContext() {
+        return CreateMainActivity.this;
+    }
 
+    @Override
+    public String getRequestTag() {
+        return CreateMainActivity.class.getName();
+    }
 //    @Override
 //    public void init(){
 //        this.titles = new String[]{getString(R.string.bang_create_experience),getString(R.string.bang_create_question) };

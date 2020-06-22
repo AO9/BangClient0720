@@ -1,6 +1,7 @@
 package com.gto.bang.college;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -44,7 +45,13 @@ public class NoticeActivity extends BaseActivity {
         notice = (TextView) findViewById(R.id.notice);
     }
 
-    protected String getRequestTag() {
+    @Override
+    public Context getContext() {
+        return NoticeActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
         return NoticeActivity.class.getName();
     }
 

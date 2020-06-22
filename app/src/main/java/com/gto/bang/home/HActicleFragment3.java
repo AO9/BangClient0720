@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +22,13 @@ import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseFragment;
 import com.gto.bang.util.Constant;
-import com.gto.bang.util.JsonUtil;
+import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
 
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +42,6 @@ public class HActicleFragment3 extends BaseFragment {
     ListView listView;
     List<Map<String, Object>> datas;
     SwipeRefreshLayout swipeRefreshLayout;
-    public static final String TAG = HActicleFragment3.class.getName();
     View rootView;
     int pageNum = 1;
     boolean resultFlag = true;
@@ -53,8 +50,12 @@ public class HActicleFragment3 extends BaseFragment {
     }
 
     @Override
+    public String getRequestTag() {
+        return HActicleFragment3.class.getName();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setRequestTag(TAG);
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         listView = (ListView) rootView.findViewById(R.id.msgListView);
 
@@ -130,7 +131,7 @@ public class HActicleFragment3 extends BaseFragment {
         String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "type=8" + "&" +
                 Constant.PAGENUM + "=" + pageNum;
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
-        req.setTag(TAG);
+        req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
@@ -152,14 +153,7 @@ public class HActicleFragment3 extends BaseFragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-
-                datas = (List<Map<String, Object>>) res.get("data");
-                try {
-                    Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+                datas = RequestUtil.parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);
@@ -181,7 +175,7 @@ public class HActicleFragment3 extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        VolleyUtils.getRequestQueue(getActivity()).cancelAll(TAG);
+        VolleyUtils.getRequestQueue(getActivity()).cancelAll(getRequestTag());
     }
 
     @Override
@@ -283,12 +277,7 @@ public class HActicleFragment3 extends BaseFragment {
                     resultFlag = false;
                 }
                 mHandler.sendEmptyMessage(1);
-                try {
-                    Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
 
 

@@ -1,5 +1,6 @@
 package com.gto.bang.navigation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -72,8 +73,14 @@ public class FeedbackActivity extends BaseActivity {
     }
 
 
-    protected String getRequestTag(){
-        return "FeedbackActivity_request";
+    @Override
+    public Context getContext() {
+        return FeedbackActivity.this;
+    }
+
+    @Override
+    public String getRequestTag(){
+        return FeedbackActivity.class.getName();
     }
 
     @Override

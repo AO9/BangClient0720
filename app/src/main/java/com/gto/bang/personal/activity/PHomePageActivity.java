@@ -1,5 +1,6 @@
 package com.gto.bang.personal.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,16 @@ public class PHomePageActivity extends BaseActivity{
 
     public static String REQUEST_TAG="PHomePageActivity_tag";
     Map<String, Object> userinfo;
+
+    @Override
+    public Context getContext() {
+        return PHomePageActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return PHomePageActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

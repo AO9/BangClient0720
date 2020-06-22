@@ -1,7 +1,6 @@
 package com.gto.bang.question.fragment;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,12 +36,16 @@ public class QuestionDetailFragment extends BaseFragment {
     public QuestionDetailFragment() {
     }
 
+    @Override
+    public String getRequestTag() {
+        return QuestionDetailFragment.class.getName();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.question_article_detail, container, false);
-        setRequestTag(QuestionDetailFragment.class.getName());
         LinearLayout answer = (LinearLayout) rootView.findViewById(R.id.anwser);
         LinearLayout praise = (LinearLayout) rootView.findViewById(R.id.praise);
         LinearLayout colletion = (LinearLayout) rootView.findViewById(R.id.collection);

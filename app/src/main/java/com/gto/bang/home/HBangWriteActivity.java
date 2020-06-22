@@ -1,5 +1,6 @@
 package com.gto.bang.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -152,7 +153,13 @@ public class HBangWriteActivity extends BaseActivity {
         VolleyUtils.getRequestQueue(HBangWriteActivity.this).add(req);
     }
 
-    protected String getRequestTag(){
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public String getRequestTag(){
         return "HBangWriteActivity_request";
     }
 

@@ -1,5 +1,6 @@
 package com.gto.bang.comment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -40,6 +41,17 @@ public class CommentInputActivity extends BaseActivity{
     public static String REQUEST_TAG="comment_tag";
 
     EditText comment;
+
+    @Override
+    public Context getContext() {
+        return CommentInputActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return CommentInputActivity.class.getName();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

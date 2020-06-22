@@ -1,5 +1,6 @@
 package com.gto.bang.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -205,7 +206,13 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
     }
 
 
-    private String getRequestTag() {
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public String getRequestTag() {
         return "MainActivity_request";
     }
 

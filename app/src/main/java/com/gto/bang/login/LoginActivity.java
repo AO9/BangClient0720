@@ -1,5 +1,6 @@
 package com.gto.bang.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -129,7 +130,12 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    protected String getRequestTag() {
+    @Override
+    public Context getContext() {
+        return LoginActivity.this;
+    }
+    @Override
+    public String getRequestTag() {
         return "ACCOUNT_LOGIN_REQUEST";
     }
 

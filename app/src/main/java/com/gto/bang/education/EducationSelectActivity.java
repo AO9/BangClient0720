@@ -1,5 +1,6 @@
 package com.gto.bang.education;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,16 @@ import java.util.Map;
 public class EducationSelectActivity extends BaseActivity {
 
     private TextView temp;
+
+    @Override
+    public Context getContext() {
+        return EducationSelectActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return EducationSelectActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

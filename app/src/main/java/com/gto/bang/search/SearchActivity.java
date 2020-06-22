@@ -3,7 +3,6 @@ package com.gto.bang.search;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +14,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
-import com.gto.bang.base.ResponseListener;
 import com.gto.bang.home.ArticleDetailActivity;
+import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.RequestUtil;
@@ -29,7 +27,6 @@ import com.gto.bang.util.VolleyUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
@@ -46,11 +43,6 @@ public class SearchActivity extends BaseActivity {
     public static final String TAG = "SearchActivity";
     EditText searchEditText;
     ImageButton searchButton;
-
-    @Override
-    public Context getContext() {
-        return SearchActivity.this;
-    }
 
     /**
      * @param keyword
@@ -102,12 +94,22 @@ public class SearchActivity extends BaseActivity {
         Map<String, String> param = new HashMap<String, String>();
         CommonUtil.localLog("step 2" + keyword);
         param.put(Constant.KEYWORD, keyword);
-        RequestUtil.request(Constant.QUERY_ARTICLE_URL, param, new SearchResponseListener(), TAG, SearchActivity.this);
+        RequestUtil.request(Constant.QUERY_ARTICLE_URL, param, new SearchResponseListener(), getRequestTag(), SearchActivity.this);
         TextView textView = findViewById(R.id.tips);
         textView.setText("搜索加载中..");
 
     }
 
+
+    @Override
+    public Context getContext() {
+        return SearchActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return TAG;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,7 +216,7 @@ public class SearchActivity extends BaseActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        VolleyUtils.getRequestQueue(this).cancelAll(TAG);
+        VolleyUtils.getRequestQueue(this).cancelAll(getRequestTag());
     }
 
     @Override

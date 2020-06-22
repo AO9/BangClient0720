@@ -12,4 +12,9 @@ public class NewQuestionFragment extends HQuestionFragment {
     public String getArticleType() {
         return Constant.ARTICLETYPE_NEW;
     }
+
+    @Override
+    public String getRequestTag() {
+        return NewQuestionFragment.class.getName();
+    }
 }

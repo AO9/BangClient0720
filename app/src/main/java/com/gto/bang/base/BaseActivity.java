@@ -8,18 +8,34 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
+import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.util.Constant;
+import com.gto.bang.util.RequestUtil;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by user on 16/5/5.
  * 20200622 增加writeToLocal方法，用于记录搜索过的关键词
  */
-public class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends ActionBarActivity {
 
-    public Context getContext() {
-        return null;
+    public abstract Context getContext();
+
+    public abstract  String getRequestTag();
+
+    public void log(String operateType) {
+        Map<String, String> param = new HashMap<String, String>();
+        param.put(Constant.USERID_V1, getUserId());
+        param.put(Constant.OPERATETYPE, operateType);
+        param.put(Constant.ANDROID_ID, getStrFromPreferences(Constant.ANDROID_ID));
+        CommonResponseListener responseListener = new CommonResponseListener(Constant.EMPTY, getContext());
+        RequestUtil.request(Constant.LOG_URL, param, responseListener, getRequestTag(), getContext());
+    }
+
+    public String getStrFromPreferences(String key){
+        return getSharedPreferences().getString(key, Constant.EMPTY);
     }
 
     @Override
@@ -57,7 +73,6 @@ public class BaseActivity extends ActionBarActivity {
     }
 
     public String getUserId() {
-
         return getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT);
     }
 

@@ -1,6 +1,7 @@
 package com.gto.bang.personal.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -48,8 +49,13 @@ public class PExperienceActivity extends BaseActivity {
     }
 
 
-    protected String getRequestTag(){
-        return "PExperienceActivity_request";
+    @Override
+    public Context getContext() {
+        return PExperienceActivity.this;
+    }
+
+    public String getRequestTag(){
+        return PExperienceActivity.class.getName();
     }
 
     @Override

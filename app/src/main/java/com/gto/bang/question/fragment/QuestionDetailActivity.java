@@ -1,5 +1,6 @@
 package com.gto.bang.question.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -43,6 +44,16 @@ public class QuestionDetailActivity extends BaseActivity {
 
     public void setBundle(Bundle bundle) {
         this.bundle = bundle;
+    }
+
+    @Override
+    public Context getContext() {
+        return QuestionDetailActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return QuestionDetailActivity.class.getName();
     }
 
     @Override

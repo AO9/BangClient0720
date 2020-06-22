@@ -1,5 +1,6 @@
 package com.gto.bang.action;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,17 @@ import com.gto.bang.base.BaseActivity;
 public class LoginActionActivity extends BaseActivity {
 
     private Button login;
+
+    @Override
+    public Context getContext() {
+        return LoginActionActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return LoginActionActivity.class.getName();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

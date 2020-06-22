@@ -20,7 +20,7 @@ import com.gto.bang.R;
  * 带有TAB标签的页面基类
  * 支持最多有三个TAB的情形
  */
-public class BaseTabActivity extends BaseActivity implements ActionBar.TabListener {
+public abstract class BaseTabActivity extends BaseActivity implements ActionBar.TabListener {
 
     public ViewPager mPager;// 页卡内容
     private ImageView cursor;// 动画图片

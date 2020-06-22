@@ -41,11 +41,11 @@ public class HBangbangFragmentBak extends BaseInputFragment {
     EditText schoolET;
     TextView academyTV;
     EditText cityET;
-    EditText [] views;
+    EditText[] views;
     RelativeLayout rl;
     Button submit;
 
-    String [] inputHints=new String[]{"请填写手机号！","请填写邮箱！","请填写学校！","请填写城市！"};
+    String[] inputHints = new String[]{"请填写手机号！", "请填写邮箱！", "请填写学校！", "请填写城市！"};
 
     public HBangbangFragmentBak() {
     }
@@ -54,24 +54,25 @@ public class HBangbangFragmentBak extends BaseInputFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.bang_bang, container, false);
-        academyTV=(TextView)rootView.findViewById(R.id.bang_bang_academy_et);
-        rl=(RelativeLayout) rootView.findViewById(R.id.bang_bang_academy_lv);
+        academyTV = (TextView) rootView.findViewById(R.id.bang_bang_academy_et);
+        rl = (RelativeLayout) rootView.findViewById(R.id.bang_bang_academy_lv);
         rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), AcademySelectActivity.class);
-                startActivityForResult(intent,2001);
+                Intent intent = new Intent(getActivity(), AcademySelectActivity.class);
+                startActivityForResult(intent, 2001);
             }
         });
         return rootView;
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==20001){
-            Bundle b=data.getExtras();
-            String academy=b.getString(Constant.ACADEMY);
+        if (resultCode == 20001) {
+            Bundle b = data.getExtras();
+            String academy = b.getString(Constant.ACADEMY);
             Toast t = Toast.makeText(getActivity(), b.getString(Constant.ACADEMY), Toast.LENGTH_SHORT);
             t.show();
             this.academyTV.setText(academy);
@@ -80,40 +81,39 @@ public class HBangbangFragmentBak extends BaseInputFragment {
     }
 
 
-
     /**
      * 初始化View的监听事件
      */
     @Override
-    public void initViews(){
+    public void initViews() {
 
-        View rootView=getView();
-        phoneET=(EditText)rootView.findViewById(R.id.bang_bang_phone_et);
-        mailET=(EditText)rootView.findViewById(R.id.bang_bang_mail_et);
-        schoolET=(EditText)rootView.findViewById(R.id.bang_bang_school_et);
-        cityET=(EditText)rootView.findViewById(R.id.bang_bang_city_et);
+        View rootView = getView();
+        phoneET = (EditText) rootView.findViewById(R.id.bang_bang_phone_et);
+        mailET = (EditText) rootView.findViewById(R.id.bang_bang_mail_et);
+        schoolET = (EditText) rootView.findViewById(R.id.bang_bang_school_et);
+        cityET = (EditText) rootView.findViewById(R.id.bang_bang_city_et);
         mailET.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
 
-        views=new EditText[]{phoneET,mailET,schoolET,cityET};
+        views = new EditText[]{phoneET, mailET, schoolET, cityET};
 
         submit = (Button) rootView.findViewById(R.id.bang_submit_btn);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("sjl","帮帮开始校验");
-                if(check()){
-                    Log.i("sjl","帮帮校验通过");
+                Log.i("sjl", "帮帮开始校验");
+                if (check()) {
+                    Log.i("sjl", "帮帮校验通过");
                     //校验通过后拼接请求参数并向服务器发送请求
-                    HashMap<String, String> params=new HashMap<String, String>();
-                    params.put("phone",phoneET.getText().toString());
-                    params.put("email",mailET.getText().toString());
-                    params.put("school",schoolET.getText().toString());
-                    params.put("academy",academyTV.getText().toString());
-                    params.put("city",cityET.getText().toString());
-                    params.put("username",getSharedPreferences().getString(Constant.USERNAME,Constant.EMPTY));
-                    params.put("userid",getSharedPreferences().getString(Constant.ID,Constant.AUTHORID_DEFAULT));
+                    HashMap<String, String> params = new HashMap<String, String>();
+                    params.put("phone", phoneET.getText().toString());
+                    params.put("email", mailET.getText().toString());
+                    params.put("school", schoolET.getText().toString());
+                    params.put("academy", academyTV.getText().toString());
+                    params.put("city", cityET.getText().toString());
+                    params.put("username", getSharedPreferences().getString(Constant.USERNAME, Constant.EMPTY));
+                    params.put("userid", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
                     publish(params);
                 }
             }
@@ -122,19 +122,20 @@ public class HBangbangFragmentBak extends BaseInputFragment {
 
     /**
      * 字段非空校验
+     *
      * @return
      */
-    private boolean check(){
-        Log.i("sjl","begin check");
+    private boolean check() {
+        Log.i("sjl", "begin check");
         Toast t;
-        if(StringUtils.isEmpty(academyTV.getText().toString())){
-            t= Toast.makeText(getActivity(), "请选择学院！", Toast.LENGTH_SHORT);
+        if (StringUtils.isEmpty(academyTV.getText().toString())) {
+            t = Toast.makeText(getActivity(), "请选择学院！", Toast.LENGTH_SHORT);
             t.show();
             return false;
         }
-        for(int i=0;i<views.length;i++){
-            if(null==views[i].getText()|| StringUtils.isEmpty(views[i].getText().toString())){
-                t= Toast.makeText(getActivity(), inputHints[i], Toast.LENGTH_SHORT);
+        for (int i = 0; i < views.length; i++) {
+            if (null == views[i].getText() || StringUtils.isEmpty(views[i].getText().toString())) {
+                t = Toast.makeText(getActivity(), inputHints[i], Toast.LENGTH_SHORT);
                 t.show();
                 return false;
             }
@@ -149,45 +150,43 @@ public class HBangbangFragmentBak extends BaseInputFragment {
         submit.setEnabled(false);
         submit.setText("正在提交...");
         Listener listener = new Listener();
-        String url=Constant.URL_BASE+ Constant.BANG_CREATE_AJAX;
-        CustomRequest req = new CustomRequest(getActivity(),listener,listener,params,url, Request.Method.POST);
-        Log.i("sjl","帮帮下单 url:"+ url);
+        String url = Constant.URL_BASE + Constant.BANG_CREATE_AJAX;
+        CustomRequest req = new CustomRequest(getActivity(), listener, listener, params, url, Request.Method.POST);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
 
     @Override
-    protected String getRequestTag(){
-        return "BangCreateTag";
+    public String getRequestTag() {
+        return HBangbangFragmentBak.class.getName();
     }
 
     @Override
-    protected String[] getHints(){
-        return new String[]{"请求成功，客服会第一时间联系您","服务繁忙,请稍后重试"};
+    protected String[] getHints() {
+        return new String[]{"请求成功，客服会第一时间联系您", "服务繁忙,请稍后重试"};
     }
 
     /**
      * 请求响应
      */
-    public  class Listener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
+    public class Listener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
 
-        Toast t ;
+        Toast t;
+
         @Override
         public void onErrorResponse(VolleyError arg0) {
             t = Toast.makeText(getActivity(), getHints()[1], Toast.LENGTH_SHORT);
             t.show();
-            Log.i("sjl",getRequestTag()+"response Error");
         }
 
         @Override
         public void onResponse(Map<String, Object> res) {
 
-            Log.i("sjl",getRequestTag()+"response"+res.toString());
-            Object status=res.get("status");
-            if(null==status||!Constant.RES_SUCCESS.equals(status.toString())){
+            Object status = res.get("status");
+            if (null == status || !Constant.RES_SUCCESS.equals(status.toString())) {
                 t = Toast.makeText(getActivity(), getHints()[1], Toast.LENGTH_SHORT);
                 setFlag(true);
-            }else{
+            } else {
                 t = Toast.makeText(getActivity(), getHints()[0], Toast.LENGTH_SHORT);
             }
             submit.setEnabled(true);
@@ -201,6 +200,7 @@ public class HBangbangFragmentBak extends BaseInputFragment {
         super.onResume();
         MobclickAgent.onPageStart("主页－帮帮"); //统计页面
     }
+
     @Override
     public void onPause() {
         super.onPause();

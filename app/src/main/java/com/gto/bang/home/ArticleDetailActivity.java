@@ -1,6 +1,17 @@
 package com.gto.bang.home;
 
+import android.content.Context;
+
 public class ArticleDetailActivity extends BaseDetailActivity {
+    @Override
+    public Context getContext() {
+        return ArticleDetailActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return ArticleDetailActivity.class.getName();
+    }
 
 //    String articleId;
 //

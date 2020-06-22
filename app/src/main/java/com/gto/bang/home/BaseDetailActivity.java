@@ -14,7 +14,7 @@ import com.gto.bang.util.Constant;
 /**
  * 内容详情页的基类
  */
-public class BaseDetailActivity extends BaseActivity {
+public abstract class BaseDetailActivity extends BaseActivity {
 
     String articleId;
 

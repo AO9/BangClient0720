@@ -1,5 +1,6 @@
 package com.gto.bang.personal.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,6 +35,16 @@ public class PInputActivity extends BaseActivity{
     EditText content;
 
     public static String REQUEST_TAG="PInputActivity_tag";
+
+    @Override
+    public Context getContext() {
+        return PInputActivity.this;
+    }
+
+    @Override
+    public String getRequestTag() {
+        return PInputActivity.class.getName();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,27 +11,29 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.gto.bang.response.CommonResponseListener;
+import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.Constant;
+import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
 
 import org.apache.commons.lang.StringUtils;
 
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 /**
  * 20171119
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     public BaseFragment() {
     }
 
     private String myTag;
-    private String requestTag;
 
     public Context getContext() {
 
@@ -48,13 +50,8 @@ public class BaseFragment extends Fragment {
         this.myTag = myTag;
     }
 
-    public String getRequestTag() {
-        return requestTag;
-    }
+    public abstract String getRequestTag();
 
-    public void setRequestTag(String requestTag) {
-        this.requestTag = requestTag;
-    }
 
     public void initData() {
 
@@ -97,8 +94,21 @@ public class BaseFragment extends Fragment {
         return getSharedPreferences().getString(Constant.ANDROID_ID, Constant.AUTHORID_DEFAULT);
     }
 
+    public String getStrFromPreferences(String key){
+        return getSharedPreferences().getString(key, Constant.EMPTY);
+    }
+
 
     // --------------分割线 20200620 --------------
+
+    public void log(String operateType) {
+        Map<String, String> param = new HashMap<String, String>();
+        param.put(Constant.USERID_V1, getUserId());
+        param.put(Constant.OPERATETYPE, operateType);
+        param.put(Constant.ANDROID_ID, getStrFromPreferences(Constant.ANDROID_ID));
+        com.gto.bang.response.CommonResponseListener responseListener = new com.gto.bang.response.CommonResponseListener(Constant.EMPTY, getContext());
+        RequestUtil.request(Constant.LOG_URL, param, responseListener, getRequestTag(), getContext());
+    }
 
     /**
      * 关注或点赞

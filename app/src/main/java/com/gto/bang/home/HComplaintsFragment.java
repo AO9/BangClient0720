@@ -20,8 +20,8 @@ import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseRefreshFragment;
 import com.gto.bang.base.BaseResponseListenerForRefresh;
-import com.gto.bang.base.ResponseListener;
 import com.gto.bang.experience.EMainActivity;
+import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.RequestUtil;
@@ -46,6 +46,11 @@ public class HComplaintsFragment extends BaseRefreshFragment {
     int pageNum = 1;
 
     public HComplaintsFragment() {}
+
+    @Override
+    public String getRequestTag() {
+        return HComplaintsFragment.class.getName();
+    }
 
     @Override
     public void refreshView(List<Map<String, Object>> datas) {
@@ -87,7 +92,6 @@ public class HComplaintsFragment extends BaseRefreshFragment {
             }
         });
 
-        setRequestTag("ARTICLE_COMPLAINTS_LIST_REQUEST");
         return rootView;
     }
 

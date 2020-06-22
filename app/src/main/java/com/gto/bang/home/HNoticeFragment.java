@@ -37,13 +37,17 @@ public class HNoticeFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.bang_common_listview, container, false);
         listView=(ListView) rootView.findViewById(R.id.bang_common_lv);
         this.rootView=rootView;
-        setRequestTag("HNoticeFragment");
         setMyTag("通知");
         return rootView;
     }
 
     public Context getContext(){
         return getActivity();
+    }
+
+    @Override
+    public String getRequestTag() {
+        return HNoticeFragment.class.getName();
     }
 
     /**
