@@ -97,21 +97,8 @@ public class BaseFragment extends Fragment {
         return getSharedPreferences().getString(Constant.ANDROID_ID, Constant.AUTHORID_DEFAULT);
     }
 
-    /**
-     * 解析reposne的内容list
-     * 20200619
-     *
-     * @param res
-     * @return
-     */
-    public List<Map<String, Object>> parseResponseForDatas(Map<String, Object> res) {
-        Map<String, Object> data = (Map<String, Object>) res.get("data");
-        List<Map<String, Object>> list = (List<Map<String, Object>>) data.get("list");
-        return list;
-    }
 
-
-    // --------------分割线 20200620 调试--------------
+    // --------------分割线 20200620 --------------
 
     /**
      * 关注或点赞

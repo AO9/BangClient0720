@@ -7,7 +7,7 @@
     android:showDividers="middle">
 
     <LinearLayout
-        android:id="@+id/detail_ll"
+        android:id="@+id/searchInputLL"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:background="@color/info_backgroud"
@@ -172,20 +172,57 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:gravity="left|top"
-        >
-
+        android:id="@+id/tipsLl"
+        android:visibility="gone">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="搜索历史"
-            android:id="@+id/textView2"
+            android:text="抱歉，未找到您搜索的内容"
+            android:id="@+id/tips"
             android:textSize="16dp"
             android:textColor="@android:color/black"
             android:layout_marginLeft="@dimen/sides_margin"
             android:layout_marginTop="@dimen/sides_margin" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="left|top"
+        android:id="@+id/historyLL"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索历史"
+                android:textSize="16dp"
+                android:textColor="@android:color/black"
+                android:gravity="center|left"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:layout_marginTop="@dimen/sides_margin" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清空历史"
+                android:id="@+id/cleanHistory"
+                android:layout_marginTop="@dimen/sides_margin"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginLeft="@dimen/sides_margin"
+                />
+        </LinearLayout>
+
 
         <ListView
             android:layout_width="match_parent"
@@ -196,20 +233,20 @@
             android:layout_marginRight="@dimen/sides_margin" />
 
     </LinearLayout>
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:visibility="gone"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:id="@+id/searchResultLL">
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/recommendWdListView"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:focusableInTouchMode="true"
-            android:layout_marginRight="@dimen/sides_margin" />
+            android:id="@+id/searchResultListView"
+            android:focusableInTouchMode="false" />
     </LinearLayout>
 
 

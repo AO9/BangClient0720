@@ -10,11 +10,13 @@ import android.view.MenuItem;
 
 import com.gto.bang.util.Constant;
 
+import java.util.Map;
+
 /**
  * Created by user on 16/5/5.
+ * 20200622 增加writeToLocal方法，用于记录搜索过的关键词
  */
 public class BaseActivity extends ActionBarActivity {
-
 
     public Context getContext() {
         return null;
@@ -42,25 +44,47 @@ public class BaseActivity extends ActionBarActivity {
     }
 
     public SharedPreferences.Editor getEditor() {
+
         SharedPreferences sp = getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
         SharedPreferences.Editor editor = sp.edit();
         return editor;
     }
 
     public SharedPreferences getSharedPreferences() {
-        SharedPreferences sp = getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
 
+        SharedPreferences sp = getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
         return sp;
     }
 
     public String getUserId() {
+
         return getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT);
     }
 
     public String getStament() {
+
         return getSharedPreferences().getString(Constant.INFO, "");
     }
 
+    /**
+     * 本地DB中写数据
+     * @param key
+     * @param value
+     */
+    public void writeToLocal(String key, String value) {
+        SharedPreferences.Editor editor = getEditor();
+        editor.putString(key, value);
+        editor.commit();
+    }
 
+    /**
+     * 本地DB中读数据
+     * @param key
+     * @return
+     */
+    public String readFromLocal(String key) {
+        String value = getSharedPreferences().getString(key, Constant.EMPTY);
+        return value;
+    }
 
 }

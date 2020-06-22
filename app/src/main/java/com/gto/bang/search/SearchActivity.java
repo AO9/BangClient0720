@@ -3,13 +3,16 @@ package com.gto.bang.search;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +24,12 @@ import com.gto.bang.base.ResponseListener;
 import com.gto.bang.home.ArticleDetailActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
+import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
@@ -47,6 +52,63 @@ public class SearchActivity extends BaseActivity {
         return SearchActivity.this;
     }
 
+    /**
+     * @param keyword
+     * @// TODO: 20/6/22 历史记录多较多的时候需要额外处理机制
+     */
+    public void recordKeyword(String keyword) {
+        String value = readFromLocal(Constant.KEYWORD);
+        if (StringUtils.isBlank(value)) {
+            writeToLocal(Constant.KEYWORD, keyword);
+        } else {
+            List<String> list = CommonUtil.convert(value);
+            // 先判断是否已经写入过这个关键词
+            if (!list.contains(keyword)){
+                writeToLocal(Constant.KEYWORD, value + Constant.SEPERETOR_COMMA + keyword);
+            }
+        }
+    }
+
+
+    /**
+     * 搜索历史记录初始化
+     */
+    public void intiSearchHistory() {
+        String value = readFromLocal(Constant.KEYWORD);
+        if (StringUtils.isBlank(value)) {
+            return;
+        }
+        final String[] keywordArray = value.split(Constant.COMMA);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this, android.R.layout.simple_list_item_1, keywordArray);
+        ListView history = findViewById(R.id.historyWdListView);
+        history.setAdapter(adapter);
+        history.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String keyword = keywordArray[i];
+                search(keyword);
+            }
+        });
+
+    }
+
+    /**
+     * 向服务器发起搜索查询
+     * 20200622
+     *
+     * @param keyword
+     */
+    public void search(String keyword) {
+        Map<String, String> param = new HashMap<String, String>();
+        CommonUtil.localLog("step 2" + keyword);
+        param.put(Constant.KEYWORD, keyword);
+        RequestUtil.request(Constant.QUERY_ARTICLE_URL, param, new SearchResponseListener(), TAG, SearchActivity.this);
+        TextView textView = findViewById(R.id.tips);
+        textView.setText("搜索加载中..");
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,46 +120,68 @@ public class SearchActivity extends BaseActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String wd = searchEditText.getText().toString();
-                if (StringUtils.isBlank(wd)) {
+                String keyword = searchEditText.getText().toString();
+                CommonUtil.localLog("step 1");
+                if (StringUtils.isBlank(keyword)) {
+                    CommonUtil.localLog("step 1.1");
+                    CommonUtil.showTips("查询内容不能为空", SearchActivity.this);
                     return;
                 }
-                Map<String, String> param = new HashMap<String, String>();
-                param.put(Constant.SEARCH_WORD, wd);
-                CommonUtil.request(Constant.QUERY_ARTICLE_URL, param, new SearchResponseListener(), TAG, SearchActivity.this);
+                search(keyword);
+                recordKeyword(keyword);
             }
         });
+
+        TextView clearHistory = findViewById(R.id.cleanHistory);
+        clearHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                writeToLocal(Constant.KEYWORD, Constant.EMPTY);
+                ListView history = (ListView) findViewById(R.id.historyWdListView);
+                history.setAdapter(null);
+
+//                ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this, android.R.layout.simple_list_item_1, keywordArray);
+//                ListView history = findViewById(R.id.historyWdListView);
+//                history.setAdapter(adapter);
+                CommonUtil.showTips("已清空",SearchActivity.this);
+            }
+        });
+
+        intiSearchHistory();
     }
 
 
     public class SearchResponseListener extends ResponseListener {
-        Toast t;
 
         @Override
         public void onErrorResponse(VolleyError arg0) {
-            t = Toast.makeText(getContext(), Constant.REQUEST_ERROR, Toast.LENGTH_SHORT);
-            t.show();
+            CommonUtil.showTips(Constant.REQUEST_ERROR,getContext());
         }
 
         @Override
         public void onResponse(Map<String, Object> res) {
 
             if (null == res.get(Constant.STATUS) || !Constant.RES_SUCCESS.equals(res.get(Constant.STATUS).toString())) {
-                String data = (null == res.get(Constant.DATA)) ? "null" : res.get(Constant.DATA).toString();
-                t = Toast.makeText(SearchActivity.this, data, Toast.LENGTH_SHORT);
-                t.show();
+                CommonUtil.showTips(Constant.SERVER_ERROR,getContext());
+
             } else {
-                final List<Map<String, Object>> datas = null;
+                final List<Map<String, Object>> datas = RequestUtil.parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(datas)) {
-                    ListView listView = (ListView) findViewById(R.id.recommendWdListView);
-                    listView.setVisibility(View.VISIBLE);
-                    for (int i = 0; i < datas.size(); i++) {
-                        Map<String, Object> map = datas.get(i);
-                        map.put(Constant.CREATETIME, null == map.get(Constant.CREATETIME) ? null : map.get(Constant.CREATETIME).toString().substring(0, 10));
-                    }
+
+                    LinearLayout searchResultLL = (LinearLayout) findViewById(R.id.searchResultLL);
+                    searchResultLL.setVisibility(View.VISIBLE);
+                    ListView searchResultListView = (ListView) findViewById(R.id.searchResultListView);
+
+                    LinearLayout historyLL = (LinearLayout) findViewById(R.id.historyLL);
+                    LinearLayout tipsLl = (LinearLayout) findViewById(R.id.tipsLl);
+                    tipsLl.setVisibility(View.GONE);
+                    historyLL.setVisibility(View.GONE);
+
+                    CommonUtil.localLog("step 3");
+
                     SearchAdapter adapter = new SearchAdapter(getContext(), datas);
-                    listView.setAdapter(adapter);
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    searchResultListView.setAdapter(adapter);
+                    searchResultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                             Intent intent = new Intent(SearchActivity.this, ArticleDetailActivity.class);
@@ -108,8 +192,17 @@ public class SearchActivity extends BaseActivity {
                             startActivity(intent);
                         }
                     });
+                } else {
+                    LinearLayout tipsLl = (LinearLayout) findViewById(R.id.tipsLl);
+                    tipsLl.setVisibility(View.VISIBLE);
 
+                    TextView textView = findViewById(R.id.tips);
+                    textView.setText("抱歉，未找到您搜索的内容");
 
+                    LinearLayout historyLL = (LinearLayout) findViewById(R.id.historyLL);
+                    historyLL.setVisibility(View.VISIBLE);
+                    LinearLayout searchResultLL = (LinearLayout) findViewById(R.id.searchResultLL);
+                    searchResultLL.setVisibility(View.GONE);
                 }
 
             }
@@ -175,15 +268,19 @@ public class SearchActivity extends BaseActivity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
+            CommonUtil.localLog("step 4");
             String[] feilds = new String[]{Constant.TITLE, Constant.CONTENT};
+            TextView[] tvs = new TextView[]{holder.title, holder.content};
             for (int i = 0; i < feilds.length; i++) {
 
+                Object value = datas.get(position).get(feilds[i]);
+                if (value == null) {
+                    tvs[i].setVisibility(View.GONE);
+                } else {
+                    tvs[i].setText(value.toString());
+                }
             }
-
-            holder.title.setText(datas.get(position).get(Constant.TITLE).toString());
-            holder.content.setText(datas.get(position).get(Constant.CONTENT).toString());
-
+            CommonUtil.localLog("step 5");
             return convertView;
         }
 

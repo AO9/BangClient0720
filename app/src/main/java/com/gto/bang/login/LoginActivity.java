@@ -112,7 +112,6 @@ public class LoginActivity extends BaseActivity {
     public void login(String userName, String password) {
         ResponseListener listener = new ResponseListener();
         String url = Constant.URL_BASE + Constant.LOGIN_URL;
-        Log.i("sjl", url);
         HashMap<String, String> params = new HashMap<String, String>();
         params.put(Constant.USERNAME_V1, userName);
         params.put(Constant.PASSWORD, password);
@@ -121,7 +120,6 @@ public class LoginActivity extends BaseActivity {
         String androidId = CommonUtil.getAndroidId(getBaseContext());
         params.put(Constant.IMEI, imei);
         url = url + "?userName=" + userName + "&password=" + password + "&imei=" + imei + "&androidId=" + androidId;
-        Log.i("sjl", "url" + url);
         CustomRequest req = new CustomRequest(this, listener, listener, params, url, Request.Method.GET);
         req.setTag(getRequestTag());
         loginBtn.setEnabled(false);
@@ -168,7 +166,6 @@ public class LoginActivity extends BaseActivity {
                         Constant.PHONE, Constant.SCHOOL, Constant.EDUCATION, Constant.EMAIL, Constant.VIP, Constant.PROMPT,
                         Constant.INFO, Constant.LEVEL_INSTRUCTION, Constant.USERNAME};
                 // 缓存个人信息
-                Log.i("sjl", userinfo.toString());
                 handleUserInfo(userinfo, feilds);
                 Object usernameObj = userinfo.get(Constant.USERNAME);
                 if (null != usernameObj) {

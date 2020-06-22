@@ -24,6 +24,7 @@ import com.gto.bang.base.ResponseListener;
 import com.gto.bang.experience.EMainActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
+import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
@@ -118,7 +119,7 @@ public class HComplaintsFragment extends BaseRefreshFragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             }else{
-                datas = parseResponseForDatas(res);
+                datas = RequestUtil.parseResponseForDatas(res);
                 if(CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);

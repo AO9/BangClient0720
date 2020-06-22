@@ -24,6 +24,7 @@ import com.gto.bang.R;
 import com.gto.bang.base.BaseFragment;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.JsonUtil;
+import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
@@ -157,7 +158,7 @@ public class HActicleFragment2 extends BaseFragment {
                 t.show();
             } else {
 
-                datas = parseResponseForDatas(res);
+                datas = RequestUtil.parseResponseForDatas(res);
                 try {
                     Log.i("sjl", "onResponse datas={}" + JsonUtil.obj2Str(datas));
                 } catch (IOException e) {

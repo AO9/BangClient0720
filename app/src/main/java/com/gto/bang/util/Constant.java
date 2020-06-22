@@ -38,6 +38,7 @@ public class Constant {
     public static String SUBMMITTED = "已提交";
 
     public static final String URL_SEPARATOR = "?";
+    public static final String SEPERETOR_COMMA = ",";
     public static final String URL_PARAM_SEPARATOR = "&";
     public static final String URL_EQUAL = "=";
 
@@ -66,13 +67,10 @@ public class Constant {
     public static final String ARTICLE_CREATE_AJAX = "v2/article/create";
     public static final String COMMENT_CREATE_AJAX = "cCreate.ajax";
     public static final String UPDATE_PERSION_INFO_AJAX = "user/update.ajax";
-    //获取文章列表 经验｜问答 列表数据
-//    public static final String ARTICLE_LIST_AJAX = "getArticleList.ajax?";
     // 0619改版 使用新接口
     public static final String ARTICLE_LIST_AJAX = "v1/article/list?pageSize=10&";
-
-    public static final String QUERY_ARTICLE_URL = "v2/article/search?";
-
+    // 0621搜索框功能
+    public static final String QUERY_ARTICLE_URL = "v2/article/search";
 
     public static final String SALON_VIEW_URL = "salon/view?";
     //文章详情
@@ -106,6 +104,7 @@ public class Constant {
     //常用字段
     public static final String STATUS = "status";
     public static final String DATA = "data";
+    public static final String LIST = "list";
     public static final String INTRODUCE = "introduce";
     public static final String THEME = "theme";
     public static final String LOCATION = "lation";
@@ -117,7 +116,7 @@ public class Constant {
     public static final String USERNAME = "username";
     public static final String USERNAME_V1 = "userName";
     public static final String CREATETIME = "createTime";
-    public static final String SEARCH_WORD = "searchWord";
+    public static final String KEYWORD = "keyword";
     public static final String ARTTITLE = "artTitle";
     public static final String CONTENT = "content";
     public static final String TYPE = "type";

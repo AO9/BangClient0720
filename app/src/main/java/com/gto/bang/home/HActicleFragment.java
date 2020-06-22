@@ -24,6 +24,7 @@ import com.gto.bang.R;
 import com.gto.bang.base.BaseFragment;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.JsonUtil;
+import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
 import com.umeng.analytics.MobclickAgent;
@@ -160,7 +161,7 @@ public class HActicleFragment extends BaseFragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-                datas=parseResponseForDatas(res);
+                datas= RequestUtil.parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);
@@ -277,7 +278,7 @@ public class HActicleFragment extends BaseFragment {
                 t = Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT);
                 t.show();
             } else {
-                List<Map<String, Object>> tem = parseResponseForDatas(res);
+                List<Map<String, Object>> tem = RequestUtil.parseResponseForDatas(res);
                 if (CollectionUtils.isNotEmpty(tem)) {
                     datas = tem;
                 } else {
