@@ -94,6 +94,7 @@ public class SearchActivity extends BaseActivity {
         Map<String, String> param = new HashMap<String, String>();
         CommonUtil.localLog("step 2" + keyword);
         param.put(Constant.KEYWORD, keyword);
+        param.put(Constant.USERID_V1, getUserId());
         RequestUtil.request(Constant.QUERY_ARTICLE_URL, param, new SearchResponseListener(), getRequestTag(), SearchActivity.this);
         TextView textView = findViewById(R.id.tips);
         textView.setText("搜索加载中..");
