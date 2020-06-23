@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.login);
         initViews();
         //友盟SDK 禁止页面的默认统计方式  分ACTIVITY和Fragment统计
-        MobclickAgent.openActivityDurationTrack(false);
+//        MobclickAgent.openActivityDurationTrack(false);
     }
 
     @Override

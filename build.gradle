@@ -1,8 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+// ——————————————begin  20200623注释掉老的配置片段，为支持U-PUSH功能——————————————
 buildscript {
     repositories {
         jcenter()
+//        google()
+        maven { url 'http://dl.bintray.com/umsdk/release' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.0.0'
@@ -11,9 +14,41 @@ buildscript {
 
 allprojects {
     repositories {
+//        google()
         jcenter()
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/umsdk/release' }
     }
 }
+// ——————————————end  20200623注释掉老的配置片段，为支持U-PUSH功能——————————————
+
+// ——————————————begin  20200623增加的配置，为支持U-PUSH功能——————————————
+
+//buildscript {
+//    repositories {
+////        google()
+//        jcenter()
+//        maven { url 'https://dl.bintray.com/umsdk/release' }
+//    }
+//    dependencies {
+////        classpath 'com.android.tools.build:gradle:3.1.4'
+//        classpath 'com.android.tools.build:gradle:2.0.0'
+//        // NOTE: Do not place your application dependencies here; they belong
+//        // in the individual module build.gradle files
+//    }
+//}
+//allprojects {
+//    repositories {
+////        google()
+//        jcenter()
+//        mavenCentral()
+//        maven { url 'https://dl.bintray.com/umsdk/release' }
+//    }
+//}
+
+
+// ——————————————end  20200623增加的配置，为支持U-PUSH功能——————————————
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

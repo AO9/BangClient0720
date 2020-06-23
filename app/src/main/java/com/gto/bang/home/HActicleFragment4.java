@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseFragment;
+import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
@@ -154,6 +155,7 @@ public class HActicleFragment4 extends BaseFragment {
                 t.show();
             } else {
                 datas = RequestUtil.parseResponseForDatas(res);
+                CommonUtil.localLog("158 line ={}"+datas.toString());
                 if (CollectionUtils.isNotEmpty(datas)) {
                     LinearLayout tips = (LinearLayout) rootView.findViewById(R.id.comment_tips);
                     tips.setVisibility(View.GONE);

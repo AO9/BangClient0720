@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.RequestUtil;
+import com.umeng.message.PushAgent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +45,10 @@ public abstract class BaseActivity extends ActionBarActivity {
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 //        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+
+        // 该方法是【友盟+】Push后台进行日活统计及多维度推送的必调用方法
+        // add by shenjialong 20200623 ze
+        PushAgent.getInstance(getContext()).onAppStart();
 
     }
 
