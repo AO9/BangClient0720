@@ -10,6 +10,12 @@ android {
         versionName "3.2.2"
         versionCode 52
     }
+    // add by shenjialong 20200624 引入SO文件后，需要加以下配置，否则SO文件不能正常使用
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

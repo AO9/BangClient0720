@@ -1,9 +1,9 @@
 package com.gto.bang.application;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.gto.bang.util.CommonUtil;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
@@ -18,9 +18,14 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // add by shenjialong 以下是U-PUSH插件使用的前置逻辑
+        // add by 202000624下午 以下是U-PUSH插件使用的前置逻辑
         UMConfigure.init(this, "57a98ed467e58e179b00397c", "Umeng", UMConfigure.DEVICE_TYPE_PHONE,
                 "fafc29059d840c02214e6e4a83ac198f");
+
+        // add by 20200624晚 友盟统计功能相关，使用以下功能可以自动采集统计指标
+        // 在ACtivity中不用手动调用友盟的onResume onPause
+        // fragment中想统计还是需要手动调用onPageStart onPageEnd
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
 
         // 获取消息推送代理示例
         PushAgent mPushAgent = PushAgent.getInstance(this);

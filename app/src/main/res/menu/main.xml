@@ -19,7 +19,8 @@
         android:id="@+id/action_search"
         android:orderInCategory="90"
         android:title="@string/search"
-        app:showAsAction="always"/>
+        app:showAsAction="always|withText"
+        />
 
     <!--<item-->
         <!--android:id="@+id/create_complaint"-->
