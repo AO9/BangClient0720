@@ -4,15 +4,19 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gto.bang.R;
+import com.gto.bang.application.MyApplication;
 import com.gto.bang.personal.activity.PHomePageActivity;
 
 import org.apache.commons.lang.StringUtils;
@@ -24,6 +28,8 @@ import java.util.List;
  * 工具类
  */
 public class CommonUtil {
+
+
 
     /**
      * 获取手机IMEI

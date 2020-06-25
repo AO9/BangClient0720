@@ -7,8 +7,8 @@ android {
         applicationId 'com.gto.bangbang'
         minSdkVersion 14
         targetSdkVersion 26
-        versionName "3.2.2"
-        versionCode 52
+        versionName "3.2.3"
+        versionCode 53
     }
     // add by shenjialong 20200624 引入SO文件后，需要加以下配置，否则SO文件不能正常使用
     sourceSets {
@@ -38,17 +38,17 @@ android {
         baiduzhushou {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baiduzhushou"]
         }
-        jiuyizhushou {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jiuyizhushou"]
-        }
-        anroindmarket {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anroindmarket"]
-        }
         huawei {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
         }
         qihumobile {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qihumobile"]
+        }
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+        flyme {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "flyme"]
         }
     }
     //导入json的两个包之后  启动报错  网上搜索结果 需要增加如下配置即可

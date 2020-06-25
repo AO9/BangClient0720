@@ -1,6 +1,10 @@
 package com.gto.bang.application;
 
 import android.app.Application;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.gto.bang.util.CommonUtil;
 import com.umeng.analytics.MobclickAgent;
@@ -18,8 +22,10 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        String channel=getChannelInfo();
+
         // add by 202000624下午 以下是U-PUSH插件使用的前置逻辑
-        UMConfigure.init(this, "57a98ed467e58e179b00397c", "Umeng", UMConfigure.DEVICE_TYPE_PHONE,
+        UMConfigure.init(this, "57a98ed467e58e179b00397c", channel, UMConfigure.DEVICE_TYPE_PHONE,
                 "fafc29059d840c02214e6e4a83ac198f");
 
         // add by 20200624晚 友盟统计功能相关，使用以下功能可以自动采集统计指标
@@ -48,5 +54,41 @@ public class MyApplication extends Application {
 
         CommonUtil.localLog("MyApplication step 2");
 
+    }
+
+    public String getChannelInfo() {
+        return getMetaDataStr("UMENG_CHANNEL");
+    }
+
+    public String getMetaDataStr(String key) {
+        String resultData = "";
+        if (!TextUtils.isEmpty(key)) {
+            Bundle appInfoBundle = getAppInfoBundle();
+            if (appInfoBundle != null)
+                resultData = appInfoBundle.getString(key);
+        }
+        CommonUtil.localLog("获取渠道--------"+resultData);
+        return resultData;
+    }
+
+    private Bundle getAppInfoBundle() {
+        ApplicationInfo applicationInfo = getAppInfo();
+        if (applicationInfo != null) {
+            return applicationInfo.metaData;
+        }
+        return null;
+    }
+
+    private  ApplicationInfo getAppInfo() {
+        PackageManager packageManager = getPackageManager();
+        ApplicationInfo applicationInfo = null;
+        if (packageManager != null) {
+            try {
+                applicationInfo = packageManager.getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return applicationInfo;
     }
 }
