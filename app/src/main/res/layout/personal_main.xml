@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/info_backgroud"
-    android:orientation="vertical"
     android:divider="@drawable/divider"
+    android:orientation="vertical"
     android:showDividers="middle">
 
     <LinearLayout
@@ -60,6 +60,39 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="我的论文币"
+            android:textSize="@dimen/info_item_left_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/youth_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/about" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="同学录"
             android:textSize="@dimen/info_item_left_text_size" />
 
         <TextView
@@ -250,38 +283,6 @@
             android:gravity="center"
             android:maxLines="1"
             android:text="关于"
-            android:textSize="@dimen/info_item_left_text_size" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/tv_top_margin"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:id="@+id/school_ll"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/info_item_height"
-        android:background="@android:color/white"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/image_icon_big_size"
-            android:layout_height="@dimen/image_icon_big_size"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_marginRight="@dimen/small_sides_margin"
-            android:background="@drawable/about" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="同学录"
             android:textSize="@dimen/info_item_left_text_size" />
 
         <TextView

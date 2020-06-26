@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/sides_margin"
             android:layout_marginRight="@dimen/sides_margin"
-            android:text="确认吐槽"
+            android:text="@string/publish"
             android:background="@color/color_theme"
             android:textColor="@color/withe"
             android:id="@+id/complaint_save_btn"

@@ -42,7 +42,6 @@
                     android:gravity="center|left"
                     android:hint="搜索论文帮内容" />
 
-
                 <ImageButton
                     android:id="@+id/searchButton"
                     android:layout_width="30dp"

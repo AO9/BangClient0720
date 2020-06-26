@@ -104,6 +104,10 @@ public class Constant {
 
     //常用字段
     public static final String STATUS = "status";
+
+    public static final int BUTTON_STATUS_ON = 1;
+    public static final int BUTTON_STATUS_OFF = 0;
+
     public static final String DATA = "data";
     public static final String LIST = "list";
     public static final String INTRODUCE = "introduce";
@@ -163,7 +167,8 @@ public class Constant {
 
     public static final String AUTHORID_DEFAULT = "0";
     public static final String EMPTY = "";
-    public static final String SUBMIT = "提交";
+    public static final String SUBMIT = "提 交";
+    public static final String SUBMITED = "已提交,请稍等...";
     public static final String BOY = "1";
     public static final String GIRL = "0";
 

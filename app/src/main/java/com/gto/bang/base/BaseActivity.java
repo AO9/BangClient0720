@@ -3,11 +3,14 @@ package com.gto.bang.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+import android.widget.Button;
 
+import com.gto.bang.R;
 import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.RequestUtil;
@@ -25,6 +28,24 @@ public abstract class BaseActivity extends ActionBarActivity {
     public abstract Context getContext();
 
     public abstract  String getRequestTag();
+
+    /**
+     * 更新按钮操作状态
+     * 20200626 端午节
+     * @param status
+     * @param button
+     */
+    public void udpateButtonByStatus(int status, Button button) {
+        if (status == Constant.BUTTON_STATUS_OFF) {
+            button.setEnabled(false);
+            button.setBackgroundResource(R.color.info_backgroud);
+            button.setTextColor(Color.GRAY);
+        } else {
+            button.setEnabled(true);
+            button.setBackgroundResource(R.color.color_theme);
+            button.setTextColor(Color.WHITE);
+        }
+    }
 
     public void log(String operateType) {
         Map<String, String> param = new HashMap<String, String>();
@@ -47,7 +68,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 //        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
         // 该方法是【友盟+】Push后台进行日活统计及多维度推送的必调用方法
-        // add by shenjialong 20200623 ze
+        // add by shenjialong 20200623
         PushAgent.getInstance(getContext()).onAppStart();
 
     }

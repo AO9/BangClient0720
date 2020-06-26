@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/withe"
     android:orientation="vertical">
 
     <ScrollView
@@ -23,53 +24,24 @@
                 android:background="@android:color/white">
 
                 <TextView
-                    android:id="@+id/nickname_tv"
+                    android:id="@+id/userName_tv"
                     android:layout_width="@dimen/tv_width_70"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/sides_margin"
-                    android:text="昵称"
+                    android:text="账号"
                     android:textSize="@dimen/info_item_left_text_size" />
 
                 <EditText
-                    android:id="@+id/register_nickname_et"
+                    android:id="@+id/userName_et"
                     style="@style/edittext_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/left_margin_large"
-                    android:layout_toEndOf="@+id/nickname_tv"
-                    android:layout_toRightOf="@+id/nickname_tv"
-                    android:hint="不超过10个字符"
-                    android:inputType="textPersonName"
-                    android:maxLength="10"
-                    android:textSize="@dimen/info_item_left_text_size" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/info_item_height"
-                android:background="@android:color/white">
-
-                <TextView
-                    android:id="@+id/school_tv"
-                    android:layout_width="@dimen/tv_width_70"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/sides_margin"
-                    android:text="学校"
-                    android:textSize="@dimen/info_item_left_text_size" />
-
-                <EditText
-                    android:id="@+id/register_school_et"
-                    style="@style/edittext_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/left_margin_large"
-                    android:layout_toEndOf="@+id/school_tv"
-                    android:layout_toRightOf="@+id/school_tv"
-                    android:hint="请填写你的学校"
+                    android:layout_toEndOf="@+id/userName_tv"
+                    android:layout_toRightOf="@+id/userName_tv"
+                    android:hint="请设置您的账号名"
                     android:inputType="textPersonName"
                     android:maxLength="10"
                     android:textSize="@dimen/info_item_left_text_size" />
@@ -99,7 +71,7 @@
                     android:layout_marginLeft="@dimen/left_margin_large"
                     android:layout_toEndOf="@+id/secret_tv"
                     android:layout_toRightOf="@+id/secret_tv"
-                    android:hint="输入密码"
+                    android:hint="请设置您的账号密码"
                     android:password="true"
                     android:textSize="@dimen/info_item_left_text_size" />
 
@@ -112,28 +84,57 @@
                 android:background="@android:color/white">
 
                 <TextView
-                    android:id="@+id/secret_2_tv"
+                    android:id="@+id/school_tv"
                     android:layout_width="@dimen/tv_width_70"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/sides_margin"
-                    android:text="确认密码"
+                    android:text="学校"
                     android:textSize="@dimen/info_item_left_text_size" />
 
                 <EditText
-                    android:id="@+id/register_secret_2_et"
+                    android:id="@+id/register_school_et"
                     style="@style/edittext_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/left_margin_large"
-                    android:layout_toEndOf="@+id/secret_2_tv"
-                    android:layout_toRightOf="@+id/secret_2_tv"
-                    android:hint="再次输入密码"
-                    android:password="true"
+                    android:layout_toEndOf="@+id/school_tv"
+                    android:layout_toRightOf="@+id/school_tv"
+                    android:hint="请填写您的学校信息"
+                    android:inputType="textPersonName"
+                    android:maxLength="10"
                     android:textSize="@dimen/info_item_left_text_size" />
-
             </RelativeLayout>
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/info_item_height"-->
+            <!--android:background="@android:color/white">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/secret_2_tv"-->
+            <!--android:layout_width="@dimen/tv_width_70"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:text="确认密码"-->
+            <!--android:textSize="@dimen/info_item_left_text_size" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/register_secret_2_et"-->
+            <!--style="@style/edittext_style"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="@dimen/left_margin_large"-->
+            <!--android:layout_toEndOf="@+id/secret_2_tv"-->
+            <!--android:layout_toRightOf="@+id/secret_2_tv"-->
+            <!--android:hint="再次输入密码"-->
+            <!--android:password="true"-->
+            <!--android:textSize="@dimen/info_item_left_text_size" />-->
+
+            <!--</RelativeLayout>-->
 
 
             <RelativeLayout
@@ -160,7 +161,7 @@
                     android:layout_marginLeft="@dimen/left_margin_large"
                     android:layout_toEndOf="@+id/phone_tv"
                     android:layout_toRightOf="@+id/phone_tv"
-                    android:hint="输入11位有效手机号"
+                    android:hint="请输入您的手机号"
                     android:maxLength="11"
                     android:phoneNumber="true"
                     android:textSize="@dimen/info_item_left_text_size" />
@@ -168,88 +169,108 @@
 
             </RelativeLayout>
 
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/wechat_lv"-->
+            <!--android:layout_height="@dimen/info_item_height"-->
+            <!--android:background="@android:color/white">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/wechat_tv"-->
+            <!--android:layout_width="@dimen/tv_width_70"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:text="微信"-->
+            <!--android:textSize="@dimen/info_item_left_text_size"-->
+            <!--/>-->
+
+            <!--<EditText-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--style="@style/edittext_style"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin_large"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:id="@+id/wehcat_et"-->
+            <!--android:hint="请填写正确的微信账号"-->
+            <!--android:textSize="@dimen/info_item_left_text_size"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toRightOf="@+id/wechat_tv"-->
+            <!--android:layout_toEndOf="@+id/wechat_tv"-->
+            <!--android:inputType="textPersonName"-->
+            <!--android:maxLength="30"-->
+            <!--/>-->
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/bang_aducation_lv"-->
+            <!--android:layout_height="@dimen/info_item_height"-->
+            <!--android:background="@android:color/white">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/bang_education_tv"-->
+            <!--android:layout_width="@dimen/tv_width_70"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:text="学历"-->
+            <!--android:textSize="@dimen/info_item_left_text_size"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--style="@style/edittext_style"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin_large"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:id="@+id/bang_education_et"-->
+            <!--android:hint="未选择"-->
+            <!--android:textSize="@dimen/info_item_left_text_size"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toRightOf="@+id/bang_education_tv"-->
+            <!--android:layout_toEndOf="@+id/bang_education_tv"-->
+            <!--/>-->
+            <!--</RelativeLayout>-->
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:id="@+id/wechat_lv"
-                android:layout_height="@dimen/info_item_height"
-                android:background="@android:color/white">
+                android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/wechat_tv"
-                    android:layout_width="@dimen/tv_width_70"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/sides_margin"
-                    android:text="微信"
-                    android:textSize="@dimen/info_item_left_text_size"
-                    />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/edittext_style"
-                    android:layout_marginLeft="@dimen/sides_margin_large"
-                    android:gravity="center_vertical"
-                    android:id="@+id/wehcat_et"
-                    android:hint="请填写正确的微信账号"
-                    android:textSize="@dimen/info_item_left_text_size"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/wechat_tv"
-                    android:layout_toEndOf="@+id/wechat_tv"
-                    android:inputType="textPersonName"
-                    android:maxLength="30"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:id="@+id/bang_aducation_lv"
-                android:layout_height="@dimen/info_item_height"
-                android:background="@android:color/white">
-
-                <TextView
-                    android:id="@+id/bang_education_tv"
-                    android:layout_width="@dimen/tv_width_70"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/sides_margin"
-                    android:text="学历"
-                    android:textSize="@dimen/info_item_left_text_size"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/edittext_style"
-                    android:layout_marginLeft="@dimen/sides_margin_large"
-                    android:gravity="center_vertical"
-                    android:id="@+id/bang_education_et"
-                    android:hint="未选择"
-                    android:textSize="@dimen/info_item_left_text_size"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/bang_education_tv"
-                    android:layout_toEndOf="@+id/bang_education_tv"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/info_item_height"
-                android:layout_marginLeft="@dimen/sides_margin"
-                android:layout_marginRight="@dimen/sides_margin"
-                android:layout_marginTop="@dimen/info_item_margin_top"
                 android:background="@android:color/white">
 
                 <Button
                     android:id="@+id/f_register_ok_btn"
+                    android:layout_marginLeft="@dimen/sides_margin"
+                    android:layout_marginRight="@dimen/sides_margin"
+                    android:layout_marginTop="@dimen/info_item_margin_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/info_item_height"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/color_theme"
+                    android:text="@string/submit"
+                    android:textColor="@color/withe" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/tips"
+                    android:layout_marginLeft="@dimen/sides_margin"
+                    android:layout_marginRight="@dimen/sides_margin"
+                    android:layout_marginTop="@dimen/info_item_margin_top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:background="@color/color_theme"
-                    android:text="注册"
-                    android:textColor="@color/withe" />
+                    android:textColor="@android:color/holo_red_light" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

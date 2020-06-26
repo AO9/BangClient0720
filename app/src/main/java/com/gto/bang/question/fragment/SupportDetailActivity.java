@@ -115,10 +115,10 @@ public class SupportDetailActivity extends BaseCreateActivity {
                         String info = getSharedPreferences().getString(Constant.AUTHENTICATE_INFO, "");
                         String isAuthenticate = getSharedPreferences().getString(Constant.IS_AUTHENTICATE, "");
                         if (StringUtils.isBlank(info)) {
-                            info = "想成为专业的帮手,需先进行认证。提交以下信息到管理员邮箱 lunwenbang2020@163.com.cn\n1、身份证反正面照片\n2、本人手持证件照\n3、本站登录账号";
+                            info = "我们正在招募更多的帮手\n\n1、想帮助更多的同学吗\n2、想让你的知识变现吗\n\n请联系微信 lwb20191202";
                         }
                         if (!isAuthenticate.equals(Constant.AUTHENTICATED)) {
-                            CommonUtil.showDialog(SupportDetailActivity.this, info,"帮手招募", "确认");
+                            CommonUtil.showDialog(SupportDetailActivity.this, info,"加入我们", "好的!");
                         }
                     }
                 });

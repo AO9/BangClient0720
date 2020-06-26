@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -42,6 +43,7 @@ public class LoginActivity extends BaseActivity {
     Button loginBtn;
     EditText nameEt;
     EditText passwordEt;
+    TextView tipsTV;
 
     Map<String, Object> userinfo;
 
@@ -90,7 +92,7 @@ public class LoginActivity extends BaseActivity {
         loginBtn = (Button) findViewById(R.id.home_login_btn);
         nameEt = (EditText) findViewById(R.id.home_nickname_et);
         passwordEt = (EditText) findViewById(R.id.home_password_et);
-
+        tipsTV = (TextView) findViewById(R.id.tips);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,8 +100,7 @@ public class LoginActivity extends BaseActivity {
                 String username = nameEt.getText().toString();
                 String password = passwordEt.getText().toString();
                 if (StringUtils.isEmpty(username.trim()) || StringUtils.isEmpty(password.trim())) {
-                    Toast t = Toast.makeText(LoginActivity.this, "用户名和密码不能为空！", Toast.LENGTH_SHORT);
-                    t.show();
+                    tipsTV.setText("用户名和密码不能为空！");
                 } else {
                     username = username.replace("\n", "");
                     password = password.replace("\n", "");
@@ -123,9 +124,7 @@ public class LoginActivity extends BaseActivity {
         url = url + "?userName=" + userName + "&password=" + password + "&imei=" + imei + "&androidId=" + androidId;
         CustomRequest req = new CustomRequest(this, listener, listener, params, url, Request.Method.GET);
         req.setTag(getRequestTag());
-        loginBtn.setEnabled(false);
-
-        loginBtn.setText("正在登录...");
+        udpateButtonByStatus(Constant.BUTTON_STATUS_OFF,loginBtn);
         VolleyUtils.getRequestQueue(this).add(req);
     }
 
@@ -151,21 +150,16 @@ public class LoginActivity extends BaseActivity {
 
         @Override
         public void onErrorResponse(VolleyError arg0) {
-            //自动请求标志归零
-            loginBtn.setEnabled(true);
-            loginBtn.setText("登录");
-            t = Toast.makeText(LoginActivity.this, Constant.REQUEST_ERROR, Toast.LENGTH_SHORT);
-            t.show();
+            udpateButtonByStatus(Constant.BUTTON_STATUS_ON,loginBtn);
+            tipsTV.setText(Constant.REQUEST_ERROR);
         }
 
         @Override
         public void onResponse(Map<String, Object> res) {
             if (null == res.get(Constant.STATUS) || !Constant.RES_SUCCESS.equals(res.get(Constant.STATUS).toString())) {
                 String data = (null == res.get(Constant.DATA)) ? "登录失败" : res.get(Constant.DATA).toString();
-                t = Toast.makeText(LoginActivity.this, data, Toast.LENGTH_SHORT);
-                t.show();
-                loginBtn.setEnabled(true);
-                loginBtn.setText("登录");
+                tipsTV.setText(data);
+                udpateButtonByStatus(Constant.BUTTON_STATUS_ON,loginBtn);
             } else {
                 userinfo = (Map<String, Object>) res.get("data");
                 String[] feilds = new String[]{Constant.ID, Constant.USERNAME_V1, Constant.PASSWORD,

@@ -7,8 +7,8 @@ android {
         applicationId 'com.gto.bangbang'
         minSdkVersion 14
         targetSdkVersion 26
-        versionName "3.2.3"
-        versionCode 53
+        versionName "3.2.4"
+        versionCode 54
     }
     // add by shenjialong 20200624 引入SO文件后，需要加以下配置，否则SO文件不能正常使用
     sourceSets {

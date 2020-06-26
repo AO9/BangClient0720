@@ -4,11 +4,14 @@
     <string name="app_name">论文帮</string>
 
     <string name="back">返回</string>
+    <string name="blank"></string>
 
     <!--分割线，上面是20200620后编辑过内容，逐步过滤出不再使用的内容-->
 
     <string name="action_login">登录</string>
     <string name="action_register">注册</string>
+    <string name="submit">提  交</string>
+    <string name="publish">发  布</string>
 
     <string name="tab_homepage">首页</string>
     <string name="tab_discovery">看一看</string>
