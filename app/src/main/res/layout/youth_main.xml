@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/info_backgroud"
+    android:divider="@drawable/divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <LinearLayout
+
+        android:id="@+id/school_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/image_icon_big_size"
+            android:layout_height="@dimen/image_icon_big_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/small_sides_margin"
+            android:background="@drawable/about" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="我的同学录"
+            android:textSize="@dimen/info_item_left_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/tv_top_margin"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/info_backgroud"
+        android:divider="@drawable/divider"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <LinearLayout
+            android:id="@+id/writeMemory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/answerImage"
+                android:layout_width="@dimen/image_icon_size"
+                android:layout_height="@dimen/image_icon_size"
+                android:background="@drawable/add" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center|left"
+                android:text="写一封"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/common_text_size" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:text="|"
+            android:textColor="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/myMemory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/collectionImage"
+                android:layout_width="@dimen/image_icon_size"
+                android:layout_height="@dimen/image_icon_size"
+                android:background="@drawable/collection" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center|left"
+                android:text="我的"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/common_text_size" />
+
+        </LinearLayout>
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:gravity="center"-->
+        <!--android:text="|"-->
+        <!--android:textColor="@android:color/darker_gray" />-->
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/praise"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="@dimen/image_icon_size"-->
+        <!--android:layout_height="@dimen/image_icon_size"-->
+        <!--android:background="@drawable/praise"-->
+        <!--android:id="@+id/praiseImage" />-->
+
+        <!--<TextView-->
+
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ellipsize="end"-->
+        <!--android:gravity="center|left"-->
+        <!--android:text="好问题"-->
+        <!--android:textColor="@android:color/darker_gray"-->
+        <!--android:textSize="@dimen/common_text_size" />-->
+
+        <!--</LinearLayout>-->
+
+
+    </LinearLayout>
+</LinearLayout>
