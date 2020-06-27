@@ -110,6 +110,7 @@ public class Constant {
 
     public static final String DATA = "data";
     public static final String LIST = "list";
+    public static final String HASNEXTPAGE = "hasNextPage";
     public static final String INTRODUCE = "introduce";
     public static final String THEME = "theme";
     public static final String LOCATION = "lation";

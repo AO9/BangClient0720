@@ -14,22 +14,22 @@ import com.umeng.analytics.MobclickAgent;
  */
 public class QuestionTabFragment extends BaseTabFragment {
 
-    public static String TAG = "首页TAB";
+    public static String TAG = "问题板块";
 
     public QuestionTabFragment() {
     }
 
     @Override
     public void init() {
-        this.titles = new String[]{getString(R.string.tab_new),getString(R.string.tab_reccoment)};
-        this.tabIds = new int[]{R.id.bang_e_section1, R.id.bang_e_section2};
-        this.fragments = new Class[]{NewQuestionFragment.class,ReccomendQuestionFragment.class};
-        this.tabNum = 2;
+        this.titles = new String[]{getString(R.string.tab_new), getString(R.string.tab_reccoment), getString(R.string.tab_support)};
+        this.tabIds = new int[]{R.id.bang_e_section1, R.id.bang_e_section2, R.id.bang_e_section3};
+        this.fragments = new Class[]{NewQuestionFragment.class, ReccomendQuestionFragment.class, HSupportFragment.class};
+        this.tabNum = 3;
     }
 
     @Override
     protected String getRequestTag() {
-        return "HInteractionFragment_request";
+        return QuestionTabFragment.class.getName();
     }
 
     @Override

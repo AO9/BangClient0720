@@ -2,7 +2,6 @@ package com.gto.bang.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +22,9 @@ import com.gto.bang.article.ArticleListActivity4;
 import com.gto.bang.base.BaseFragment;
 import com.gto.bang.college.NoticeActivity;
 import com.gto.bang.create.CreateComplaintActivity;
+import com.gto.bang.create.CreateExperienceActivity;
 import com.gto.bang.create.CreateQuestionActivity;
 import com.gto.bang.create.CreateSupportActivity;
-import com.gto.bang.navigation.FeedbackActivity;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -112,7 +111,7 @@ public class HomePageTagFragment extends BaseFragment {
             }
         });
 
-        String name[] = {"求助","提问", "动态", "反馈", "优质文章","查重咨询","选题专区","硕士论文"};
+        String name[] = {"求助","提问", "动态", "分享", "优质文章","查重咨询","选题专区","硕士论文"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -143,10 +142,10 @@ public class HomePageTagFragment extends BaseFragment {
 //                        intent = new Intent(getActivity(), QuestionListActivity.class);
 //                        startActivity(intent);
 //                        break;
-//                    case 3:
-//                        intent = new Intent(getActivity(), CreateExperienceActivity.class);
-//                        startActivity(intent);
-//                        break;
+                    case 3:
+                        intent = new Intent(getActivity(), CreateExperienceActivity.class);
+                        startActivity(intent);
+                        break;
                     case 2:
                         log("首页动态");
                         intent = new Intent(getActivity(), CreateComplaintActivity.class);
@@ -156,11 +155,11 @@ public class HomePageTagFragment extends BaseFragment {
 //                        intent = new Intent(getActivity(), ArticleListActivity.class);
 //                        startActivity(intent);
 //                        break;
-                    case 3:
-                        log("首页反馈");
-                        intent = new Intent(getActivity(), FeedbackActivity.class);
-                        startActivity(intent);
-                        break;
+//                    case 3:
+//                        log("首页反馈");
+//                        intent = new Intent(getActivity(), FeedbackActivity.class);
+//                        startActivity(intent);
+//                        break;
 //                    case 7:
 //                        intent = new Intent(getActivity(), UserListActivity.class);
 //                        startActivity(intent);

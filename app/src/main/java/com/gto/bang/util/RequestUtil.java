@@ -54,5 +54,11 @@ public class RequestUtil {
         return list;
     }
 
+    public static boolean hasNextPageByDatas(Map<String, Object> res) {
+        Map<String, Object> data = (Map<String, Object>) res.get(Constant.DATA);
+        boolean hasNextPage = (boolean) data.get(Constant.HASNEXTPAGE);
+        return hasNextPage;
+    }
+
 
 }

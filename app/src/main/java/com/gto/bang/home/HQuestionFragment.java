@@ -54,12 +54,13 @@ public abstract class HQuestionFragment extends BaseRefreshFragment {
 
     /**
      * 父类抽象方法
+     *
      * @param datas
      */
     @Override
     public void refreshView(List<Map<String, Object>> datas) {
         // 将本地的datas数据更新，否则点击查看详情时跳转的不正确
-        this.datas=datas;
+        this.datas = datas;
         this.listView.setAdapter(new MyAdapter(getActivity(), datas));
     }
 
@@ -108,7 +109,7 @@ public abstract class HQuestionFragment extends BaseRefreshFragment {
 
     public void initDatas(int pageNum, ResponseListener responseListener) {
         String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "pageNum=" + pageNum;
-        url = url + "&type=" + getArticleType() + "&userId=" + getUserId();
+        url = url + "&type=" + Constant.TYPE_QUESTION + "&articleType=" + getArticleType() + "&userId=" + getUserId();
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);

@@ -3,14 +3,12 @@ package com.gto.bang.register;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -46,18 +44,13 @@ public class RegisterActivity extends BaseActivity {
 
     EditText userNameET;
     EditText passwordET;
-    //    EditText password_2ET;
     EditText phoneET;
     EditText schoolET;
-
-
-    //    EditText wechatET;
-//    TextView educationTV;
+    EditText wechatET;
     TextView tipsTV;
 //    RelativeLayout rl;
 
-    //    String [] tips=new String[]{"昵称不能为空!","密码不能为空!","确认密码不能为空!","手机号不能为空!","学校不能为空!","微信不能为空"};
-    String[] tips = new String[]{"请填写昵称", "请设置账号密码", "请填写正确的手机号", "请填写学校信息"};
+    String[] tips = new String[]{"请填写昵称", "请设置账号密码", "请填写正确的手机号", "请填写学校信息", "微信不能为空"};
 
 
     @Override
@@ -84,12 +77,11 @@ public class RegisterActivity extends BaseActivity {
         userNameET = (EditText) findViewById(R.id.userName_et);
         phoneET = (EditText) findViewById(R.id.register_phone_et);
         passwordET = (EditText) findViewById(R.id.register_secret_et);
-//        password_2ET=(EditText)findViewById(R.id.register_secret_2_et);
         register = (Button) findViewById(R.id.f_register_ok_btn);
         schoolET = (EditText) findViewById(R.id.register_school_et);
 //        educationTV=(TextView) findViewById(R.id.bang_education_et);
         tipsTV = (TextView) findViewById(R.id.tips);
-//        wechatET=(EditText) findViewById(R.id.wehcat_et);
+        wechatET = (EditText) findViewById(R.id.wehcat_et);
 
 
 //        rl=(RelativeLayout)findViewById(R.id.bang_aducation_lv);
@@ -104,23 +96,12 @@ public class RegisterActivity extends BaseActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                EditText [] array=new EditText[]{nicknameET,passwordET,password_2ET,phoneET,schoolET,wechatET};
-                EditText[] array = new EditText[]{userNameET, passwordET, phoneET, schoolET};
+                EditText[] array = new EditText[]{userNameET, passwordET, phoneET, schoolET, wechatET};
                 String password1 = passwordET.getText().toString();
-//                String password2=password_2ET.getText().toString();
                 String phone = phoneET.getText().toString();
                 String userName = userNameET.getText().toString();
                 String school = schoolET.getText().toString();
-//                String wechat=wechatET.getText().toString();
-
-                Toast t;
-
-//                boolean check = CommonUtil.checkUserName(nickname);
-//                if (check) {
-//                    Toast t1 = Toast.makeText(RegisterActivity.this, "昵称涉及敏感词汇，请重新填写!", Toast.LENGTH_SHORT);
-//                    t1.show();
-//                    return;
-//                }
+                String wechat = wechatET.getText().toString();
 
                 //非空校验
                 for (int i = 0; i < array.length; i++) {
@@ -131,19 +112,7 @@ public class RegisterActivity extends BaseActivity {
                     }
                 }
 
-//                if(null==educationTV.getText() || StringUtils.isBlank(educationTV.getText().toString())){
-//                    t = Toast.makeText(RegisterActivity.this, "请选择学历", Toast.LENGTH_SHORT);
-//                    t.show();
-//                    return ;
-//                }
-
-                //两次密码是否一致
-//                if(!password1.equals(password2)){
-//                    t = Toast.makeText(RegisterActivity.this, "请确保两次密码保持一致！", Toast.LENGTH_SHORT);
-//                    t.show();
-//                    return;
-//                }
-                register(userName, password1, phone, school);
+                register(userName, password1, phone, school, wechat);
             }
         });
 
@@ -156,7 +125,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    public void register(String userName, String password, String phone, String school) {
+    public void register(String userName, String password, String phone, String school, String wechat) {
 
         ResponseListener listener = new ResponseListener();
         String url = Constant.URL_BASE + Constant.REGISTER_URL;
@@ -166,10 +135,9 @@ public class RegisterActivity extends BaseActivity {
         params.put(Constant.PHONE, phone);
         params.put(Constant.SCHOOL, school);
 
-//        params.put(Constant.EDUCATION,education);
-//        if (StringUtils.isNotBlank(wechat)){
-//            params.put(Constant.WECHAT,wechat);
-//        }
+        if (StringUtils.isNotBlank(wechat)) {
+            params.put(Constant.WECHAT, wechat);
+        }
 
         if (StringUtils.isNotBlank(CommonUtil.getIMEI(getBaseContext()))) {
             params.put(Constant.IMEI, CommonUtil.getIMEI(getBaseContext()));
@@ -180,10 +148,9 @@ public class RegisterActivity extends BaseActivity {
         }
 
         CommonUtil.localLog("register step 1");
-//        params.put("client","android register params="+params.toString());
         CustomRequest req = new CustomRequest(this, listener, listener, params, url, Request.Method.POST);
         req.setTag(getRequestTag());
-        udpateButtonByStatus(Constant.BUTTON_STATUS_OFF,register);
+        udpateButtonByStatus(Constant.BUTTON_STATUS_OFF, register);
         CommonUtil.localLog("register step 2");
         VolleyUtils.getRequestQueue(this).add(req);
     }
@@ -196,7 +163,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     public String getRequestTag() {
-        return "ACCOUNT_REGISTER_REQUEST";
+        return RegisterActivity.class.getName();
     }
 
     @Override
@@ -211,12 +178,10 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-
-
     public class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
         @Override
         public void onErrorResponse(VolleyError arg0) {
-            udpateButtonByStatus(Constant.BUTTON_STATUS_ON,register);
+            udpateButtonByStatus(Constant.BUTTON_STATUS_ON, register);
             CommonUtil.showTips(Constant.REQUEST_ERROR, RegisterActivity.this);
         }
 
@@ -228,7 +193,7 @@ public class RegisterActivity extends BaseActivity {
             if (null == res.get(Constant.STATUS) || !Constant.RES_SUCCESS.equals(res.get(Constant.STATUS).toString())) {
 
                 String data = (null == res.get(Constant.DATA)) ? Constant.REGISTER_ERROR : res.get(Constant.DATA).toString();
-                udpateButtonByStatus(Constant.BUTTON_STATUS_ON,register);
+                udpateButtonByStatus(Constant.BUTTON_STATUS_ON, register);
                 CommonUtil.showTips(data, RegisterActivity.this);
 
             } else {
@@ -251,21 +216,5 @@ public class RegisterActivity extends BaseActivity {
 
         }
     }
-
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        MobclickAgent.onPageStart("注册");
-//        MobclickAgent.onResume(this);
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        MobclickAgent.onPageEnd("注册");
-//        MobclickAgent.onPause(this);
-//    }
-
 
 }

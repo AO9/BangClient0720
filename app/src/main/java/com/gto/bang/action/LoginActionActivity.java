@@ -44,7 +44,6 @@ public class LoginActionActivity extends BaseActivity {
 
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);

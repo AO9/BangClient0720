@@ -18,7 +18,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/sides_margin"
             android:textSize="@dimen/info_item_left_text_size"
-            android:hint="标  题">
+            android:hint="分享主题">
             <requestFocus />
         </EditText>
 
@@ -38,7 +38,7 @@
             android:gravity="top"
             android:layout_marginLeft="@dimen/sides_margin"
             android:textSize="@dimen/info_item_left_text_size"
-            android:hint="分享你的论文写作经验给大家～"
+            android:hint="分享你的独家经验给大家\n\n任何一个专业领域、任意的写作环节的宝贵经验，都可以帮助到需要帮助的人"
             style="@style/edittext_style"
             android:ems="10"
             android:id="@+id/experience_content_et"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/sides_margin"
             android:layout_marginRight="@dimen/sides_margin"
-            android:text="发布经验"
+            android:text="@string/publish"
             android:background="@color/color_theme"
             android:textColor="@color/withe"
             android:id="@+id/experience_save_btn"

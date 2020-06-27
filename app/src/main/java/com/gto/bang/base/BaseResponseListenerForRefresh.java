@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.JsonUtil;
+import com.gto.bang.util.RequestUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -45,8 +46,7 @@ public class BaseResponseListenerForRefresh extends ResponseListener {
             t = Toast.makeText(context, data, Toast.LENGTH_SHORT);
             t.show();
         } else {
-            Map<String, Object> data = (Map<String, Object>) res.get("data");
-            List<Map<String, Object>> datas = (List<Map<String, Object>>) data.get("list");
+            List<Map<String, Object>> datas = RequestUtil.parseResponseForDatas(res);
             try {
                 Message message = new Message();
                 message.what = SUCCESS;
