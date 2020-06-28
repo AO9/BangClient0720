@@ -54,6 +54,7 @@ public class RequestUtil {
             value = (String) entry.getValue();
             url = url + key + Constant.URL_EQUAL + value + Constant.URL_PARAM_SEPARATOR;
         }
+        CommonUtil.localLog(url);
         CustomRequest req = new CustomRequest(context, responseListener, responseListener, null, url, Request.Method.GET);
         req.setTag(requestTag);
         VolleyUtils.getRequestQueue(context).add(req);

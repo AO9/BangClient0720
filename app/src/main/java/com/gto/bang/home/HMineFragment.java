@@ -93,14 +93,17 @@ public class HMineFragment extends BaseInputFragment {
                 case R.id.mine_experience:
                     intent = new Intent(getActivity(), PExperienceActivity.class);
                     startActivity(intent);
+                    log("我的分享");
                     break;
                 case R.id.mine_answer:
                     intent = new Intent(getActivity(), PQuestionActivity.class);
                     startActivity(intent);
+                    log("我的提问");
                     break;
                 case R.id.head_ll:
                     intent = new Intent(getActivity(), HPersonInfoActivity.class);
                     startActivity(intent);
+                    log("我的个人信息");
                     break;
                 case R.id.about_ll:
                     log("我的关于");
@@ -115,14 +118,16 @@ public class HMineFragment extends BaseInputFragment {
                 case R.id.setting:
                     log("我的设置");
                     Toast.makeText(getActivity(), "你好，您暂无可设置项", Toast.LENGTH_SHORT).show();
+                    break;
                 case R.id.collection:
                     log("我的收藏");
                     Toast.makeText(getActivity(), "您还没有收藏任何内容", Toast.LENGTH_SHORT).show();
-
+                    break;
                 case R.id.youth_ll:
                     log("我的同学录");
                     intent = new Intent(getActivity(), YouthHomeActivity.class);
                     startActivity(intent);
+                    break;
                 default:
                     break;
             }

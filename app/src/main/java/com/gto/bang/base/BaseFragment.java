@@ -13,6 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.response.ResponseListener;
+import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
@@ -105,7 +106,7 @@ public abstract class BaseFragment extends Fragment {
         Map<String, String> param = new HashMap<String, String>();
         param.put(Constant.USERID_V1, getUserId());
         param.put(Constant.OPERATETYPE, operateType);
-        param.put(Constant.ANDROID_ID, getStrFromPreferences(Constant.ANDROID_ID));
+        param.put(Constant.ANDROID_ID, CommonUtil.getAndroidId(getActivity()));
         com.gto.bang.response.CommonResponseListener responseListener = new com.gto.bang.response.CommonResponseListener(Constant.EMPTY, getContext());
         RequestUtil.request(Constant.LOG_URL, param, responseListener, getRequestTag(), getContext());
     }

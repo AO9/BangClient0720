@@ -35,7 +35,7 @@ public class YouthHomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 CommonUtil.showTips("暂未收到同学赠言", YouthHomeActivity.this);
-                log("同学录|我的");
+                log("我的同学录_我的");
             }
         });
 
@@ -43,7 +43,7 @@ public class YouthHomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 CommonUtil.showTips("敬请期待!", YouthHomeActivity.this);
-                log("同学录|写一封");
+                log("我的同学录_写一封");
             }
         });
     }

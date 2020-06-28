@@ -125,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="我的提问"
+            android:text="我的分享"
             android:textSize="@dimen/info_item_left_text_size" />
 
         <TextView
@@ -155,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="我的求助"
+            android:text="我的提问"
             android:textSize="@dimen/info_item_left_text_size" />
 
         <TextView
