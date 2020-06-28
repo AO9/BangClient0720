@@ -6,15 +6,21 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.util.CommonUtil;
+import com.gto.bang.util.Constant;
+import com.gto.bang.util.RequestUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by shenjialong on 20/6/23 20:06.
- *
+ * <p/>
  * 主要目标：U-PUSH插件使用的前置初始化逻辑代码
  */
 public class MyApplication extends Application {
@@ -22,7 +28,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        String channel=getChannelInfo();
+        String channel = getChannelInfo();
 
         // add by 202000624下午 以下是U-PUSH插件使用的前置逻辑
         UMConfigure.init(this, "57a98ed467e58e179b00397c", channel, UMConfigure.DEVICE_TYPE_PHONE,
@@ -37,22 +43,24 @@ public class MyApplication extends Application {
         PushAgent mPushAgent = PushAgent.getInstance(this);
         mPushAgent.setResourcePackageName("com.gto.bang");
         // 注册推送服务，每次调用register方法都会回调该接口
-        CommonUtil.localLog("MyApplication step 1");
-        //注册推送服务，每次调用register方法都会回调该接口
         mPushAgent.register(new IUmengRegisterCallback() {
 
             @Override
             public void onSuccess(String deviceToken) {
                 //注册成功会返回deviceToken deviceToken是推送消息的唯一标志
                 CommonUtil.localLog("MyApplication step 3 注册成功：deviceToken：-------->  " + deviceToken);
+
+                RequestUtil.logForStartingApp("APP启动", MyApplication.this, MyApplication.class.getName(),deviceToken);
+
             }
+
             @Override
             public void onFailure(String s, String s1) {
                 CommonUtil.localLog("MyApplication step 4 注册失败：-------->  " + "s:" + s + ",s1:" + s1);
             }
         });
+        // 启动上报
 
-        CommonUtil.localLog("MyApplication step 2");
 
     }
 
@@ -67,7 +75,7 @@ public class MyApplication extends Application {
             if (appInfoBundle != null)
                 resultData = appInfoBundle.getString(key);
         }
-        CommonUtil.localLog("获取渠道--------"+resultData);
+        CommonUtil.localLog("渠道--------" + resultData);
         return resultData;
     }
 
@@ -79,7 +87,7 @@ public class MyApplication extends Application {
         return null;
     }
 
-    private  ApplicationInfo getAppInfo() {
+    private ApplicationInfo getAppInfo() {
         PackageManager packageManager = getPackageManager();
         ApplicationInfo applicationInfo = null;
         if (packageManager != null) {

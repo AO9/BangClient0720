@@ -1,5 +1,7 @@
 package com.gto.bang.util;
 
+import com.gto.bang.application.MyApplication;
+
 /**
  * Created by shenjialong on 16/6/10 13:39.
  */
@@ -13,7 +15,9 @@ public class Constant {
 
     public static final String PAGENUM= "pageNum";
     public static final String ANDROID_ID= "androidId";
+    public static final String DEVICE_TOKEN= "deviceToken";
     public static final String ARTICLEID= "articleId";
+
     public static final int ARTICLETYPE_HOT= 1;
     public static final String ARTICLETYPE_RECCOMMEND= "1";
     public static final String ARTICLETYPE_NEW= "2";

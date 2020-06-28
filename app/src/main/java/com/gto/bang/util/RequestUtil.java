@@ -4,9 +4,11 @@ package com.gto.bang.util;
 import android.content.Context;
 
 import com.android.volley.Request;
+import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.request.CustomRequest;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,22 @@ import java.util.Map;
  */
 public class RequestUtil {
 
+
+    /**
+     * 启动上报，携带deviceToken以及设备号androidId
+     * @param operateType
+     * @param context
+     * @param requestTag
+     * @param deviceToken
+     */
+    public static void logForStartingApp(String operateType, Context context, String requestTag, String deviceToken) {
+        Map<String, String> param = new HashMap<String, String>();
+        param.put(Constant.OPERATETYPE, operateType);
+        param.put(Constant.ANDROID_ID, CommonUtil.getAndroidId(context));
+        param.put(Constant.DEVICE_TOKEN, deviceToken);
+        CommonResponseListener responseListener = new CommonResponseListener(Constant.EMPTY, context);
+        RequestUtil.request(Constant.LOG_URL, param, responseListener, requestTag, context);
+    }
 
 
     /**
