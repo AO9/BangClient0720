@@ -89,8 +89,8 @@ public class QuestionDetailFragment extends BaseFragment {
     public Map<String, String> genearteMapParam() {
         Map<String, String> param = new HashMap<String, String>();
         param.put(Constant.ARTICLEID, ((QuestionDetailActivity) getActivity()).getArticleId());
-        param.put(Constant.USERID, getUserId());
-        param.put(Constant.USERID, getAndroidId());
+        param.put(Constant.USERID_V1, getUserId());
+        param.put(Constant.ANDROID_ID, getAndroidId());
         return param;
     }
 
