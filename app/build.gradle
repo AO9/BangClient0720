@@ -7,9 +7,10 @@ android {
         applicationId 'com.gto.bangbang'
         minSdkVersion 14
         targetSdkVersion 26
-        versionName "3.2.6"
-        versionCode 56
+        versionName "3.2.8"
+        versionCode 58
     }
+    // 2020年9月5日 升级为3.2.8版
     // add by shenjialong 20200624 引入SO文件后，需要加以下配置，否则SO文件不能正常使用
     sourceSets {
         main {
