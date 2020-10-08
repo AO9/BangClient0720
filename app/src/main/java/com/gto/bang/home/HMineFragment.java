@@ -11,11 +11,11 @@ import android.widget.Toast;
 
 import com.gto.bang.R;
 import com.gto.bang.base.BaseInputFragment;
-import com.gto.bang.login.LoginActivity;
 import com.gto.bang.navigation.AboutActivity;
 import com.gto.bang.navigation.FeedbackActivity;
 import com.gto.bang.navigation.WalletActivity;
 import com.gto.bang.personal.activity.PExperienceActivity;
+import com.gto.bang.personal.activity.PMessageActivity;
 import com.gto.bang.personal.activity.PQuestionActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
@@ -40,6 +40,7 @@ public class HMineFragment extends BaseInputFragment {
     private LinearLayout setting;
     private LinearLayout coin;
     private LinearLayout youth;
+    private LinearLayout message;
 
     private TextView headIcon;
     private TextView userName;
@@ -64,10 +65,14 @@ public class HMineFragment extends BaseInputFragment {
         setting = (LinearLayout) getView().findViewById(R.id.setting);
         about = (LinearLayout) getView().findViewById(R.id.about_ll);
         youth = (LinearLayout) getView().findViewById(R.id.youth_ll);
+        message = (LinearLayout) getView().findViewById(R.id.message);
 
         headIcon = (TextView) getView().findViewById(R.id.headIcon);
+
         userName = (TextView) getView().findViewById(R.id.userName);
-        rls = new LinearLayout[]{question, experience, head, feedback, about, collection, setting, coin, youth};
+
+
+        rls = new LinearLayout[]{question, experience, head, feedback, about, collection, setting, coin, youth,message};
 
         String name = getSharedPreferences().getString(Constant.USERNAME_V1, Constant.EMPTY);
         String id = getSharedPreferences().getString(Constant.ID, "0");
@@ -85,6 +90,11 @@ public class HMineFragment extends BaseInputFragment {
         public void onClick(View v) {
             Intent intent;
             switch (v.getId()) {
+                case R.id.message:
+                    log("我的消息");
+                    intent = new Intent(getActivity(), PMessageActivity.class);
+                    startActivity(intent);
+                    break;
                 case R.id.coin:
                     log("我的论文币");
                     intent = new Intent(getActivity(), WalletActivity.class);

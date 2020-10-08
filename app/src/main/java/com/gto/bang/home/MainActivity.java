@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
+import com.gto.bang.course.CourseFragment;
 import com.gto.bang.navigation.AboutActivity;
 import com.gto.bang.navigation.FeedbackActivity;
 import com.gto.bang.question.fragment.QuestionTabFragment;
@@ -40,14 +41,14 @@ import java.util.Set;
 /**
  * 20190217
  * 20190603 拆分问答为 纯问答+红包问答两个专区
- *
  */
 public class MainActivity extends BaseActivity implements TabHost.OnTabChangeListener, ActionBar.OnNavigationListener {
 
     public static final String TAB_HOMEPAGE = "TAB_HOMEPAGE";
     public static final String TAB_QUESTION = "TAB_QUESTION";
     public static final String TAB_DISCOVERY = "TAB_DISCOVERY";
-    public static final String TAB_MESSAGE = "TAB_MESSAGE";
+    //    public static final String TAB_MESSAGE = "TAB_MESSAGE";
+    public static final String TAB_COURSE = "TAB_COURSE";
     public static final String TAB_MINE = "TAB_MINE";
     public static final int TAB_INDEX_MESSAGE = 3;
 
@@ -79,7 +80,7 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
         addTab(inflater, TAB_HOMEPAGE, HomePageTagFragment.class, R.drawable.home, R.string.tab_homepage);
         addTab(inflater, TAB_DISCOVERY, DiscoveryFragment.class, R.drawable.discover, R.string.tab_discovery);
         addTab(inflater, TAB_QUESTION, QuestionTabFragment.class, R.drawable.question, R.string.tab_question);
-        addTab(inflater, TAB_MESSAGE, HMessageFragment.class, R.drawable.message, R.string.tab_message);
+        addTab(inflater, TAB_COURSE, CourseFragment.class, R.drawable.message, R.string.tab_course);
         addTab(inflater, TAB_MINE, HMineFragment.class, R.drawable.mine, R.string.tab_mine);
         mTabHost.getTabWidget().setDividerDrawable(null);
 
@@ -122,13 +123,13 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
             getActionBar().setTitle(R.string.tab_homepage);
         } else if (TAB_DISCOVERY.equals(tabId)) {
             getActionBar().setTitle(R.string.tab_discovery);
-        } else if (TAB_MESSAGE.equals(tabId)) {
-            getActionBar().setTitle(R.string.tab_message);
+        } else if (TAB_COURSE.equals(tabId)) {
+            getActionBar().setTitle(R.string.tab_course);
             View view = mTabHost.getTabWidget().getChildAt(1);
             ((TextView) view.findViewById(R.id.tabNum)).setText("");
         } else if (TAB_MINE.equals(tabId)) {
             getActionBar().setTitle(R.string.tab_mine);
-        }else if (TAB_QUESTION.equals(tabId)) {
+        } else if (TAB_QUESTION.equals(tabId)) {
             getActionBar().setTitle(R.string.tab_question);
         }
         //不重绘 否则menu不能隐藏

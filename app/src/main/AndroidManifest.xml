@@ -120,6 +120,11 @@
         <activity
             android:name=".navigation.WalletActivity"
             android:label="@string/wallet"></activity>
+
+
+        <activity
+            android:name=".course.SignUpActivity"
+            android:label="@string/signUp"></activity>
         <!--<activity android:name=".act.BangerListActivity"></activity>-->
         <activity
             android:name=".college.SalonActivity"

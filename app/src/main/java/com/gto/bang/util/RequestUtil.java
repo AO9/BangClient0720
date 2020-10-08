@@ -19,7 +19,6 @@ import java.util.Map;
  */
 public class RequestUtil {
 
-
     /**
      * 启动上报，携带deviceToken以及设备号androidId
      * @param operateType

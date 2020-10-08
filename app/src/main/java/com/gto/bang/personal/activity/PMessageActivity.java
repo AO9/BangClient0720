@@ -1,15 +1,18 @@
 package com.gto.bang.personal.activity;
 
 import android.content.Context;
+import android.os.Bundle;
 
+import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
 
 /**
  * Created by shenjialong on 16/6/10 19:08.
  * 个人中心——消息列表页面
- * @惠民 16年0731日，尚未调试
  *
+ * @惠民 16年0731日，尚未调试
  * @六里桥东 16年0810日22:49 增加标记为已读的功能
+ * @绿岛 20年07月05日 消息功能迁移到我的板块
  */
 public class PMessageActivity extends BaseActivity {
     @Override
@@ -22,13 +25,11 @@ public class PMessageActivity extends BaseActivity {
         return PMessageActivity.class.getName();
     }
 
-//    public  static  String MESSAGE="message";
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.bang_common_listview);
-//    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.message_main);
+    }
 //
 //    /**
 //     * 网络获取列表数据
@@ -43,9 +44,7 @@ public class PMessageActivity extends BaseActivity {
 //    }
 //
 //
-//    protected String getRequestTag(){
-//        return "PMessageActivity_request";
-//    }
+
 //
 //    @Override
 //    public void onDestroy() {
