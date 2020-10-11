@@ -25,7 +25,7 @@ import org.apache.commons.lang.StringUtils;
 import java.util.HashMap;
 
 /**
- * 2019年6月2日 红包问答
+ * 2019年6月2日 红包求助
  */
 public class CreateSupportActivity extends BaseCreateActivity {
 
