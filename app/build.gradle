@@ -82,7 +82,7 @@ dependencies {
 //    基础组件库依赖(必须) Push 6.1.0版本必须升级新版本Common SDK
     compile 'com.umeng.umsdk:common:9.1.0'
     compile 'com.umeng.umsdk:utdid:1.5.2'
-    compile 'com.umeng.umsdk:asms:1.1.3'
+    compile  'com.umeng.umsdk:asms:1.1.3'
     compile 'com.umeng.umsdk:crash:0.0.4'
 
 //    友盟push相关依赖(必须)
