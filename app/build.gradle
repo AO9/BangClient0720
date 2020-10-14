@@ -7,8 +7,8 @@ android {
         applicationId 'com.gto.bangbang'
         minSdkVersion 14
         targetSdkVersion 26
-        versionName "3.2.8"
-        versionCode 58
+        versionName "3.2.9"
+        versionCode 59
     }
 
     aaptOptions { cruncherEnabled = false }

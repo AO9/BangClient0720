@@ -55,6 +55,7 @@ public class Constant {
     public static final String REGISTER_URL = "/v1/user/register";
     public static final String STATEMENT_URL = "/statement/view";
     public static final String NOTICE_URL = "v1/notice/view?";
+    public static final String COURSE_URL = "v2/course/list?";
 
     public static final String FEEDBACK_CREATE_AJAX = "fCreate.ajax";
 

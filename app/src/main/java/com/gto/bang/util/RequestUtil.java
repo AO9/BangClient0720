@@ -8,6 +8,7 @@ import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.request.CustomRequest;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +22,7 @@ public class RequestUtil {
 
     /**
      * 启动上报，携带deviceToken以及设备号androidId
+     *
      * @param operateType
      * @param context
      * @param requestTag
@@ -68,6 +70,10 @@ public class RequestUtil {
      */
     public static List<Map<String, Object>> parseResponseForDatas(Map<String, Object> res) {
         Map<String, Object> data = (Map<String, Object>) res.get(Constant.DATA);
+
+        if (data == null) {
+            return new ArrayList<Map<String, Object>>();
+        }
         List<Map<String, Object>> list = (List<Map<String, Object>>) data.get(Constant.LIST);
         return list;
     }
