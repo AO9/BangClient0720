@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.gto.bang.R;
@@ -17,7 +18,7 @@ import com.umeng.analytics.MobclickAgent;
  */
 public class AboutActivity extends BaseActivity {
 
-    TextView statement;
+    Button statement;
     TextView versionCode;
 
     @Override

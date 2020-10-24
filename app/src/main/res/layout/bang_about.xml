@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="商务合作|官微：lwb20191202"/>
 
-        <TextView
+        <Button
             android:layout_marginTop="@dimen/info_item_margin_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

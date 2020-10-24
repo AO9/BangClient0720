@@ -20,6 +20,7 @@ import com.gto.bang.article.ArticleListActivity2;
 import com.gto.bang.article.ArticleListActivity3;
 import com.gto.bang.article.ArticleListActivity4;
 import com.gto.bang.base.BaseFragment;
+import com.gto.bang.campus.CampusActivity;
 import com.gto.bang.college.NoticeActivity;
 import com.gto.bang.create.CreateComplaintActivity;
 import com.gto.bang.create.CreateExperienceActivity;
@@ -111,7 +112,7 @@ public class HomePageTagFragment extends BaseFragment {
             }
         });
 
-        String name[] = {"求助","提问", "动态", "分享", "优质文章","查重咨询","选题专区","硕士论文"};
+        String name[] = {"求助", "提问", "动态", "分享", "我的校园", "查重咨询", "选题专区", "硕士论文"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -165,7 +166,10 @@ public class HomePageTagFragment extends BaseFragment {
 //                        startActivity(intent);
 //                        break;
                     case 4:
-                        intent = new Intent(getActivity(), ArticleListActivity1.class);
+//                        intent = new Intent(getActivity(), ArticleListActivity1.class);
+//                        startActivity(intent);
+// 20201024 新增我的校园
+                        intent = new Intent(getActivity(), CampusActivity.class);
                         startActivity(intent);
                         break;
                     case 5:
@@ -188,7 +192,6 @@ public class HomePageTagFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
     }
-
 
 
     @Override
