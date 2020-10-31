@@ -68,7 +68,8 @@ public class CreateQuestionActivity extends BaseCreateActivity {
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put(Constant.CONTENT, question_describe.getText().toString());
                     params.put(Constant.TYPE, Constant.TYPE_QUESTION);
-                    params.put("authorid", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
+                    params.put("userId", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
+//                    params.put("authorid", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
                     publish(params);
                 }
             }
@@ -80,7 +81,7 @@ public class CreateQuestionActivity extends BaseCreateActivity {
      */
     public void publish(HashMap<String, String> params) {
         ResponseListener listener = new ResponseListener();
-        String url = Constant.URL_BASE + Constant.ARTICLE_CREATE_AJAX;
+        String url = Constant.URL_BASE + Constant.ARTICLE_CREATE;
         CustomRequest req = new CustomRequest(this, listener, listener, params, url, Request.Method.POST);
         req.setTag(getRequestTag());
         submit.setEnabled(false);

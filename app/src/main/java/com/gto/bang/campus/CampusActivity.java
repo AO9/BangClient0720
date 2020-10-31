@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
-import com.gto.bang.create.CreateSupportActivity;
 import com.gto.bang.util.CommonUtil;
 
 import java.util.ArrayList;
@@ -25,19 +23,12 @@ import java.util.Map;
  */
 public class CampusActivity extends BaseActivity {
 
-
-//    Button helpByBoy;
-//    Button helpByGirl;
-//    Button helpByOther;
-
-
     GridView gridView;
-
-
     TextView work;
     TextView emotion;
     TextView life;
     TextView study;
+    TextView tips;
 
     @Override
     public Context getContext() {
@@ -59,8 +50,7 @@ public class CampusActivity extends BaseActivity {
     private void initView() {
 
         gridView = (GridView) findViewById(R.id.gridview);
-
-        String name[] = {"学长帮帮", "学姐帮帮", "校外求助","同学录"};
+        String name[] = {"学长帮帮", "学姐帮帮", "校外求助"};
         List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -78,60 +68,37 @@ public class CampusActivity extends BaseActivity {
                 Intent intent;
                 switch (arg2) {
                     case 0:
-                        CommonUtil.showTips("学长",getContext());
-                        intent = new Intent(getContext(), CreateSupportActivity.class);
+                        CommonUtil.showTips("学长", getContext());
+                        intent = new Intent(getContext(), CreateActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        CommonUtil.showTips("学姐",getContext());
-                        intent = new Intent(getContext(), CreateSupportActivity.class);
+                        CommonUtil.showTips("学姐", getContext());
+                        intent = new Intent(getContext(), CreateActivity.class);
                         startActivity(intent);
                         break;
                     case 2:
-                        CommonUtil.showTips("校外求助",getContext());
-                        intent = new Intent(getContext(), CreateSupportActivity.class);
+                        CommonUtil.showTips("校外求助", getContext());
+                        intent = new Intent(getContext(), CreateActivity.class);
                         startActivity(intent);
                         break;
-                    case 3:
-                        CommonUtil.showTips("同学录",getContext());
-                        intent = new Intent(getContext(), CreateSupportActivity.class);
-                        startActivity(intent);
-                        break;
+//                    case 3:
+//                        CommonUtil.showTips("同学录", getContext());
+//                        intent = new Intent(getContext(), CreateActivity.class);
+//                        startActivity(intent);
+//                        break;
 
-                    default:break;
+                    default:
+                        break;
                 }
             }
         });
-
-//        helpByBoy = (Button) findViewById(R.id.helpByBoy);
-//        helpByGirl = (Button) findViewById(R.id.helpByGirl);
-//        helpByOther = (Button) findViewById(R.id.helpByOther);
-//
-//        helpByBoy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                CommonUtil.showTips("学长",getContext());
-//            }
-//        });
-//
-//        helpByGirl.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                CommonUtil.showTips("学姐",getContext());
-//            }
-//        });
-//
-//        helpByOther.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                CommonUtil.showTips("校外求助",getContext());
-//            }
-//        });
 
         work = (TextView) findViewById(R.id.cp_work);
         study = (TextView) findViewById(R.id.cp_study);
         emotion = (TextView) findViewById(R.id.cp_emotion);
         life = (TextView) findViewById(R.id.cp_life);
+        tips = (TextView) findViewById(R.id.tips);
 
 
         View.OnClickListener tvOCL = new View.OnClickListener() {
@@ -141,19 +108,19 @@ public class CampusActivity extends BaseActivity {
                 int id = view.getId();
                 switch (id) {
                     case R.id.cp_work:
-                        CommonUtil.showTips("工作",getContext());
+                        CommonUtil.showTips("工作", getContext());
                         break;
                     case R.id.cp_study:
-                        CommonUtil.showTips("学习",getContext());
+                        CommonUtil.showTips("学习", getContext());
                         break;
                     case R.id.cp_emotion:
-                        CommonUtil.showTips("情感",getContext());
+                        CommonUtil.showTips("情感", getContext());
                         break;
                     case R.id.cp_life:
-                        CommonUtil.showTips("生活",getContext());
+                        CommonUtil.showTips("生活", getContext());
                         break;
                     default:
-                        CommonUtil.showTips("默认",getContext());
+                        CommonUtil.showTips("默认", getContext());
                         break;
                 }
 

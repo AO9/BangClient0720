@@ -1,7 +1,5 @@
 package com.gto.bang.util;
 
-import com.gto.bang.application.MyApplication;
-
 /**
  * Created by shenjialong on 16/6/10 13:39.
  */
@@ -12,6 +10,11 @@ public class Constant {
     public static final String TYPE_ARTICLE = "5";
     public static final String TYPE_QUESTION = "2";
     public static final String TYPE_COMPLAINTS = "3";
+
+    public static final String TYPE_CP_WORK = "104";
+    public static final String TYPE_CP_LIFE = "101";
+    public static final String TYPE_CP_EMOTION = "102";
+    public static final String TYPE_CP_STUDY = "103";
 
     public static final String PAGENUM= "pageNum";
     public static final String ANDROID_ID= "androidId";
@@ -70,7 +73,7 @@ public class Constant {
     public static final String PRODUCT_VIEW_URL = "product/view";
     public static final String PRODUCT_PRAISE_URL = "product/praise";
 
-    public static final String ARTICLE_CREATE_AJAX = "v2/article/create";
+    public static final String ARTICLE_CREATE = "v3/article/create";
     public static final String COMMENT_CREATE_AJAX = "cCreate.ajax";
     public static final String UPDATE_PERSION_INFO_AJAX = "user/update.ajax";
     // 0619改版 使用新接口

@@ -112,7 +112,7 @@ public class HomePageTagFragment extends BaseFragment {
             }
         });
 
-        String name[] = {"求助", "提问", "动态", "分享", "我的校园", "查重咨询", "选题专区", "硕士论文"};
+        String name[] = {"求助", "提问", "动态", "分享", "校内帮", "查重咨询", "选题专区", "硕士论文"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();

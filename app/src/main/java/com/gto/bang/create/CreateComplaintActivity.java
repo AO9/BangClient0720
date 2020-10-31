@@ -56,7 +56,8 @@ public class CreateComplaintActivity extends BaseCreateActivity {
                     HashMap<String, String> params=new HashMap<String, String>();
                     params.put("content",content.getText().toString());
                     params.put("type",Constant.TYPE_COMPLAINTS);
-                    params.put("authorid",getSharedPreferences().getString(Constant.ID,Constant.AUTHORID_DEFAULT));
+                    params.put("userId", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
+//                    params.put("authorid",getSharedPreferences().getString(Constant.ID,Constant.AUTHORID_DEFAULT));
                     publish(params);
                 }
             }
@@ -85,7 +86,7 @@ public class CreateComplaintActivity extends BaseCreateActivity {
         Toast t = Toast.makeText(this, "正在吐槽...", Toast.LENGTH_SHORT);
         t.show();
         ResponseListener listener = new ResponseListener();
-        String url=Constant.URL_BASE+ Constant.ARTICLE_CREATE_AJAX;
+        String url=Constant.URL_BASE+ Constant.ARTICLE_CREATE;
         CustomRequest req = new CustomRequest(this,listener,listener,params,url, Request.Method.POST);
         req.setTag(getRequestTag());
         submit.setEnabled(false);
