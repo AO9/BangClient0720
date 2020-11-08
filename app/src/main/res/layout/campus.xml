@@ -174,7 +174,7 @@
             android:layout_height="wrap_content"
             android:columnWidth="20dp"
             android:horizontalSpacing="10dp"
-            android:numColumns="4"
+            android:numColumns="3"
             android:stretchMode="columnWidth"
             android:verticalSpacing="2dp" />
     </LinearLayout>
