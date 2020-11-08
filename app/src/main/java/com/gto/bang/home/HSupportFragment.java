@@ -84,7 +84,7 @@ public class HSupportFragment extends BaseFragment {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setEnabled(false);
-                        initDatas(++pageNum,new ResponseListenerForRefresh());
+                        initDatas(++pageNum, new ResponseListenerForRefresh());
                     }
                 }).start();
             }
@@ -96,11 +96,11 @@ public class HSupportFragment extends BaseFragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        initDatas(pageNum,new ResponseListener());
+        initDatas(pageNum, new ResponseListener());
     }
 
     public void initDatas(int pageNum, ResponseListener responseListener) {
-        String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "pageNum="+pageNum+"&type=" +Constant.TYPE_SUPPORT;
+        String url = Constant.URL_BASE + Constant.ARTICLE_LIST_AJAX + "pageNum=" + pageNum + "&type=" + Constant.TYPE_SUPPORT;
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
 
         req.setTag(getRequestTag());
@@ -188,11 +188,11 @@ public class HSupportFragment extends BaseFragment {
         public View getView(final int position, View convertView, ViewGroup parent) {
             ViewHolder holder;
             if (convertView == null) {
-                if (position % 2 == 0) {
-                    convertView = mInflater.inflate(R.layout.hsupport_item, null);
-                } else {
-                    convertView = mInflater.inflate(R.layout.hsupport_item_v2, null);
-                }
+//                if (position % 2 == 0) {
+                convertView = mInflater.inflate(R.layout.hsupport_item, null);
+//                } else {
+//                    convertView = mInflater.inflate(R.layout.hsupport_item_v2, null);
+//                }
 
                 holder = new ViewHolder();
                 holder.price = (TextView) convertView.findViewById(R.id.price_tv);
@@ -223,7 +223,7 @@ public class HSupportFragment extends BaseFragment {
     }
 
 
-    public class ResponseListenerForRefresh extends  ResponseListener{
+    public class ResponseListenerForRefresh extends ResponseListener {
         Toast t;
 
         @Override

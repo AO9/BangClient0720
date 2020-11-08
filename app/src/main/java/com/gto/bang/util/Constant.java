@@ -76,6 +76,10 @@ public class Constant {
     public static final String ARTICLE_CREATE = "v3/article/create";
     public static final String COMMENT_CREATE_AJAX = "cCreate.ajax";
     public static final String UPDATE_PERSION_INFO_AJAX = "user/update.ajax";
+
+    // 2020年11月08日
+    public static final String ARTICLE_LIST = "v1/article/list?pageSize=30&";
+
     // 0619改版 使用新接口
     public static final String ARTICLE_LIST_AJAX = "v1/article/list?pageSize=10&";
     // 0621搜索框功能
