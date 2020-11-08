@@ -22,14 +22,23 @@ import com.gto.bang.personal.activity.PHomePageActivity;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 工具类
  */
 public class CommonUtil {
 
-
+    public static void log(String operateType, Context context, String requestTag, String userId) {
+        Map<String, String> param = new HashMap<String, String>();
+        param.put(Constant.USERID_V1, userId);
+        param.put(Constant.OPERATETYPE, operateType);
+        param.put(Constant.ANDROID_ID, getAndroidId(context));
+        com.gto.bang.response.CommonResponseListener responseListener = new com.gto.bang.response.CommonResponseListener(Constant.EMPTY, context);
+        RequestUtil.request(Constant.LOG_URL, param, responseListener, requestTag, context);
+    }
 
     /**
      * 获取手机IMEI
@@ -124,14 +133,15 @@ public class CommonUtil {
 
     /**
      * 淡淡的封装
+     *
      * @param content
      */
     public static void localLog(String content) {
         Log.i(Constant.LOG_TAG, content);
     }
 
-    public static void showTips(String content,Context context) {
-        if (StringUtils.isBlank(content)){
+    public static void showTips(String content, Context context) {
+        if (StringUtils.isBlank(content)) {
             localLog(" showTips 参数为空");
             return;
         }
@@ -145,7 +155,6 @@ public class CommonUtil {
         List<String> list = Arrays.asList(strArr);
         return list;
     }
-
 
 
 }

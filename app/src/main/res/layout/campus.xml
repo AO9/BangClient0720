@@ -42,13 +42,14 @@
                         android:layout_height="30dp"
                         android:gravity="center"
                         android:text="学习"
-                        android:textColor="@color/blue1_light"
+                        android:textColor="@color/blue_light"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
+                        android:id="@+id/cp_study_flag"
                         android:gravity="center"
                         android:text="一"
                         android:textColor="@color/blue1_light"
@@ -57,6 +58,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -67,11 +69,21 @@
                         android:layout_height="30dp"
                         android:gravity="center"
                         android:text="生活" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:gravity="center"
+                        android:id="@+id/cp_life_flag"
+                        android:text="一"
+                        android:textColor="@color/blue1_light"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:orientation="vertical"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
@@ -81,10 +93,20 @@
                         android:layout_height="30dp"
                         android:gravity="center"
                         android:text="工作" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:gravity="center"
+                        android:id="@+id/cp_work_flag"
+                        android:text="一"
+                        android:textColor="@color/blue1_light"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:orientation="vertical"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
@@ -94,6 +116,15 @@
                         android:layout_height="30dp"
                         android:gravity="center"
                         android:text="情感" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:gravity="center"
+                        android:id="@+id/cp_emotion_flag"
+                        android:text="一"
+                        android:textColor="@color/blue1_light"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ import com.gto.bang.R;
 import com.gto.bang.base.BaseFragment;
 import com.gto.bang.question.fragment.SupportDetailActivity;
 import com.gto.bang.util.Constant;
-import com.gto.bang.util.JsonUtil;
 import com.gto.bang.util.RequestUtil;
 import com.gto.bang.util.VolleyUtils;
 import com.gto.bang.util.request.CustomRequest;
@@ -32,7 +30,6 @@ import com.umeng.analytics.MobclickAgent;
 
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +37,7 @@ import java.util.Map;
  * 2019年06月02日
  * 增加论文帮页面-红包问答
  */
+
 public class HSupportFragment extends BaseFragment {
 
     ListView listView;

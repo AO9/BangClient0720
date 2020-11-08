@@ -70,21 +70,12 @@ public class CreateSupportActivity extends BaseCreateActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                boolean check = CommonUtil.checkContent(question_price.getText().toString());
-//                check = check || CommonUtil.checkContent(question_describe.getText().toString());
-//                if (check) {
-//                    Toast t = Toast.makeText(CreateSupportActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
-//                    t.show();
-//                    return;
-//                }
                 if (check()) {
                     //校验通过后拼接请求参数并向服务器发送请求
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put(Constant.PRICE, price.getText().toString());
                     params.put(Constant.CONTENT, describe.getText().toString());
                     params.put(Constant.TYPE, Constant.TYPE_SUPPORT);
-//                    params.put("authorid", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
                     params.put("userId", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
                     publish(params);
                 }

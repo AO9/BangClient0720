@@ -2,15 +2,14 @@ package com.gto.bang.campus;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -46,9 +45,15 @@ public class CampusActivity extends BaseActivity {
     TextView study;
     TextView tips;
 
+    TextView workFlag;
+    TextView emotionFlag;
+    TextView lifeFlag;
+    TextView studyFlag;
+
     ListView listView;
 
     List<Map<String, Object>> datas;
+
 
     @Override
     public Context getContext() {
@@ -65,7 +70,7 @@ public class CampusActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.campus);
         initView();
-        initDatas(1,new ResponseListener());
+        initDatas(1, new ResponseListener(), Constant.TYPE_CP_STUDY);
     }
 
     private void initView() {
@@ -89,25 +94,17 @@ public class CampusActivity extends BaseActivity {
                 Intent intent;
                 switch (arg2) {
                     case 0:
-                        CommonUtil.showTips("学长", getContext());
                         intent = new Intent(getContext(), CreateActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        CommonUtil.showTips("学姐", getContext());
                         intent = new Intent(getContext(), CreateActivity.class);
                         startActivity(intent);
                         break;
                     case 2:
-                        CommonUtil.showTips("校外求助", getContext());
                         intent = new Intent(getContext(), CreateActivity.class);
                         startActivity(intent);
                         break;
-//                    case 3:
-//                        CommonUtil.showTips("同学录", getContext());
-//                        intent = new Intent(getContext(), CreateActivity.class);
-//                        startActivity(intent);
-//                        break;
 
                     default:
                         break;
@@ -119,6 +116,12 @@ public class CampusActivity extends BaseActivity {
         study = (TextView) findViewById(R.id.cp_study);
         emotion = (TextView) findViewById(R.id.cp_emotion);
         life = (TextView) findViewById(R.id.cp_life);
+
+        workFlag = (TextView) findViewById(R.id.cp_work_flag);
+        studyFlag = (TextView) findViewById(R.id.cp_study_flag);
+        emotionFlag = (TextView) findViewById(R.id.cp_emotion_flag);
+        lifeFlag = (TextView) findViewById(R.id.cp_life_flag);
+
         tips = (TextView) findViewById(R.id.tips);
 
         listView = (ListView) findViewById(R.id.listView);
@@ -130,18 +133,27 @@ public class CampusActivity extends BaseActivity {
                 int id = view.getId();
                 switch (id) {
                     case R.id.cp_work:
-                        CommonUtil.showTips("工作", getContext());
+                        tabSelect(0);
+                        log("校内帮-工作列表");
+                        initDatas(1, new ResponseListener(), Constant.TYPE_CP_WORK);
                         break;
                     case R.id.cp_study:
-                        CommonUtil.showTips("学习", getContext());
+                        tabSelect(1);
+                        log("校内帮-学习列表");
+                        initDatas(1, new ResponseListener(), Constant.TYPE_CP_STUDY);
                         break;
                     case R.id.cp_emotion:
-                        CommonUtil.showTips("情感", getContext());
+                        tabSelect(2);
+                        log("校内帮-情感列表");
+                        initDatas(1, new ResponseListener(), Constant.TYPE_CP_EMOTION);
                         break;
                     case R.id.cp_life:
-                        CommonUtil.showTips("生活", getContext());
+                        tabSelect(3);
+                        log("校内帮-生活列表");
+                        initDatas(1, new ResponseListener(), Constant.TYPE_CP_LIFE);
                         break;
                     default:
+                        log("校内帮-默认列表");
                         CommonUtil.showTips("默认", getContext());
                         break;
                 }
@@ -152,21 +164,89 @@ public class CampusActivity extends BaseActivity {
         study.setOnClickListener(tvOCL);
         emotion.setOnClickListener(tvOCL);
         life.setOnClickListener(tvOCL);
+    }
+
+    public void tabSelect(int num) {
+
+        switch (num) {
+            case 0:
+                workFlag.setVisibility(View.VISIBLE);
+                studyFlag.setVisibility(View.GONE);
+                emotionFlag.setVisibility(View.GONE);
+                lifeFlag.setVisibility(View.GONE);
+
+                work.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.blue_light)));
+                study.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                emotion.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                life.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                break;
+            case 1:
+                workFlag.setVisibility(View.GONE);
+                studyFlag.setVisibility(View.VISIBLE);
+                emotionFlag.setVisibility(View.GONE);
+                lifeFlag.setVisibility(View.GONE);
+                work.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                study.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.blue_light)));
+                emotion.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                life.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                break;
+            case 2:
+                workFlag.setVisibility(View.GONE);
+                studyFlag.setVisibility(View.GONE);
+                emotionFlag.setVisibility(View.VISIBLE);
+                lifeFlag.setVisibility(View.GONE);
+                work.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                study.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                emotion.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.blue_light)));
+                life.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                break;
+            case 3:
+                workFlag.setVisibility(View.GONE);
+                studyFlag.setVisibility(View.GONE);
+                emotionFlag.setVisibility(View.GONE);
+                lifeFlag.setVisibility(View.VISIBLE);
+                work.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                study.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                emotion.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                life.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.blue_light)));
+                break;
+            default:
+                break;
+
+
+        }
 
     }
 
     /**
      * server请求数据
+     *
      * @param pageNum
      * @param responseListener
      */
-    public void initDatas(int pageNum, ResponseListener responseListener) {
-        String url = Constant.URL_BASE + Constant.ARTICLE_LIST + "type=101" + "&" +
+    public void initDatas(int pageNum, ResponseListener responseListener, String type) {
+
+        listView.setAdapter(null);
+        TextView tips = (TextView) findViewById(R.id.tips);
+        tips.setVisibility(View.VISIBLE);
+
+        String url = Constant.URL_BASE + Constant.ARTICLE_LIST + "type=" + type + "&" +
                 Constant.PAGENUM + "=" + pageNum;
         CommonUtil.localLog("campus url=" + url);
         CustomRequest req = new CustomRequest(getContext(), responseListener, responseListener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getContext()).add(req);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
     }
 
     public class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
@@ -249,8 +329,6 @@ public class CampusActivity extends BaseActivity {
     }
 
     public final class ViewHolder {
-//        public TextView author;
-//        public TextView headIcon;
         public TextView content;
         public TextView price;
         //待实现 1108

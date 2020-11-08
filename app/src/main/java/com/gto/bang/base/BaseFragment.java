@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.response.ResponseListener;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
@@ -81,7 +80,6 @@ public abstract class BaseFragment extends Fragment {
         MobclickAgent.onPageEnd(getMyTag());
     }
 
-
     public SharedPreferences getSharedPreferences() {
         SharedPreferences sp = getActivity().getSharedPreferences(Constant.DB, Activity.MODE_MULTI_PROCESS);
         return sp;
@@ -120,9 +118,7 @@ public abstract class BaseFragment extends Fragment {
     public void request(String requestPath, Map<String, String> param, ResponseListener responseListener) {
 
         String userId = getUserId();
-
         String url = Constant.URL_BASE + requestPath + Constant.URL_SEPARATOR;
-
         String key = null;
         String value = null;
         Iterator it = param.entrySet().iterator();
@@ -132,7 +128,6 @@ public abstract class BaseFragment extends Fragment {
             value = (String) entry.getValue();
             url = url + key + Constant.URL_EQUAL + value + Constant.URL_PARAM_SEPARATOR;
         }
-        Log.i("sjl", "测试新方法 url" + url);
         CustomRequest req = new CustomRequest(getActivity(), responseListener, responseListener, null, url, Request.Method.GET);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getContext()).add(req);

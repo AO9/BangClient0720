@@ -11,20 +11,20 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.gto.bang.R;
-import com.gto.bang.response.CommonResponseListener;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
-import com.gto.bang.util.RequestUtil;
 import com.umeng.message.PushAgent;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by user on 16/5/5.
  * 20200622 增加writeToLocal方法，用于记录搜索过的关键词
+ * 20201108 增加log方法
  */
 public abstract class BaseActivity extends ActionBarActivity {
+
+    public void log(String operation){
+        CommonUtil.log(operation,getContext(),getRequestTag(),getUserId());
+    }
 
     public abstract Context getContext();
 
@@ -48,14 +48,14 @@ public abstract class BaseActivity extends ActionBarActivity {
         }
     }
 
-    public void log(String operateType) {
-        Map<String, String> param = new HashMap<String, String>();
-        param.put(Constant.USERID_V1, getUserId());
-        param.put(Constant.OPERATETYPE, operateType);
-        param.put(Constant.ANDROID_ID, CommonUtil.getAndroidId(BaseActivity.this));
-        CommonResponseListener responseListener = new CommonResponseListener(Constant.EMPTY, getContext());
-        RequestUtil.request(Constant.LOG_URL, param, responseListener, getRequestTag(), getContext());
-    }
+//    public void log(String operateType) {
+//        Map<String, String> param = new HashMap<String, String>();
+//        param.put(Constant.USERID_V1, getUserId());
+//        param.put(Constant.OPERATETYPE, operateType);
+//        param.put(Constant.ANDROID_ID, CommonUtil.getAndroidId(BaseActivity.this));
+//        CommonResponseListener responseListener = new CommonResponseListener(Constant.EMPTY, getContext());
+//        RequestUtil.request(Constant.LOG_URL, param, responseListener, getRequestTag(), getContext());
+//    }
 
     public String getStrFromPreferences(String key){
         return getSharedPreferences().getString(key, Constant.EMPTY);

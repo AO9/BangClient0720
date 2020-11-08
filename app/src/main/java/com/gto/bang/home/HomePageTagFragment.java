@@ -112,7 +112,7 @@ public class HomePageTagFragment extends BaseFragment {
             }
         });
 
-        String name[] = {"求助", "提问", "动态", "分享", "校内帮", "查重咨询", "选题专区", "硕士论文"};
+        String name[] = {"论文求助", "提问", "动态", "分享", "校内帮", "查重咨询", "选题专区", "硕士论文"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -130,12 +130,12 @@ public class HomePageTagFragment extends BaseFragment {
                 Intent intent;
                 switch (arg2) {
                     case 0:
-                        log("首页求助");
+                        log("首页-论文求助");
                         intent = new Intent(getActivity(), CreateSupportActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        log("首页提问");
+                        log("首页-提问");
                         intent = new Intent(getActivity(), CreateQuestionActivity.class);
                         startActivity(intent);
                         break;
@@ -144,11 +144,12 @@ public class HomePageTagFragment extends BaseFragment {
 //                        startActivity(intent);
 //                        break;
                     case 3:
+                        log("首页-分享");
                         intent = new Intent(getActivity(), CreateExperienceActivity.class);
                         startActivity(intent);
                         break;
                     case 2:
-                        log("首页动态");
+                        log("首页-动态");
                         intent = new Intent(getActivity(), CreateComplaintActivity.class);
                         startActivity(intent);
                         break;
@@ -169,18 +170,22 @@ public class HomePageTagFragment extends BaseFragment {
 //                        intent = new Intent(getActivity(), ArticleListActivity1.class);
 //                        startActivity(intent);
 // 20201024 新增我的校园
+                        log("首页-校内帮");
                         intent = new Intent(getActivity(), CampusActivity.class);
                         startActivity(intent);
                         break;
                     case 5:
+                        log("首页-查重咨询");
                         intent = new Intent(getActivity(), ArticleListActivity2.class);
                         startActivity(intent);
                         break;
                     case 6:
+                        log("首页-选题专区");
                         intent = new Intent(getActivity(), ArticleListActivity3.class);
                         startActivity(intent);
                         break;
                     case 7:
+                        log("首页-硕士论文");
                         intent = new Intent(getActivity(), ArticleListActivity4.class);
                         startActivity(intent);
                         break;
