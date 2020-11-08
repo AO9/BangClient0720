@@ -116,6 +116,7 @@ public class Constant {
 
     //常用字段
     public static final String STATUS = "status";
+    public static final String QUESTION_STATUS = "questionStatus";
 
     public static final int BUTTON_STATUS_ON = 1;
     public static final int BUTTON_STATUS_OFF = 0;

@@ -146,14 +146,15 @@
             <TextView
                 android:layout_marginTop="@dimen/sides_margin"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:id="@+id/tips"
                 android:text="暂无数据" />
 
             <ListView
                 android:id="@+id/listView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 

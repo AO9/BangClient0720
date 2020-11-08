@@ -125,6 +125,19 @@ public class CampusActivity extends BaseActivity {
         tips = (TextView) findViewById(R.id.tips);
 
         listView = (ListView) findViewById(R.id.listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), CampusDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", datas.get(position).get("id").toString());
+                bundle.putString("artTitle", datas.get(position).get("title").toString());
+                bundle.putString("artType", Constant.TYPE_QUESTION);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
 
         View.OnClickListener tvOCL = new View.OnClickListener() {
             @Override
@@ -314,7 +327,7 @@ public class CampusActivity extends BaseActivity {
                 convertView = mInflater.inflate(R.layout.cacticle_item, null);
                 holder = new ViewHolder();
                 holder.content = (TextView) convertView.findViewById(R.id.content);
-                holder.status = (TextView) convertView.findViewById(R.id.status);
+                holder.questionStatus = (TextView) convertView.findViewById(R.id.status);
                 holder.price = (TextView) convertView.findViewById(R.id.price);
                 holder.signUpNum = (TextView) convertView.findViewById(R.id.signUpNum);
                 convertView.setTag(holder);
@@ -324,6 +337,15 @@ public class CampusActivity extends BaseActivity {
             /**设置TextView显示的内容，即我们存放在动态数组中的数据*/
             holder.content.setText(datas.get(position).get(Constant.CONTENT).toString());
             holder.price.setText(datas.get(position).get(Constant.PRICE).toString());
+
+            Object qStatus = datas.get(position).get(Constant.QUESTION_STATUS);
+            // 临时搞个兼容处理逻辑，后台功能暂未实现 20201108
+            if (qStatus == null) {
+                holder.questionStatus.setText("待解决");
+            } else {
+                holder.questionStatus.setText(qStatus.toString());
+            }
+
             return convertView;
         }
     }
@@ -333,7 +355,7 @@ public class CampusActivity extends BaseActivity {
         public TextView price;
         //待实现 1108
         public TextView signUpNum;
-        public TextView status;
+        public TextView questionStatus;
     }
 
 

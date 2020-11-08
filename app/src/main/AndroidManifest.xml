@@ -33,6 +33,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppBaseTheme">
         <activity
+            android:name=".campus.CampusDetailActivity"
+            android:label="@string/back"
+            ></activity>
+        <activity
             android:name=".campus.CreateActivity"
             android:label="@string/back"
             android:windowSoftInputMode="adjustResize"

@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.gto.bang.R;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
+import com.gto.bang.util.VolleyUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
 /**
@@ -21,18 +23,18 @@ import com.umeng.message.PushAgent;
  * 20201108 增加log方法
  */
 public abstract class BaseActivity extends ActionBarActivity {
-
-    public void log(String operation){
-        CommonUtil.log(operation,getContext(),getRequestTag(),getUserId());
+    public void log(String operation) {
+        CommonUtil.log(operation, getContext(), getRequestTag(), getUserId());
     }
 
     public abstract Context getContext();
 
-    public abstract  String getRequestTag();
+    public abstract String getRequestTag();
 
     /**
      * 更新按钮操作状态
      * 20200626 端午节
+     *
      * @param status
      * @param button
      */
@@ -57,7 +59,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 //        RequestUtil.request(Constant.LOG_URL, param, responseListener, getRequestTag(), getContext());
 //    }
 
-    public String getStrFromPreferences(String key){
+    public String getStrFromPreferences(String key) {
         return getSharedPreferences().getString(key, Constant.EMPTY);
     }
 
@@ -110,6 +112,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     /**
      * 本地DB中写数据
+     *
      * @param key
      * @param value
      */
@@ -121,6 +124,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     /**
      * 本地DB中读数据
+     *
      * @param key
      * @return
      */
@@ -129,4 +133,24 @@ public abstract class BaseActivity extends ActionBarActivity {
         return value;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getRequestTag());
+        MobclickAgent.onResume(getContext());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getRequestTag());
+        MobclickAgent.onPause(getContext());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        VolleyUtils.getRequestQueue(this).cancelAll(getRequestTag());
+    }
 }
