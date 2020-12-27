@@ -50,14 +50,6 @@ public abstract class BaseActivity extends ActionBarActivity {
         }
     }
 
-//    public void log(String operateType) {
-//        Map<String, String> param = new HashMap<String, String>();
-//        param.put(Constant.USERID_V1, getUserId());
-//        param.put(Constant.OPERATETYPE, operateType);
-//        param.put(Constant.ANDROID_ID, CommonUtil.getAndroidId(BaseActivity.this));
-//        CommonResponseListener responseListener = new CommonResponseListener(Constant.EMPTY, getContext());
-//        RequestUtil.request(Constant.LOG_URL, param, responseListener, getRequestTag(), getContext());
-//    }
 
     public String getStrFromPreferences(String key) {
         return getSharedPreferences().getString(key, Constant.EMPTY);
@@ -124,7 +116,6 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     /**
      * 本地DB中读数据
-     *
      * @param key
      * @return
      */

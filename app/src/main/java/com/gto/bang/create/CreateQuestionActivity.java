@@ -57,12 +57,6 @@ public class CreateQuestionActivity extends BaseCreateActivity {
                     return;
                 }
 
-//                boolean check = CommonUtil.checkContent(describe);
-//                if (check) {
-//                    Toast t = Toast.makeText(CreateQuestionActivity.this, "发布内容涉及敏感词汇，请重新编辑", Toast.LENGTH_SHORT);
-//                    t.show();
-//                    return;
-//                }
                 if (check()) {
                     //校验通过后拼接请求参数并向服务器发送请求
                     HashMap<String, String> params = new HashMap<String, String>();

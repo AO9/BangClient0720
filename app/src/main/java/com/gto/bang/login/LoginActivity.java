@@ -146,7 +146,6 @@ public class LoginActivity extends BaseActivity {
 
 
     public class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
-        Toast t;
 
         @Override
         public void onErrorResponse(VolleyError arg0) {
