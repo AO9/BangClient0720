@@ -3,71 +3,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/withe"
-    android:divider="@drawable/divider"
-    android:orientation="vertical"
-    android:showDividers="middle">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/info_item_height"
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/home_nickname_tv"
+                android:layout_width="@dimen/tv_width_70"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:text="账号"
+                android:textSize="@dimen/info_item_left_text_size" />
+
+            <EditText
+                android:id="@+id/home_nickname_et"
+                style="@style/edittext_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/sides_margin_large"
+                android:layout_toEndOf="@+id/home_nickname_tv"
+                android:layout_toRightOf="@+id/home_nickname_tv"
+                android:hint="请输入论文帮账号"
+                android:textSize="@dimen/info_item_left_text_size" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/info_item_height"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/home_password_tv"
+                android:layout_width="@dimen/tv_width_70"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:text="密码"
+                android:textSize="@dimen/info_item_left_text_size" />
+
+            <EditText
+                android:id="@+id/home_password_et"
+                style="@style/edittext_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/sides_margin_large"
+                android:layout_toEndOf="@+id/home_password_tv"
+                android:layout_toRightOf="@+id/home_password_tv"
+                android:hint="请输入论文帮密码"
+                android:password="true"
+                android:textSize="@dimen/info_item_left_text_size" />
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/info_item_height"
-        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:layout_height="wrap_content"
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/home_nickname_tv"
-            android:layout_width="@dimen/tv_width_70"
+            android:id="@+id/tips"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/sides_margin"
-            android:text="账号"
-            android:textSize="@dimen/info_item_left_text_size" />
-
-        <EditText
-            android:id="@+id/home_nickname_et"
-            style="@style/edittext_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/sides_margin_large"
-            android:layout_toEndOf="@+id/home_nickname_tv"
-            android:layout_toRightOf="@+id/home_nickname_tv"
-            android:hint="输入昵称"
-            android:textSize="@dimen/info_item_left_text_size" />
+            android:layout_marginRight="@dimen/sides_margin"
+            android:textColor="@android:color/holo_red_light" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/info_item_height"
-        android:background="@android:color/white">
-
-        <TextView
-            android:id="@+id/home_password_tv"
-            android:layout_width="@dimen/tv_width_70"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:text="密码"
-            android:textSize="@dimen/info_item_left_text_size" />
-
-        <EditText
-            android:id="@+id/home_password_et"
-            style="@style/edittext_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/sides_margin_large"
-            android:layout_toEndOf="@+id/home_password_tv"
-            android:layout_toRightOf="@+id/home_password_tv"
-            android:hint="输入密码"
-            android:password="true"
-            android:textSize="@dimen/info_item_left_text_size" />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/info_item_height"
-        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:layout_marginTop="5dp"
         android:background="@android:color/white">
 
         <Button
@@ -83,21 +106,31 @@
             android:text="登录"
             android:textColor="@color/withe" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@android:color/white">
+
         <TextView
-            android:id="@+id/tips"
-            android:layout_marginLeft="@dimen/sides_margin"
-            android:layout_marginRight="@dimen/sides_margin"
-            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:id="@+id/forget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:textColor="@android:color/holo_red_light" />
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/sides_margin"
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:gravity="center"
+            android:text="找回密码"
+            android:textColor="@android:color/darker_gray" />
     </RelativeLayout>
 
 

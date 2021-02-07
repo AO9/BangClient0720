@@ -34,13 +34,11 @@
         android:theme="@style/AppBaseTheme">
         <activity
             android:name=".campus.CampusDetailActivity"
-            android:label="@string/back"
-            ></activity>
+            android:label="@string/back"></activity>
         <activity
             android:name=".campus.CreateActivity"
             android:label="@string/back"
-            android:windowSoftInputMode="adjustResize"
-            ></activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".navigation.AboutActivity"
             android:label="@string/back"></activity>
@@ -53,11 +51,11 @@
         <activity
             android:name=".home.MainActivity"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".comment.CommentInputActivity"
@@ -164,12 +162,13 @@
 
         <activity
             android:name=".login.LoginActivity"
-            android:label="@string/app_name">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize">
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 

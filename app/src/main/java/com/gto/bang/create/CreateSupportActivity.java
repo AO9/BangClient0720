@@ -58,8 +58,8 @@ public class CreateSupportActivity extends BaseCreateActivity {
         price = (TextView) findViewById(R.id.question_price);
         wordNumber = (TextView) findViewById(R.id.wordNumber);
 
-        initTextView(describe,"请简单描述您的论文需求.\n\n客服小帮会尽量24小时内微信联系您，请留意.\n\n论文帮官微 lwb20191202\n\nTips:请不要添加其他不明来源账号");
-        initTextView(price,"以实际沟通为准,参考70元/千字");
+        initTextView(describe,"请简单描述您的论文需求.\n\n客服小帮会尽量24小时内微信联系您，请留意.\n\n关注论文帮官微 lwb20191202\n\nTips:请不要添加其他不明来源账号");
+        initTextView(price,"70~120元/千字，最终以实际沟通为准");
         initTextView(wordNumber,"请填写字数");
 
         tips = (TextView) findViewById(R.id.tips);

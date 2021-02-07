@@ -37,6 +37,8 @@ import java.util.Map;
  *
  * @六里桥 中午这么热阿贝还在玩奇迹暖暖，这名字听起来让人更想出汗
  * @20160827 更新：登录成功后，缓存服务器返回的有效用户信息
+ *
+ * 20210102 增加 找回密码
  */
 public class LoginActivity extends BaseActivity {
 
@@ -44,6 +46,7 @@ public class LoginActivity extends BaseActivity {
     EditText nameEt;
     EditText passwordEt;
     TextView tipsTV;
+    TextView forgetTV;
 
     Map<String, Object> userinfo;
 
@@ -93,6 +96,8 @@ public class LoginActivity extends BaseActivity {
         nameEt = (EditText) findViewById(R.id.home_nickname_et);
         passwordEt = (EditText) findViewById(R.id.home_password_et);
         tipsTV = (TextView) findViewById(R.id.tips);
+        forgetTV = (TextView) findViewById(R.id.forget);
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +113,15 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
+
+        forgetTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CommonUtil.showDialog(getContext(), "请联系论文帮客服lwb20191202", "密码找回", "好的");
+            }
+        });
+
+
     }
 
 
@@ -124,7 +138,7 @@ public class LoginActivity extends BaseActivity {
         url = url + "?userName=" + userName + "&password=" + password + "&imei=" + imei + "&androidId=" + androidId;
         CustomRequest req = new CustomRequest(this, listener, listener, params, url, Request.Method.GET);
         req.setTag(getRequestTag());
-        udpateButtonByStatus(Constant.BUTTON_STATUS_OFF,loginBtn);
+        udpateButtonByStatus(Constant.BUTTON_STATUS_OFF, loginBtn);
         VolleyUtils.getRequestQueue(this).add(req);
     }
 
@@ -133,6 +147,7 @@ public class LoginActivity extends BaseActivity {
     public Context getContext() {
         return LoginActivity.this;
     }
+
     @Override
     public String getRequestTag() {
         return "ACCOUNT_LOGIN_REQUEST";
@@ -149,7 +164,7 @@ public class LoginActivity extends BaseActivity {
 
         @Override
         public void onErrorResponse(VolleyError arg0) {
-            udpateButtonByStatus(Constant.BUTTON_STATUS_ON,loginBtn);
+            udpateButtonByStatus(Constant.BUTTON_STATUS_ON, loginBtn);
             tipsTV.setText(Constant.REQUEST_ERROR);
         }
 
@@ -158,7 +173,7 @@ public class LoginActivity extends BaseActivity {
             if (null == res.get(Constant.STATUS) || !Constant.RES_SUCCESS.equals(res.get(Constant.STATUS).toString())) {
                 String data = (null == res.get(Constant.DATA)) ? "登录失败" : res.get(Constant.DATA).toString();
                 tipsTV.setText(data);
-                udpateButtonByStatus(Constant.BUTTON_STATUS_ON,loginBtn);
+                udpateButtonByStatus(Constant.BUTTON_STATUS_ON, loginBtn);
             } else {
                 userinfo = (Map<String, Object>) res.get("data");
                 String[] feilds = new String[]{Constant.ID, Constant.USERNAME_V1, Constant.PASSWORD,
