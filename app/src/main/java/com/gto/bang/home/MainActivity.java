@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseActivity;
 import com.gto.bang.course.CourseFragment;
+import com.gto.bang.course.MallFragment;
 import com.gto.bang.navigation.AboutActivity;
 import com.gto.bang.navigation.FeedbackActivity;
 import com.gto.bang.question.fragment.QuestionTabFragment;
@@ -80,7 +81,8 @@ public class MainActivity extends BaseActivity implements TabHost.OnTabChangeLis
         addTab(inflater, TAB_HOMEPAGE, HomePageTagFragment.class, R.drawable.home, R.string.tab_homepage);
         addTab(inflater, TAB_DISCOVERY, DiscoveryFragment.class, R.drawable.discover, R.string.tab_discovery);
         addTab(inflater, TAB_QUESTION, QuestionTabFragment.class, R.drawable.question, R.string.tab_question);
-        addTab(inflater, TAB_COURSE, CourseFragment.class, R.drawable.message, R.string.tab_course);
+//        addTab(inflater, TAB_COURSE, CourseFragment.class, R.drawable.message, R.string.tab_course);
+        addTab(inflater, TAB_COURSE, MallFragment.class, R.drawable.message, R.string.tab_course);
         addTab(inflater, TAB_MINE, HMineFragment.class, R.drawable.mine, R.string.tab_mine);
         mTabHost.getTabWidget().setDividerDrawable(null);
 

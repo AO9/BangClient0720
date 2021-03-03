@@ -73,7 +73,7 @@ public class CourseFragment extends BaseFragment {
     private void initClickEvents() {
         String[] from = {"courseTitle", "courseDescribe1", "courseDescribe2"};
         int[] to = {R.id.courseTitle, R.id.courseDescribe1, R.id.courseDescribe2};
-        adapter = new SimpleAdapter(getActivity(), dataList, R.layout.course_item, from, to);
+        adapter = new SimpleAdapter(getActivity(), dataList, R.layout.course_item2, from, to);
         offlineCourse.setAdapter(adapter);
         offlineCourse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

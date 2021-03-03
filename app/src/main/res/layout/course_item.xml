@@ -35,10 +35,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/common_sides_margin"
             android:layout_marginTop="@dimen/common_sides_margin"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:text="盛夏摸底考试"
             android:textColor="@android:color/darker_gray"
             android:textSize="10dp"
-
             android:id="@+id/courseDescribe1" />
 
         <TextView
