@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@drawable/divider"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/tv_top_margin"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/sides_margin"
+            android:layout_marginTop="@dimen/common_sides_margin"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="3"
+            android:textSize="@dimen/mid_common_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider"
+        android:showDividers="middle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/common_sides_margin"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/sides_margin"
+            android:layout_marginTop="@dimen/common_sides_margin"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/small_sides_margin"
+                android:gravity="left|center">
+
+                <ImageView
+                    android:layout_width="@dimen/image_icon_size"
+                    android:layout_height="@dimen/image_icon_size"
+                    android:layout_marginRight="@dimen/small_sides_margin"
+                    android:background="@drawable/money" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_sides_margin"
+                    android:gravity="center|left"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/common_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_sides_margin"
+                    android:gravity="center|left"
+                    android:text="元"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/common_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/small_sides_margin"
+                android:gravity="left|center">
+
+                <ImageView
+                    android:layout_width="@dimen/image_icon_size"
+                    android:layout_height="@dimen/image_icon_size"
+                    android:layout_marginRight="@dimen/small_sides_margin"
+                    android:background="@drawable/status" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_sides_margin"
+                    android:ellipsize="end"
+                    android:gravity="center|left"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/common_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left|center">
+
+                <ImageView
+                    android:layout_width="@dimen/image_icon_size"
+                    android:layout_height="@dimen/image_icon_size"
+                    android:layout_marginRight="@dimen/small_sides_margin"
+                    android:background="@drawable/praise" />
+
+                <TextView
+                    android:id="@+id/signUpNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_sides_margin"
+                    android:ellipsize="end"
+                    android:gravity="center|left"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/common_text_size" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

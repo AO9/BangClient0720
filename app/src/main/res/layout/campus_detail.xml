@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <LinearLayout
+        android:id="@+id/comment_tips"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="亲，这里是空的 ^_^"
+            android:textColor="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detail_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="@color/withe"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/question_person_info_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/info_item_height"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:layout_marginTop="@dimen/common_sides_margin"
+            android:background="@android:color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/question_head_tv"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="帮"
+                android:textColor="@color/withe"
+                android:textSize="@dimen/common_text_size" />
+
+            <TextView
+                android:id="@+id/question_detail_author_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_sides_margin"
+                android:gravity="center"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/common_text_size" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="@dimen/common_text_size" />
+
+            <TextView
+                android:id="@+id/question_detail_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/question_autor_tv"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:gravity="center"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/common_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/info_item_height"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/common_sides_margin"
+            android:background="@android:color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginRight="@dimen/small_sides_margin"
+                android:layout_gravity="center"
+                android:background="@drawable/money"
+                android:textSize="@dimen/common_text_size" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_marginRight="@dimen/small_sides_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_dark"
+                android:text="100"
+                android:textSize="@dimen/common_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@android:color/darker_gray"
+                android:text="元"
+                android:textSize="@dimen/common_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/question_detail_describe_tv"
+                style="@style/detail_text_style"
+                android:layout_marginBottom="@dimen/sides_margin" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/sides_margin"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/sides_margin"
+            android:background="@color/color_theme"
+            android:text="举手(我来帮TA)"
+            android:textColor="@color/withe" />
+    </LinearLayout>
+</LinearLayout>

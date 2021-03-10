@@ -58,6 +58,10 @@
             <!--</intent-filter>-->
         </activity>
         <activity
+            android:name=".course.PaperDetailActivity"
+            android:label="@string/back"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".comment.CommentInputActivity"
             android:label="@string/bang_cancel"
             android:windowSoftInputMode="adjustResize" />

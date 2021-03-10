@@ -18,14 +18,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="恭喜您！报名成功!"
+            android:text="预定成功!"
             android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\n请联系论文帮官方微信\n微信号 lwb20191202\n添加时备注报名的课程名\n\n加微也可扫描以下二维码" />
+            android:text="\n请联系论文帮官方微信以了解详情\n微信号 lwb20191202\n添加时备注选购的题目\n\n加微也可扫描以下二维码" />
 
         <ImageView
             android:layout_width="wrap_content"

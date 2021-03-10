@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:divider="@drawable/divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white">
+
+        <EditText
+            android:id="@+id/question_describe_et"
+            style="@style/edittext_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="请详细描述你的问题，至少10个字\n\n提交后会被精准推送到同校的学长或学姐\n24小时内快速得到响应"
+            android:inputType="textMultiLine"
+            android:textSize="@dimen/info_item_left_text_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:gravity="left|center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分类标签" />
+
+            <RadioGroup
+                android:id="@+id/type_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cp_life_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="生活" />
+
+                <RadioButton
+                    android:id="@+id/cp_emotion_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="情感" />
+
+                <RadioButton
+                    android:id="@+id/cp_study_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="学习" />
+
+                <RadioButton
+                    android:id="@+id/cp_work_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="工作" />
+            </RadioGroup>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:layout_marginBottom="@dimen/info_item_margin_top"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/sides_margin"
+
+            android:gravity="left|center">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/sides_margin"
+                android:text="红包预算"
+                android:id="@+id/textView2" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/price"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:layout_marginBottom="@dimen/info_item_margin_top"
+        android:layout_marginTop="@dimen/info_item_margin_top"
+        android:background="@android:color/white">
+
+        <Button
+            android:id="@+id/question_ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/sides_margin"
+            android:layout_marginRight="@dimen/sides_margin"
+            android:background="@color/color_theme"
+            android:text="发布问题"
+            android:textColor="@color/withe"
+
+            />
+    </RelativeLayout>
+
+</LinearLayout>
