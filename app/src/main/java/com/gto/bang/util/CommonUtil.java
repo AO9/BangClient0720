@@ -1,22 +1,21 @@
 package com.gto.bang.util;
 
 import android.app.AlertDialog;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gto.bang.R;
-import com.gto.bang.application.MyApplication;
+import com.gto.bang.create.CreateSupport2Activity;
 import com.gto.bang.personal.activity.PHomePageActivity;
 
 import org.apache.commons.lang.StringUtils;
@@ -155,6 +154,22 @@ public class CommonUtil {
         List<String> list = Arrays.asList(strArr);
         return list;
     }
+
+
+    public static void copy(Button copy, final Context context) {
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager cbm = (ClipboardManager) context
+                        .getSystemService(Context.CLIPBOARD_SERVICE);
+                cbm.setText("lwb20191202");
+                CommonUtil.showTips("复制成功!lwb20191202", context);
+            }
+        });
+    }
+
+
+
 
 
 }

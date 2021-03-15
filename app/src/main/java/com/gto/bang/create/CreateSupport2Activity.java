@@ -1,6 +1,8 @@
 package com.gto.bang.create;
 
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseCreateActivity;
+import com.gto.bang.course.PaperDetailActivity;
 import com.gto.bang.util.CommonUtil;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -26,15 +29,14 @@ import org.apache.commons.lang.StringUtils;
 import java.util.HashMap;
 
 /**
- * 2019年6月2日 红包求助
+ * 2021年3月16日 降重润色
  */
-public class CreateSupportActivity extends BaseCreateActivity {
+public class CreateSupport2Activity extends BaseCreateActivity {
 
-    Button copy;
-    TextView price;
     TextView tips;
     TextView describe;
     TextView wordNumber;
+    Button copy;
     TextView[] textViews;
     String inputHints = new String("内容填写不全");
 
@@ -42,12 +44,12 @@ public class CreateSupportActivity extends BaseCreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_support);
+        setContentView(R.layout.create_support2);
         initViews();
     }
 
 
-    public void initTextView(TextView textView,String hint) {
+    public void initTextView(TextView textView, String hint) {
         SpannableString ss = new SpannableString(hint);
         AbsoluteSizeSpan ass = new AbsoluteSizeSpan(14, true);
         ss.setSpan(ass, 0, ss.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -56,18 +58,18 @@ public class CreateSupportActivity extends BaseCreateActivity {
 
     public void initViews() {
 
+
         copy = (Button) findViewById(R.id.copy);
-        CommonUtil.copy(copy,this);
+        CommonUtil.copy(copy, this);
+
         describe = (TextView) findViewById(R.id.question_describe_et);
-        price = (TextView) findViewById(R.id.question_price);
         wordNumber = (TextView) findViewById(R.id.wordNumber);
 
-        initTextView(describe,"专业、学历、查重、初稿、题目等");
-        initTextView(price,"90~130元/每千字，最终以实际沟通为准");
-        initTextView(wordNumber,"请填写字数");
+        initTextView(describe, "您的专业");
+        initTextView(wordNumber, "请填写字数");
 
         tips = (TextView) findViewById(R.id.tips);
-        textViews = new TextView[]{price, describe, wordNumber};
+        textViews = new TextView[]{describe, wordNumber};
 
         submit = (Button) findViewById(R.id.question_ok_btn);
         setSubmitText("发布");
@@ -77,7 +79,7 @@ public class CreateSupportActivity extends BaseCreateActivity {
                 if (check()) {
                     //校验通过后拼接请求参数并向服务器发送请求
                     HashMap<String, String> params = new HashMap<String, String>();
-                    params.put(Constant.PRICE, price.getText().toString());
+                    params.put(Constant.PRICE, "1");
                     params.put(Constant.CONTENT, describe.getText().toString());
                     params.put(Constant.TYPE, Constant.TYPE_SUPPORT);
                     params.put("userId", getSharedPreferences().getString(Constant.ID, Constant.AUTHORID_DEFAULT));
@@ -99,6 +101,7 @@ public class CreateSupportActivity extends BaseCreateActivity {
         submit.setText("正在全力发布");
         submit.setTextColor(Color.GRAY);
         VolleyUtils.getRequestQueue(this).add(req);
+        CommonUtil.localLog("降重|润色");
     }
 
     /**
@@ -113,19 +116,7 @@ public class CreateSupportActivity extends BaseCreateActivity {
                 return false;
             }
         }
-        // 20200626 预算
-        String priceValue = price.getText().toString();
-        if (Integer.valueOf(priceValue).intValue() == 0) {
-            tips.setText("预算不能为0");
-            return false;
-        }
 
-        // 20200626 预算
-        String describeValue = describe.getText().toString();
-        if (describeValue.length() < 0) {
-            tips.setText("论文问题描述过于简单，至少10个字");
-            return false;
-        }
 
         return true;
     }

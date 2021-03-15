@@ -61,11 +61,11 @@ public class MallFragment extends BaseFragment {
     public void initPapers() {
 
         String[] from = {"title", "describe"};
-        int[] to = {R.id.title};
+        int[] to = {R.id.title,R.id.describe};
         List<Map<String, Object>> datas = new ArrayList<Map<String, Object>>();
 
         String[] title = new String[]{"一带一路对京津冀地区经济协同发展的影响", "婺源县乡村旅游经济发展问题分析", "企业应收账款管理中的问题级对策研究--以联康集团为例", "南锡业股份有限公司成本管理存在问题及对策研究"};
-        String[] describe = new String[]{"经济类", "经济类", "会计类", "会计类",};
+        String[] describe = new String[]{"经济类 6000字 查重20%", "经济类 5000字 查重30%", "会计类 1w字 查重30%", "会计类 6000字 查重25%",};
 
 
         for (int i = 0; i < title.length; i++) {
@@ -83,7 +83,7 @@ public class MallFragment extends BaseFragment {
                                     long arg3) {
                 Intent intent;
                 Map<String, Object> map = dataList.get(arg2);
-                log("原创论文(独家合作老师提供，供范文参考)" + map.get("title"));
+                log("原创论文" + map.get("title"));
                 intent = new Intent(getActivity(), PaperDetailActivity.class);
                 startActivity(intent);
             }

@@ -7,12 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/sides_margin"
         android:layout_marginLeft="@dimen/sides_margin"
         android:layout_marginRight="@dimen/sides_margin"
         android:layout_marginTop="@dimen/sides_margin"
-        android:gravity="left|center"
         android:orientation="vertical">
 
         <TextView
@@ -22,21 +21,61 @@
             android:textSize="16dp"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center|left">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="详谈请加论文帮客服微信号:lwb20191202" />
+
+            <Button
+                android:id="@+id/copy"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/color_theme"
+                android:text="复制微信"
+                android:textColor="@color/withe"
+                android:textSize="14dp" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\n请联系论文帮官方微信以了解详情\n微信号 lwb20191202\n添加时备注选购的题目\n\n加微也可扫描以下二维码" />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center|left"
+            android:text="\n10万+论文库供您选择\n覆盖汉语言、经管、人力资源、建筑、工商、经济学等" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:text="\n提供查重报告，单价200-300元\n说明: 仅供范文参考使用，直接使用的勿扰" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_height="wrap_content"
+            android:text="\n添加时备注约定的论文题目\n\n加微也可扫描以下二维码" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sides_margin_large"
             android:background="@drawable/wechaticon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\n二维码添加方法：屏幕截图保存->打开微信->添加朋友->扫一扫->选择刚保存的二维码截图" />
+            android:text="\n二维码添加方法：\n屏幕截图保存->打开微信->添加朋友->扫一扫->选择刚保存的二维码截图" />
     </LinearLayout>
 
 </LinearLayout>

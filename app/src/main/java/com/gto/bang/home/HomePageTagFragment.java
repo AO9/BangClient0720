@@ -15,16 +15,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gto.bang.R;
-import com.gto.bang.article.ArticleListActivity1;
 import com.gto.bang.article.ArticleListActivity2;
-import com.gto.bang.article.ArticleListActivity3;
-import com.gto.bang.article.ArticleListActivity4;
 import com.gto.bang.base.BaseFragment;
 import com.gto.bang.campus.CampusActivity;
 import com.gto.bang.college.NoticeActivity;
 import com.gto.bang.create.CreateComplaintActivity;
 import com.gto.bang.create.CreateExperienceActivity;
 import com.gto.bang.create.CreateQuestionActivity;
+import com.gto.bang.create.CreateSupport2Activity;
 import com.gto.bang.create.CreateSupportActivity;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -112,7 +110,7 @@ public class HomePageTagFragment extends BaseFragment {
             }
         });
 
-        String name[] = {"论文求助", "提问", "动态", "分享", "校内帮", "查重咨询", "选题专区", "硕士论文"};
+        String name[] = {"论文求助", "提问", "动态", "分享", "校内帮", "查重咨询", "润色", "降重"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -180,13 +178,13 @@ public class HomePageTagFragment extends BaseFragment {
                         startActivity(intent);
                         break;
                     case 6:
-                        log("首页-选题专区");
-                        intent = new Intent(getActivity(), ArticleListActivity3.class);
+                        log("首页-润色");
+                        intent = new Intent(getActivity(), CreateSupport2Activity.class);
                         startActivity(intent);
                         break;
                     case 7:
-                        log("首页-硕士论文");
-                        intent = new Intent(getActivity(), ArticleListActivity4.class);
+                        log("首页-降重");
+                        intent = new Intent(getActivity(), CreateSupport2Activity.class);
                         startActivity(intent);
                         break;
                 }
