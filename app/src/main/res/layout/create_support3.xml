@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:divider="@drawable/divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:gravity="center"
+                android:text="论文字数"
+                android:textSize="@dimen/big_common_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wordNumber"
+                style="@style/edittext_style"
+                android:layout_centerVertical="true"
+                android:hint="请填写全文字数"
+                android:inputType="number"
+                android:textSize="@dimen/info_item_left_text_size"></EditText>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:gravity="center"
+                android:text="论文专业"
+                android:textSize="@dimen/big_common_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/question_describe_et"
+                style="@style/edittext_style"
+                android:layout_centerVertical="true"
+                android:hint="请填写您的专业"
+                android:inputType="text"
+                android:textSize="@dimen/info_item_left_text_size"></EditText>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/info_item_height"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:gravity="center"
+                android:text="查重要求"
+                android:textSize="@dimen/big_common_text_size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/_et"
+                style="@style/edittext_style"
+                android:layout_centerVertical="true"
+                android:hint="请填写您的重复率要求，如25%"
+                android:inputType="text"
+                android:textSize="@dimen/info_item_left_text_size"></EditText>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/info_item_height"
+            android:layout_marginBottom="@dimen/info_item_margin_top"
+            android:layout_marginTop="@dimen/info_item_margin_top"
+            android:background="@android:color/white">
+
+            <Button
+                android:id="@+id/question_ok_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/sides_margin"
+                android:layout_marginRight="@dimen/sides_margin"
+                android:background="@color/color_theme"
+                android:text="下单降重"
+                android:textColor="@color/withe"
+
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下单后客服会在1小时之内与您沟通具体要求和费用"
+                android:textColor="@android:color/darker_gray">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/wechaticon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="论文帮客服二维码 "
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10dp">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="若想加速联系，请添加论文帮微信[lwb20191202]"
+                android:textSize="11dp" />
+
+            <Button
+                android:id="@+id/copy"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@color/withe"
+                android:text="点我复制微信号 "
+                android:textColor="@color/blue1_light"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
