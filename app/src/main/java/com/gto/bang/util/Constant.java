@@ -28,6 +28,13 @@ public class Constant {
 
     //红包问答
     public static final String TYPE_SUPPORT = "4";
+
+    public static final String TYPE_JIACHONG = "5";
+    public static final String TYPE_RUNSE = "6";
+
+
+
+
     public static final String Toast_Experience = "经验值 ＋5";
     public static final String Toast_Question = "经验值 ＋2";
 

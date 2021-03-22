@@ -23,6 +23,7 @@ import com.gto.bang.create.CreateComplaintActivity;
 import com.gto.bang.create.CreateExperienceActivity;
 import com.gto.bang.create.CreateQuestionActivity;
 import com.gto.bang.create.CreateSupport2Activity;
+import com.gto.bang.create.CreateSupport3Activity;
 import com.gto.bang.create.CreateSupportActivity;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
@@ -110,7 +111,7 @@ public class HomePageTagFragment extends BaseFragment {
             }
         });
 
-        String name[] = {"论文求助", "提问", "动态", "分享", "校内帮", "查重咨询", "润色", "降重"};
+        String name[] = {"论文求助", "提问", "润色", "降重", "动态", "分享", "校内帮", "查重咨询"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < name.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -141,12 +142,12 @@ public class HomePageTagFragment extends BaseFragment {
 //                        intent = new Intent(getActivity(), QuestionListActivity.class);
 //                        startActivity(intent);
 //                        break;
-                    case 3:
+                    case 5:
                         log("首页-分享");
                         intent = new Intent(getActivity(), CreateExperienceActivity.class);
                         startActivity(intent);
                         break;
-                    case 2:
+                    case 4:
                         log("首页-动态");
                         intent = new Intent(getActivity(), CreateComplaintActivity.class);
                         startActivity(intent);
@@ -164,7 +165,7 @@ public class HomePageTagFragment extends BaseFragment {
 //                        intent = new Intent(getActivity(), UserListActivity.class);
 //                        startActivity(intent);
 //                        break;
-                    case 4:
+                    case 6:
 //                        intent = new Intent(getActivity(), ArticleListActivity1.class);
 //                        startActivity(intent);
 // 20201024 新增我的校园
@@ -172,19 +173,19 @@ public class HomePageTagFragment extends BaseFragment {
                         intent = new Intent(getActivity(), CampusActivity.class);
                         startActivity(intent);
                         break;
-                    case 5:
+                    case 7:
                         log("首页-查重咨询");
                         intent = new Intent(getActivity(), ArticleListActivity2.class);
                         startActivity(intent);
                         break;
-                    case 6:
+                    case 2:
                         log("首页-润色");
                         intent = new Intent(getActivity(), CreateSupport2Activity.class);
                         startActivity(intent);
                         break;
-                    case 7:
+                    case 3:
                         log("首页-降重");
-                        intent = new Intent(getActivity(), CreateSupport2Activity.class);
+                        intent = new Intent(getActivity(), CreateSupport3Activity.class);
                         startActivity(intent);
                         break;
                 }
