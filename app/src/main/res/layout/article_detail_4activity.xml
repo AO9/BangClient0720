@@ -13,8 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <fragment
                 android:id="@+id/articleDetailFragment"
@@ -23,26 +22,25 @@
                 android:layout_height="wrap_content"></fragment>
 
             <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_marginLeft="@dimen/sides_margin"-->
-                <!--android:layout_marginTop="@dimen/common_sides_margin"></LinearLayout>-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginLeft="@dimen/sides_margin"-->
+            <!--android:layout_marginTop="@dimen/common_sides_margin"></LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/sides_margin"
-                android:background="@color/withe"
                 android:layout_marginTop="@dimen/common_sides_margin"
-                >
+                android:background="@color/withe">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/sides_margin"
-                    android:text="---------评论区---------"
-                    android:textSize="@dimen/common_text_size"
+                    android:gravity="center"
+                    android:text="评论"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -54,6 +52,36 @@
                 android:layout_height="wrap_content">
 
             </fragment>
+            <!--2021年5月15日 凯百隆大白保养 详情页底部新增相关推荐-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sides_margin"
+                android:layout_marginTop="@dimen/common_sides_margin"
+                android:background="@color/withe">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/sides_margin"
+                    android:gravity="left"
+                    android:text="更多推荐"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_sides_margin"
+                android:background="@color/withe">
+
+                <fragment
+                    android:name="com.gto.bang.home.HActicleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></fragment>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
