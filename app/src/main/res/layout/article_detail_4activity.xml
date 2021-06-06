@@ -37,10 +37,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/sides_margin"
-                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="left"
                     android:text="评论"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -64,10 +64,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/sides_margin"
+                    android:layout_marginLeft="5dp"
                     android:gravity="left"
                     android:text="更多推荐"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
             </LinearLayout>
 

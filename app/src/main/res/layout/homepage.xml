@@ -7,58 +7,190 @@
     android:orientation="vertical"
     android:showDividers="middle">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="1dp"
-        android:background="@color/color_theme"
-        android:divider="@drawable/divider"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:showDividers="middle">
+        android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/navigate"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:lineSpacingExtra="10dp"
-            android:textColor="@color/withe"
-            android:textSize="17dp"
-            android:typeface="sans" />
-    </LinearLayout>
+            android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@drawable/divider"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/small_sides_margin"
-        android:showDividers="middle">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/color_theme"
+                android:divider="@drawable/divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
 
-        <GridView
-            android:id="@+id/gridview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnWidth="30dp"
-            android:horizontalSpacing="2dp"
-            android:numColumns="4"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="2dp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/navigate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="10dp"
+                    android:textColor="@color/withe"
+                    android:textSize="17dp"
+                    android:typeface="sans" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_sides_margin"
-        android:background="@color/withe">
+            <!--begin 注释原有的UI设计-->
 
-        <fragment
-            android:name="com.gto.bang.home.HActicleFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></fragment>
-    </LinearLayout>
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:divider="@drawable/divider"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginTop="@dimen/small_sides_margin"-->
+            <!--android:showDividers="middle">-->
+
+            <!--<GridView-->
+            <!--android:id="@+id/gridview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:columnWidth="30dp"-->
+            <!--android:horizontalSpacing="2dp"-->
+            <!--android:numColumns="4"-->
+            <!--android:stretchMode="columnWidth"-->
+            <!--android:verticalSpacing="2dp" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/small_sides_margin"-->
+            <!--android:background="@color/withe">-->
+
+            <!--<fragment-->
+            <!--android:name="com.gto.bang.home.HActicleFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"></fragment>-->
+            <!--</LinearLayout>-->
+
+            <!--end 注释原有的UI设计-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="5dp"
+                android:divider="@drawable/divider"
+                android:orientation="horizontal"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:lineSpacingExtra="10dp"
+                        android:text="我是图片"
+                        android:textSize="17dp"
+                        android:typeface="sans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:lineSpacingExtra="10dp"
+
+                        android:text="论文求助"
+                        android:textStyle="bold"
+                        android:textSize="16dp"
+                        android:typeface="sans" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:lineSpacingExtra="10dp"
+                        android:text="平台已经服务超过1万人"
+                        android:textSize="14dp"
+                        android:typeface="sans" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="5dp"
+                android:divider="@drawable/divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:id="@+id/test1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="10dp"
+                    android:text="润色降重"
+                    android:textSize="17dp"
+                    android:typeface="sans" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="1dp"
+                android:divider="@drawable/divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:id="@+id/test2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="10dp"
+                    android:text="校内帮帮"
+                    android:textSize="17dp"
+                    android:typeface="sans" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="1dp"
+                android:divider="@drawable/divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:id="@+id/test3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="10dp"
+                    android:text="咨询服务"
+                    android:textSize="17dp"
+                    android:typeface="sans" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
